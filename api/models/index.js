@@ -3,9 +3,6 @@ const Match = require('models/Match.js');
 const Player = require('models/Player.js');
 const MatchPlayer = require('models/MatchPlayer.js');
 
-Match.belongsTo(User);
-User.hasMany(Match, {onDelete: 'CASCADE'});
-
 Player.belongsTo(User);
 User.hasOne(Player, {onDelete: 'CASCADE'});
 

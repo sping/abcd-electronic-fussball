@@ -9,13 +9,6 @@ Match = database.define('matches',
       primaryKey: true,
       autoIncrement: true
     },
-    userId: {
-      type: Sequelize.INTEGER,
-      references: {
-        model: User,
-        key: 'id'
-      }
-    },
     kind: {
       type: Sequelize.ENUM('SINGLE', 'DOUBLE')
     },

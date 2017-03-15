@@ -13,13 +13,13 @@ MatchController.prototype.getMatch = async (ctx, next) => {
 }
 
 MatchController.prototype.getMatches = async (ctx, next) => {
-  var matches = await ctx.state.currentUser.getMatches()
+  var matches = await Match.findAll()
   // ctx.body = SequelizeToJson.serializeMany(matches, Match, MatchSerializer)
   ctx.body = matches
 }
 
 MatchController.prototype.createMatch = async (ctx, next) => {
-  match = await ctx.state.currentUser.createMatch(matchParams(ctx.request.body))
+  match = await Match.create(matchParams(ctx.request.body))
   // ctx.body = serializer.serialize(match)
   ctx.body = match
 }

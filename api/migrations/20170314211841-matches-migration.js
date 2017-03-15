@@ -17,13 +17,6 @@ module.exports = {
         playedAt: {
           type: Sequelize.DATE
         },
-        userId: {
-          type: Sequelize.INTEGER,
-          references: {
-              model: 'users',
-              key: 'id'
-          }
-        },
         homeScore: {
           type: Sequelize.INTEGER,
           allowNull: false,

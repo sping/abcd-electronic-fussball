@@ -1,6 +1,7 @@
 const SequelizeToJson = require('sequelize-to-json');
 const PlayerSerializer = require('serializers/PlayerSerializer');
 const Player = require('models').Player;
+const Model = require('models').Model;
 const serializer = new SequelizeToJson(Player, PlayerSerializer);
 
 const MatchPlayer = require('models').MatchPlayer;
@@ -14,7 +15,9 @@ PlayerController.prototype.getPlayer = async (ctx, next) => {
 }
 
 PlayerController.prototype.getPlayers = async (ctx, next) => {
-  var players = await Player.findAll()
+  var players = await Player.findAll({
+    include: [User]
+  })
   // ctx.body = SequelizeToJson.serializeMany(players, Player, PlayerSerializer)
   ctx.body = players
 }

@@ -2,11 +2,11 @@ const db = require('databaseConnection');
 
 const scheme = {
   include: ['@all', '@assoc'],
-  exclude: ['userId', '@auto'],
+  exclude: ['@auto'],
   assoc: {
     matchPlayer: {
       include: ['@all', '@assoc'],
-      exclude: ['userId', '@auto']
+      exclude: ['@auto']
     }
   }
 };
