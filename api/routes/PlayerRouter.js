@@ -10,12 +10,9 @@ var PlayerRouter = new Router(
 
 PlayerRouter.use('/', AuthenticationHelper.authenticate)
 PlayerRouter.get('/', PlayerController.getPlayers)
-PlayerRouter.post('/', PlayerController.createPlayer)
 
 PlayerRouter.use('/:id', PlayerHelper.loadPlayer)
 PlayerRouter.get('/:id', PlayerController.getPlayer)
-PlayerRouter.put('/:id', PlayerController.updatePlayer)
-PlayerRouter.delete('/:id', PlayerController.destroyPlayer)
 PlayerRouter.get('/:id/matches', PlayerController.getMatches)
 
 module.exports = PlayerRouter

@@ -8,12 +8,6 @@ Player = database.define('players',
       primaryKey: true,
       autoIncrement: true
     },
-    firstName: {
-      type: Sequelize.STRING
-    },
-    lastName: {
-      type: Sequelize.STRING
-    },
     userId: {
       type: Sequelize.INTEGER,
       references: {

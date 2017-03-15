@@ -51,7 +51,8 @@ AuthenticationController.prototype.logout = async (ctx, next) => {
 
 userParams = (body) => {
   payload = {
-    name: body.name,
+    firstName: body.firstName,
+    lastName: body.lastName,
     email: body.email,
     password: body.password,
     active: true

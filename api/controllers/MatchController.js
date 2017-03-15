@@ -45,7 +45,7 @@ MatchController.prototype.setMatchPlayers = async (ctx, next) => {
     })
   }
   
-  match = await ctx.state.currentMatch.get()
+  match = await ctx.state.currentMatch.reload()
   ctx.body = match
 }
 

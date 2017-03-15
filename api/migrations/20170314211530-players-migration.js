@@ -10,13 +10,6 @@ module.exports = {
           primaryKey: true,
           autoIncrement: true
         },
-        firstName: {
-          type: Sequelize.STRING,
-          allowNull: false
-        },
-        lastName: {
-          type: Sequelize.STRING
-        },
         userId: {
           type: Sequelize.INTEGER,
           references: {

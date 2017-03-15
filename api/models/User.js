@@ -1,9 +1,8 @@
-const
-  Sequelize = require('sequelize'),
-  database = require('databaseConnection'),
-  SequelizeTokenify = require('sequelize-tokenify'),
-  env = require('config/env'),
-  crypto = require('crypto')
+const Sequelize = require('sequelize');
+const database = require('databaseConnection');
+const SequelizeTokenify = require('sequelize-tokenify');
+const env = require('config/env');
+const crypto = require('crypto');
 
 User = database.define('users',
   {
@@ -12,7 +11,10 @@ User = database.define('users',
       primaryKey: true,
       autoIncrement: true
     },
-    name: {
+    firstName: {
+      type: Sequelize.STRING
+    },
+    lastName: {
       type: Sequelize.STRING
     },
     email: {
@@ -39,6 +41,11 @@ SequelizeTokenify.tokenify(User, {
 
 User.hook('beforeCreate', (user, options) => {
   user.password = User.convertPasswordToHash(user.password);
+  return user
+});
+
+User.hook('afterCreate', async (user, options) => {
+  await user.createPlayer()
   return user
 });
 

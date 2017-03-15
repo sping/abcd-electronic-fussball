@@ -7,7 +7,7 @@ Match.belongsTo(User);
 User.hasMany(Match, {onDelete: 'CASCADE'});
 
 Player.belongsTo(User);
-User.hasMany(Player, {onDelete: 'CASCADE'});
+User.hasOne(Player, {onDelete: 'CASCADE'});
 
 MatchPlayer.belongsTo(Player);
 Player.hasMany(MatchPlayer, {onDelete: 'CASCADE'});

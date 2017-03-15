@@ -1,6 +1,7 @@
 const Match = require('models').Match;
 const Player = require('models').Player;
 const MatchPlayer = require('models').MatchPlayer;
+const User = require('models').User;
 var MatchHelper = function () {};
 
 MatchHelper.prototype.loadMatch = async (ctx, next) => {
@@ -10,7 +11,10 @@ MatchHelper.prototype.loadMatch = async (ctx, next) => {
     },
     include: [{
       model: MatchPlayer,
-      include: [Player]
+      include: [{
+        model: Player,
+        include: [User]
+      }]
     }]
   })
   

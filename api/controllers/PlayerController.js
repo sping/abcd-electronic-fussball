@@ -14,26 +14,9 @@ PlayerController.prototype.getPlayer = async (ctx, next) => {
 }
 
 PlayerController.prototype.getPlayers = async (ctx, next) => {
-  var players = await ctx.state.currentUser.getPlayers()
+  var players = await Player.findAll()
   // ctx.body = SequelizeToJson.serializeMany(players, Player, PlayerSerializer)
   ctx.body = players
-}
-
-PlayerController.prototype.createPlayer = async (ctx, next) => {
-  player = await ctx.state.currentUser.createPlayer(playerParams(ctx.request.body))
-  ctx.body = player
-  // ctx.body = serializer.serialize(player)
-}
-
-PlayerController.prototype.updatePlayer = async (ctx, next) => {
-  player = await ctx.state.currentPlayer.update(playerParams(ctx.request.body))
-  ctx.body = player
-  // ctx.body = serializer.serialize(player)
-}
-
-PlayerController.prototype.destroyPlayer = async (ctx, next) => {
-  await ctx.state.currentPlayer.destroy()
-  ctx.status = 204
 }
 
 PlayerController.prototype.getMatches = async (ctx, next) => {
@@ -44,8 +27,6 @@ PlayerController.prototype.getMatches = async (ctx, next) => {
 
 playerParams = (body) => {
   payload = {
-    firstName: body.firstName,
-    lastName: body.lastName
   }
 
   Object.keys(payload).forEach((key) => (payload[key] == null) && delete payload[key]);
