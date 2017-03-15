@@ -45,6 +45,17 @@ PlayerController.prototype.calculateStatsForAllPlayers = async (ctx, next) => {
     stats.push(PlayerHelper.calculateStatsFromMatchPlayers(player.match_players))
   }
 
+  stats.sort((a, b) => {
+    if (a.ratio === b.ratio) {
+      if (a.wins === b.wins) {
+        return b.goalsDiff - a.goalsDiff
+      }
+      return b.wins - a.wins
+    }
+
+    return b.ratio - a.ratio
+  });
+
   ctx.body = stats
 }
 

@@ -19,6 +19,8 @@ PlayerHelper.prototype.loadPlayer = async (ctx, next) => {
 PlayerHelper.prototype.calculateStatsFromMatchPlayers = (matchPlayers) => {
   var wins = 0;
   var losses = 0;
+  var goalsFor = 0;
+  var goalsAgainst = 0;
 
   for (matchPlayer of matchPlayers) {
     if (matchPlayer.match.homeScore == 0 && matchPlayer.match.awayScore == 0) { continue }
@@ -28,6 +30,14 @@ PlayerHelper.prototype.calculateStatsFromMatchPlayers = (matchPlayers) => {
     } else {
       losses += 1
     }
+
+    if (matchPlayer.homeTeam) {
+      goalsFor += matchPlayer.match.homeScore;
+      goalsAgainst += matchPlayer.match.awayScore;
+    } else {
+      goalsFor += matchPlayer.match.awayScore;
+      goalsAgainst += matchPlayer.match.homeScore;
+    }
   }
   
   let data = {
@@ -35,7 +45,10 @@ PlayerHelper.prototype.calculateStatsFromMatchPlayers = (matchPlayers) => {
     user: player.user,
     wins: wins,
     losses: losses,
-    ratio: wins / (wins + losses) || 0
+    winRatio: wins / (wins + losses) || 0,
+    goalsFor: goalsFor,
+    goalsAgainst: goalsAgainst,
+    goalsDiff: goalsFor - goalsAgainst
   }
 
   return data
