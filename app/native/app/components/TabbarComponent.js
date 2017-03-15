@@ -45,24 +45,24 @@ class TabbarComponent extends Component {
         <Tab
           selected={selectedTab === 'leaderboard'}
           title="Leaderboard"
-          renderIcon={() => <Icon color={colors.grey2} name='language' size={26} />}
-          renderSelectedIcon={() => <Icon color={colors.selectedTabColor} name='language' size={26} />}
+          renderIcon={() => <Icon color={colors.grey2} name='format-list-numbered' size={26} />}
+          renderSelectedIcon={() => <Icon color={colors.selectedTabColor} name='format-list-numbered' size={26} />}
           onPress={() => this.changeTab('leaderboard')}>
           <LeaderboardScreen />
         </Tab>
         <Tab
           selected={selectedTab === 'stats'}
           title="Stats"
-          renderIcon={() => <Icon color={colors.grey2} name='update' size={26} />}
-          renderSelectedIcon={() => <Icon color={colors.selectedTabColor} name='update' size={26} />}
+          renderIcon={() => <Icon color={colors.grey2} name='equalizer' size={26} />}
+          renderSelectedIcon={() => <Icon color={colors.selectedTabColor} name='equalizer' size={26} />}
           onPress={() => this.changeTab('stats')}>
           <StatsScreen />
         </Tab>
         <Tab
           selected={selectedTab === 'account'}
           title="Account"
-          renderIcon={() => <Icon color={colors.grey2} name='location-on' size={26} />}
-          renderSelectedIcon={() => <Icon color={colors.selectedTabColor} name='location-on' size={26} />}
+          renderIcon={() => <Icon color={colors.grey2} name='mood' size={26} />}
+          renderSelectedIcon={() => <Icon color={colors.selectedTabColor} name='mood' size={26} />}
           onPress={() => this.changeTab('account')}>
           <AccountScreen />
         </Tab>
