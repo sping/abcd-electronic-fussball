@@ -1,0 +1,31 @@
+{
+  "name": "Foosball",
+  "version": "0.0.1",
+  "description": "Foosball",
+  "author": "Bing Steup <b.steup@sping.nl>",
+  "private": true,
+  "scripts": {
+    "start": "nodemon app.js",
+    "db:migrate": "sequelize db:migrate",
+    "db:rollback": "sequelize db:migrate:undo"
+  },
+  "dependencies": {
+    "app-module-path": "^2.2.0",
+    "crypto": "^0.0.3",
+    "jsonfile": "^2.4.0",
+    "kcors": "next",
+    "koa": "^2.1.0",
+    "koa-body": "^1.6.0",
+    "koa-bodyparser": "^4.1.0",
+    "koa-logger": "^2.0.1",
+    "koa-router": "next",
+    "mysql": "^2.13.0",
+    "path": "^0.12.7",
+    "sequelize": "^3.30.2",
+    "sequelize-to-json": "^0.10.1",
+    "sequelize-tokenify": "^0.1.5"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
