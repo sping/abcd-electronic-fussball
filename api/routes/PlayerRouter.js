@@ -10,9 +10,11 @@ var PlayerRouter = new Router(
 
 PlayerRouter.use('/', AuthenticationHelper.authenticate)
 PlayerRouter.get('/', PlayerController.getPlayers)
+PlayerRouter.get('/stats', PlayerController.calculateStatsForAllPlayers)
 
 PlayerRouter.use('/:id', PlayerHelper.loadPlayer)
 PlayerRouter.get('/:id', PlayerController.getPlayer)
 PlayerRouter.get('/:id/matches', PlayerController.getMatches)
+PlayerRouter.get('/:id/stats', PlayerController.calculateStatsForPlayer)
 
 module.exports = PlayerRouter

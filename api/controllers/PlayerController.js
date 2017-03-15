@@ -1,7 +1,7 @@
 const SequelizeToJson = require('sequelize-to-json');
+const PlayerHelper = require('helpers/PlayerHelper');
 const PlayerSerializer = require('serializers/PlayerSerializer');
 const Player = require('models').Player;
-const Model = require('models').Model;
 const serializer = new SequelizeToJson(Player, PlayerSerializer);
 
 const MatchPlayer = require('models').MatchPlayer;
@@ -26,6 +26,46 @@ PlayerController.prototype.getMatches = async (ctx, next) => {
   var matches = await ctx.state.currentPlayer.getMatches()
   ctx.body = matches
   // ctx.body = SequelizeToJson.serializeMany(matches, Match, MatchSerializer)
+}
+
+PlayerController.prototype.calculateStatsForAllPlayers = async (ctx, next) => {
+  var stats = [];
+
+  var players = await Player.findAll({
+    include: [{
+      model: MatchPlayer,
+      include: [Match]
+    },
+    {
+      model: User
+    }]
+  })
+  
+  for (player of players) {   
+    stats.push(PlayerHelper.calculateStatsFromMatchPlayers(player.match_players))
+  }
+
+  ctx.body = stats
+}
+
+PlayerController.prototype.calculateStatsForPlayer = async (ctx, next) => {
+  var stats = [];
+
+  var player = await Player.findOne({
+    where: {
+      id: ctx.params.id
+    },
+    include: [{
+      model: MatchPlayer,
+      include: [Match]
+    },
+    {
+      model: User
+    }]
+  })
+
+  var stats = PlayerHelper.calculateStatsFromMatchPlayers(player.match_players)
+  ctx.body = stats
 }
 
 playerParams = (body) => {
