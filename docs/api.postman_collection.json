@@ -160,6 +160,31 @@
 						"description": ""
 					},
 					"response": []
+				},
+				{
+					"name": "getStatsForCurrentUser",
+					"request": {
+						"url": "http://localhost:5000/api/v1/current_user/stats",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Token token={{apiToken}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"bingsteup@gmail.com\",\n    \"password\": \"testtest\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
 				}
 			]
 		},
@@ -425,6 +450,56 @@
 					],
 					"request": {
 						"url": "http://localhost:5000/api/v1/players",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Token token={{apiToken}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"bingsteup@gmail.com\",\n    \"password\": \"testtest\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "getStatsForPlayer",
+					"request": {
+						"url": "http://localhost:5000/api/v1/players/{{playerId}}/stats",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Token token={{apiToken}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"bingsteup@gmail.com\",\n    \"password\": \"testtest\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "getStats",
+					"request": {
+						"url": "http://localhost:5000/api/v1/players/stats",
 						"method": "GET",
 						"header": [
 							{
