@@ -1,5 +1,6 @@
 const SequelizeToJson = require('sequelize-to-json');
 const MatchSerializer = require('serializers/MatchSerializer');
+const User = require('models').User;
 const Match = require('models').Match;
 const MatchPlayer = require('models').MatchPlayer;
 const SequelizeTokenify = require('sequelize-tokenify');
@@ -13,7 +14,18 @@ MatchController.prototype.getMatch = async (ctx, next) => {
 }
 
 MatchController.prototype.getMatches = async (ctx, next) => {
-  var matches = await Match.findAll()
+  var matches = await Match.findAll({
+    include: {
+      model: MatchPlayer,
+      include: [{
+        model: Player,
+        include: [User]
+      }]
+    },
+    order: [
+      ['playedAt', 'DESC']
+    ]
+  })
   // ctx.body = SequelizeToJson.serializeMany(matches, Match, MatchSerializer)
   ctx.body = matches
 }
