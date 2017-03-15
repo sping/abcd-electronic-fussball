@@ -13,6 +13,7 @@ AuthenticationRouter.post('/login', AuthenticationController.login)
 AuthenticationRouter.use('/', AuthenticationHelper.authenticate)
 AuthenticationRouter.get('/current_user', AuthenticationController.getCurrentUser)
 AuthenticationRouter.put('/current_user', AuthenticationController.updateCurrentUser)
+AuthenticationRouter.get('/current_user/stats', AuthenticationController.calculateStatsForUser)
 AuthenticationRouter.post('/logout', AuthenticationController.logout)
 
 module.exports = AuthenticationRouter

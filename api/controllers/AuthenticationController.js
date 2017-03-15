@@ -1,6 +1,9 @@
 const SequelizeToJson = require('sequelize-to-json');
 const UserSerializer = require('serializers/UserSerializer');
 const User = require('models').User;
+const Match = require('models').Match;
+const MatchPlayer = require('models').MatchPlayer;
+const PlayerHelper = require('helpers/PlayerHelper');
 const SequelizeTokenify = require('sequelize-tokenify');
 const serializer = new SequelizeToJson(User, UserSerializer);
 
@@ -38,6 +41,21 @@ AuthenticationController.prototype.login = async (ctx, next) => {
 
   if (!user) ctx.throw(401)
   ctx.body = serializer.serialize(user)
+}
+
+AuthenticationController.prototype.calculateStatsForUser = async (ctx, next) => {
+  player = await ctx.state.currentUser.getPlayer({
+    include: [{
+      model: MatchPlayer,
+      include: [Match]
+    },
+    {
+      model: User
+    }]
+  })
+  
+  var stats = PlayerHelper.calculateStatsFromMatchPlayers(player.match_players)
+  ctx.body = stats
 }
 
 AuthenticationController.prototype.logout = async (ctx, next) => {
