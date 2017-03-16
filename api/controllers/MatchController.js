@@ -1,16 +1,13 @@
-const SequelizeToJson = require('sequelize-to-json');
 const MatchSerializer = require('serializers/MatchSerializer');
 const User = require('models').User;
 const Match = require('models').Match;
 const MatchPlayer = require('models').MatchPlayer;
 const SequelizeTokenify = require('sequelize-tokenify');
-const serializer = new SequelizeToJson(Match, MatchSerializer);
 
 var MatchController = function () {};
 
 MatchController.prototype.getMatch = async (ctx, next) => {
-  ctx.body = ctx.state.currentMatch
-  // ctx.body = serializer.serialize(ctx.state.currentMatch)
+  ctx.body = ctx.state.currentMatch.serialize(MatchSerializer)
 }
 
 MatchController.prototype.getMatches = async (ctx, next) => {
@@ -26,20 +23,17 @@ MatchController.prototype.getMatches = async (ctx, next) => {
       ['playedAt', 'DESC']
     ]
   })
-  // ctx.body = SequelizeToJson.serializeMany(matches, Match, MatchSerializer)
-  ctx.body = matches
+  ctx.body = Match.serialize(matches, MatchSerializer)
 }
 
 MatchController.prototype.createMatch = async (ctx, next) => {
   match = await Match.create(matchParams(ctx.request.body))
-  // ctx.body = serializer.serialize(match)
-  ctx.body = match
+  ctx.body = match.serialize(MatchSerializer)
 }
 
 MatchController.prototype.updateMatch = async (ctx, next) => {
   match = await ctx.state.currentMatch.update(matchParams(ctx.request.body))
-  // ctx.body = serializer.serialize(match)
-  ctx.body = match
+  ctx.body = match.serialize(MatchSerializer)
 }
 
 MatchController.prototype.setMatchPlayers = async (ctx, next) => {
@@ -58,7 +52,7 @@ MatchController.prototype.setMatchPlayers = async (ctx, next) => {
   }
   
   match = await ctx.state.currentMatch.reload()
-  ctx.body = match
+  ctx.body = match.serialize(MatchSerializer)
 }
 
 MatchController.prototype.destroyMatch = async (ctx, next) => {

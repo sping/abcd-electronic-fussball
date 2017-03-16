@@ -1,8 +1,6 @@
-const SequelizeToJson = require('sequelize-to-json');
 const PlayerHelper = require('helpers/PlayerHelper');
 const PlayerSerializer = require('serializers/PlayerSerializer');
 const Player = require('models').Player;
-const serializer = new SequelizeToJson(Player, PlayerSerializer);
 
 const MatchPlayer = require('models').MatchPlayer;
 const MatchSerializer = require('serializers/MatchSerializer');
@@ -10,35 +8,34 @@ const MatchSerializer = require('serializers/MatchSerializer');
 var PlayerController = function () {};
 
 PlayerController.prototype.getPlayer = async (ctx, next) => {
-  // ctx.body = serializer.serialize(ctx.state.currentPlayer)
-  ctx.body = ctx.state.currentPlayer
+  ctx.body = ctx.state.currentPlayer.serialize(PlayerSerializer)
 }
 
 PlayerController.prototype.getPlayers = async (ctx, next) => {
   var players = await Player.findAll({
     include: [User]
   })
-  // ctx.body = SequelizeToJson.serializeMany(players, Player, PlayerSerializer)
-  ctx.body = players
+  ctx.body = Player.serialize(players, PlayerSerializer)
 }
 
 PlayerController.prototype.getMatches = async (ctx, next) => {
   var matches = await ctx.state.currentPlayer.getMatches()
-  ctx.body = matches
-  // ctx.body = SequelizeToJson.serializeMany(matches, Match, MatchSerializer)
+  ctx.body = Match.serialize(matches, MatchSerializer)
 }
 
 PlayerController.prototype.calculateStatsForAllPlayers = async (ctx, next) => {
   var stats = [];
 
   var players = await Player.findAll({
-    include: [{
-      model: MatchPlayer,
-      include: [Match]
-    },
-    {
-      model: User
-    }]
+    include: [
+      {
+        model: MatchPlayer,
+        include: [Match]
+      },
+      {
+        model: User
+      }
+    ]
   })
   
   for (player of players) {   
@@ -56,7 +53,7 @@ PlayerController.prototype.calculateStatsForAllPlayers = async (ctx, next) => {
     return b.ratio - a.ratio
   });
 
-  ctx.body = stats
+  ctx.body = stats;
 }
 
 PlayerController.prototype.calculateStatsForPlayer = async (ctx, next) => {

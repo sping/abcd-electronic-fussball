@@ -1,27 +1,24 @@
-const SequelizeToJson = require('sequelize-to-json');
 const UserSerializer = require('serializers/UserSerializer');
 const User = require('models').User;
 const Match = require('models').Match;
 const MatchPlayer = require('models').MatchPlayer;
 const PlayerHelper = require('helpers/PlayerHelper');
-const SequelizeTokenify = require('sequelize-tokenify');
-const serializer = new SequelizeToJson(User, UserSerializer);
 
 var AuthenticationController = function () {};
 
 AuthenticationController.prototype.getCurrentUser = async (ctx, next) => {
-  ctx.body = serializer.serialize(ctx.state.currentUser)
+  ctx.body = ctx.state.currentUser.serialize(UserSerializer)
 }
 
 AuthenticationController.prototype.updateCurrentUser = async (ctx, next) => { 
   var user = await ctx.state.currentUser.update(userParams(ctx.request.body))
-  ctx.body = serializer.serialize(user)
+  ctx.body = user.serialize(UserSerializer)
 }
 
 AuthenticationController.prototype.signUp = async (ctx, next) => {
   var user = await User.create(userParams(ctx.request.body))
   if (!user) ctx.throw(404)
-  ctx.body = serializer.serialize(user)
+  ctx.body = user.serialize(UserSerializer)
 }
 
 AuthenticationController.prototype.login = async (ctx, next) => {
@@ -40,7 +37,7 @@ AuthenticationController.prototype.login = async (ctx, next) => {
   })
 
   if (!user) ctx.throw(401)
-  ctx.body = serializer.serialize(user)
+  ctx.body = user.serialize(UserSerializer)
 }
 
 AuthenticationController.prototype.calculateStatsForUser = async (ctx, next) => {

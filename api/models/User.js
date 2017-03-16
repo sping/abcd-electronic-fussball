@@ -34,7 +34,7 @@ User = database.define('users',
     },
     active: {
       type: Sequelize.BOOLEAN
-    },
+    }
   });
 
 SequelizeTokenify.tokenify(User, {

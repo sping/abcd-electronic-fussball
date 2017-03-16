@@ -1,7 +1,13 @@
 const db = require('databaseConnection');
 
 const scheme = {
-  exclude: ['@auto']
+  include: ['@all', 'user'],
+  exclude: ['@auto'],
+  assoc: {
+    user: {
+      exclude: ['password', 'active', '@pk', '@fk', '@auto']
+    }
+  }
 };
 
 module.exports = scheme

@@ -1,5 +1,6 @@
-Sequelize = require('sequelize');
-dbCredentials = require('./config/dbConfig');
+const Sequelize = require('sequelize');
+const dbCredentials = require('./config/dbConfig');
+const SequelizeToJson = require('sequelize-to-json');
 
 sequelize = new Sequelize(
   dbCredentials.database, 
@@ -12,8 +13,21 @@ sequelize = new Sequelize(
       max: 5,
       min: 0,
       idle: 10000,
+    },
+    define: {
+      classMethods: {
+        serialize (data, scheme, options) {
+          return SequelizeToJson.serializeMany(data, this, scheme, options);
+        }
+      },
+      instanceMethods: {
+        serialize (scheme, options) {
+          return (new SequelizeToJson(this.Model, scheme, options)).serialize(this);
+        }
+      }
     }
-  });
+  }
+);
 
 sequelize
   .authenticate()

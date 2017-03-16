@@ -1,6 +1,7 @@
 const Player = require('models').Player;
 const User = require('models').User;
 const MatchPlayer = require('models').MatchPlayer;
+const UserSerializer = require('serializers/UserSerializer');
 var PlayerHelper = function () {};
 
 PlayerHelper.prototype.loadPlayer = async (ctx, next) => {
@@ -42,7 +43,7 @@ PlayerHelper.prototype.calculateStatsFromMatchPlayers = (matchPlayers) => {
   
   let data = {
     playerId: player.id,
-    user: player.user,
+    user: player.user.serialize(UserSerializer),
     wins: wins,
     losses: losses,
     winRatio: wins / (wins + losses) || 0,
