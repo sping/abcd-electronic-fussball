@@ -119,7 +119,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"firstName\": \"Bing\",\n  \"lastName\": \"Steup\",\n  \"email\": \"bingsteup@gmail.com\",\n  \"password\": \"testtest\"\n}"
+							"raw": "{\n  \"firstName\": \"Bing\",\n  \"lastName\": \"Steup\",\n  \"email\": \"b.steup@sping.nl\",\n  \"password\": \"testtest\"\n}"
 						},
 						"description": ""
 					},
@@ -155,7 +155,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"Sping\"\n}"
+							"raw": "{\n  \"name\": \"Sping\",\n  \"avatarUrl\": \"http://placehold.it/240x240\"\n}"
 						},
 						"description": ""
 					},
@@ -310,7 +310,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"notes\": \"It was fun!\"\n}"
+							"raw": "{\n\t\"homeScore\": 10,\n\t\"awayScore\": 5,\n\t\"notes\": \"It was fun!\"\n}"
 						},
 						"description": ""
 					},

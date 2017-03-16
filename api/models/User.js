@@ -17,6 +17,9 @@ User = database.define('users',
     lastName: {
       type: Sequelize.STRING
     },
+    avatarUrl: {
+      type: Sequelize.STRING
+    },
     email: {
       type: Sequelize.STRING,
       unique: true,

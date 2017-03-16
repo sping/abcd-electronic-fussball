@@ -71,6 +71,7 @@ userParams = (body) => {
   payload = {
     firstName: body.firstName,
     lastName: body.lastName,
+    avatarUrl: body.avatarUrl,
     email: body.email,
     password: body.password,
     active: true
