@@ -2,7 +2,6 @@ const MatchSerializer = require('serializers/MatchSerializer');
 const User = require('models').User;
 const Match = require('models').Match;
 const MatchPlayer = require('models').MatchPlayer;
-const SequelizeTokenify = require('sequelize-tokenify');
 
 var MatchController = function () {};
 
