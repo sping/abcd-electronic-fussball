@@ -22,6 +22,7 @@
     "mysql": "^2.13.0",
     "path": "^0.12.7",
     "sequelize": "^3.30.2",
+    "sequelize-cli": "^2.5.1",
     "sequelize-to-json": "^0.10.1",
     "sequelize-tokenify": "^0.1.5"
   },
