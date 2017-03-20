@@ -14,7 +14,7 @@ import {
 
 import colors from '../config/colors';
 
-class AccountScreen extends Component {
+class LoginScreen extends Component {
 
   constructor(props) {
     super(props);
@@ -86,4 +86,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default AccountScreen;
+export default LoginScreen;

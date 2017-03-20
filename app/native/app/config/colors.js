@@ -16,4 +16,6 @@ export default {
   selectedTabColor: '#BF1F2E',
 
   indigo_500: '#3F51B5',
+  red_500: '#F44336',
+  green_500: '#4CAF50',
 }
