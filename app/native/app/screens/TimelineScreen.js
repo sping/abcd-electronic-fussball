@@ -11,10 +11,10 @@ import {
 } from 'react-native-elements';
 
 import TimelineCard from '../components/TimelineCard';
-import AppConfig from '../config/AppConfig';
+import Constants from '../config/constants';
 import Colors from '../config/colors';
 
-const GET_ALL_MATCHES = AppConfig.BASE_URL + 'matches';
+const GET_ALL_MATCHES = Constants.BASE_URL + 'matches';
 
 const list = [
   {
@@ -71,7 +71,7 @@ class TimelineScreen extends Component {
 
   fetchData() {
     var headers = new Headers();
-    headers.append("Authorization", "Token token=" + AppConfig.API_TOKEN);
+    headers.append("Authorization", "Token token=" + Constants.API_TOKEN);
 
     fetch(GET_ALL_MATCHES, {
       headers: headers,
