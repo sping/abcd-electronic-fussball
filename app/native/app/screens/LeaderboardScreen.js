@@ -8,10 +8,10 @@ import {
     TouchableHighlight
 } from 'react-native';
 
+import AppConfig from '../config/AppConfig';
+
 // import {Environment} from '../config/environment';
-const BASE_URL = 'http://10.0.5.28:5000/api/v1/';
-const REQUEST_URL = BASE_URL + 'players/stats';
-const API_TOKEN = '6azn4lmKiQYbAvNfHx6bVKIS';
+const REQUEST_URL = AppConfig.BASE_URL + 'players/stats';
 
 class LeaderboardScreen extends Component {
 
@@ -41,7 +41,7 @@ class LeaderboardScreen extends Component {
 
     fetchData() {
       var headers = new Headers();
-      headers.append("Authorization", "Token token=" + API_TOKEN);
+      headers.append("Authorization", "Token token=" + AppConfig.API_TOKEN);
 
         fetch(REQUEST_URL, {
           headers: headers

@@ -10,7 +10,10 @@ export default {
   grey3: '#86939e',
   grey4: '#bdc6cf',
   grey5: '#e1e8ee',
+  grey6: '#ECEFF1',
   dkGreyBg: '#232323',
   greyOutline: '#cbd2d9',
   selectedTabColor: '#BF1F2E',
+
+  indigo_500: '#3F51B5',
 }

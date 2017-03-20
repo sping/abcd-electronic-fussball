@@ -1,9 +1,10 @@
 
 import React, { Component } from 'react';
 import {
-    Text,
-    View
-} from 'react-native';
+  Text,
+  View,
+  MapView,
+} from 'react-native'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 

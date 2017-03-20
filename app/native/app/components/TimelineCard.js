@@ -11,6 +11,8 @@ import {
   Button
 } from 'react-native-elements';
 
+import colors from '../config/colors';
+
 class TimelineCard extends Component {
 
   constructor(props) {
@@ -54,12 +56,14 @@ const styles = StyleSheet.create({
   headerView: {
     flex: 1,
     flexDirection: 'row',
+    height: 40,
   },
   time: {
     flex: 1,
+    fontSize: 20,
   },
   date: {
-
+    fontSize: 20,
   },
   scoreView: {
 

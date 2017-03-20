@@ -11,6 +11,10 @@ import {
 } from 'react-native-elements';
 
 import TimelineCard from '../components/TimelineCard';
+import AppConfig from '../config/AppConfig';
+import Colors from '../config/colors';
+
+const GET_ALL_MATCHES = AppConfig.BASE_URL + 'matches';
 
 const list = [
   {
@@ -53,10 +57,40 @@ const list = [
 
 
 class TimelineScreen extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      timeLineCards: [],
+    };
+  }
+
+  componentDidMount() {
+    //this.fetchData();
+  }
+
+  fetchData() {
+    var headers = new Headers();
+    headers.append("Authorization", "Token token=" + AppConfig.API_TOKEN);
+
+    fetch(GET_ALL_MATCHES, {
+      headers: headers,
+    })
+      .then((response) => response.json())
+      .then((responseData) => {
+        this.setState({
+          timeLineCards: responseData,
+        });
+      })
+      .done();
+  }
+
+
   render() {
-      return (
+    return (
+      <View style={styles.container}>
         <ScrollView>
-          <List>
+          <List containerStyle={styles.list}>
           {
             list.map((item, index) => (
               <TimelineCard
@@ -73,8 +107,18 @@ class TimelineScreen extends Component {
           }
           </List>
         </ScrollView>
-      );
+      </View>
+    );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: Colors.grey6,
+  },
+  list: {
+    backgroundColor: 'transparent'
+  }
+})
 
 export default TimelineScreen;
