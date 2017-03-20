@@ -5,6 +5,7 @@ import { createStore } from 'redux'
 import configureStore from './configureStore';
 
 import Routes from './router';
+import Tabbar from './views/Tabbar';
 import './stylesheets/app.sass';
 
 let store = configureStore()
@@ -12,7 +13,7 @@ let store = configureStore()
 // Render it to DOM
 ReactDOM.render(
   <Provider store={ store }>
-      <Routes />
+    <Routes />
   </Provider>,
   document.getElementById('root')
 );

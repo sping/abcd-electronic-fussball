@@ -1,0 +1,28 @@
+@import '../vars.sass'
+#tabbar
+  height: $dimension-tabbar-height
+  display: flex
+  flex-direction: row
+  align-items: center
+  justify-content: space-around
+  background: $color-navbar-background
+  border-top: 1px solid $color-navbar-border
+  
+  a
+    padding: 0 $dimension-space
+    display: flex
+    align-items: center
+    justify-content: center
+
+    &.active
+      img
+        display: none
+        &.active-icon
+          display: block
+
+    img
+      height: $dimension-tabbar-icon-size
+      width: $dimension-tabbar-icon-size
+
+      &.active-icon
+        display: none

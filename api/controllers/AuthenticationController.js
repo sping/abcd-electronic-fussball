@@ -31,6 +31,10 @@ AuthenticationController.prototype.login = async (ctx, next) => {
     }
   })
 
+  if (!user) {
+    ctx.throw(404)
+  }
+
   user = await user.update({
     apiToken: null,
     active: true

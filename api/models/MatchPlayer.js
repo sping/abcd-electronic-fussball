@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const database = require('databaseConnection');
 
-MatchUser = database.define('match_players',
+MatchPlayer = database.define('match_players',
   {
     id: {
       type: Sequelize.INTEGER,
@@ -27,4 +27,4 @@ MatchUser = database.define('match_players',
     }
   });
 
-module.exports = MatchUser
+module.exports = MatchPlayer

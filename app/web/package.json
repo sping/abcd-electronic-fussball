@@ -55,6 +55,7 @@
     "webpack-dev-server": "^2.2.1"
   },
   "dependencies": {
+    "axios": "^0.15.3",
     "babel-polyfill": "^6.16.0",
     "es6-promise": "^3.1.2",
     "immutable": "^3.8.1",

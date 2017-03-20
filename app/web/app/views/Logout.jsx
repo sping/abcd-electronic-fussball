@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import axios from '../axios'
 
-class Home extends Component {
+class Logout extends Component {
   constructor (props) {
     super(props);
   }
@@ -20,4 +20,4 @@ const mapStateToProps = (state) => {
   return { }
 };
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps)(Logout);
