@@ -9,6 +9,7 @@ import Leaderboard from './views/Leaderboard';
 import Account from './views/Account';
 import Login from './views/Login';
 import Logout from './views/Logout';
+import Signup from './views/Signup';
 import NotFound from './views/NotFound';
 
 class Routes extends React.Component {
@@ -17,6 +18,7 @@ class Routes extends React.Component {
             <Router history={browserHistory}>
               <Route path="/login" component={Login} />
               <Route path="/logout" component={Logout} />
+              <Route path="/signup" component={Signup} />
 
               <Route path="/" component={Index}>
                 <IndexRedirect to = "home"/>

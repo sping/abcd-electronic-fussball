@@ -1,16 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import axios from '../axios'
+import { currentUser } from '../actions/userActions';
+import { browserHistory } from 'react-router'
 
 class Logout extends Component {
   constructor (props) {
     super(props);
   }
 
+  componentWillMount () {
+    this.props.dispatch(currentUser(null));
+    localStorage.clear();
+    browserHistory.push('/login')
+  }
+
   render() {
     return (
-      <div id="home">
-        <h1>Awesomeness by Creative Developerss</h1>
+      <div id="logout">
+        Please wait..
       </div>
     );
   }

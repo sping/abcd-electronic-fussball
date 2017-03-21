@@ -4,29 +4,33 @@ import axios from '../axios'
 import { browserHistory } from 'react-router'
 import { currentUser, logout } from '../actions/userActions';
 
-class Login extends Component {
+class Signup extends Component {
   constructor (props) {
     super(props);
     this.state = {
       email: '',
       password: '',
-      isLoggingIn: false
+      firstName: '',
+      lastName: '',
+      isSigninUp: false
     }
 
-    this.login = this.login.bind(this)
+    this.signup = this.signup.bind(this)
     this.handleInputChange = this.handleInputChange.bind(this)
   }
 
-  signup () {
-    browserHistory.push('/signup')
+  login () {
+    browserHistory.push('/login')
   }
 
-  login () {
-    this.setState({isLoggingIn: true});
+  signup () {
+    this.setState({isSigninUp: true});
     
-    axios.post('/login', {
+    axios.post('/signup', {
       email: this.state.email,
-      password: this.state.password
+      password: this.state.password,
+      firstName: this.state.firstName,
+      lastName: this.state.lastName
     }).then((response) => {
       // Set in store
       this.props.dispatch(currentUser(response.data));
@@ -39,7 +43,7 @@ class Login extends Component {
       browserHistory.push('/')
     }).catch((error) => {
       console.log(error);
-      this.setState({isLoggingIn: false});
+      this.setState({isSigninUp: false});
     })
   }
 
@@ -56,11 +60,13 @@ class Login extends Component {
   render() {
     return (
       <div className="login-form">
+        <input name="firstName" type="text" placeholder="First name" value={this.state.firstName} onChange={this.handleInputChange} />
+        <input name="lastName" type="text" placeholder="Last name" value={this.state.lastName} onChange={this.handleInputChange} />
         <input name="email" type="text" placeholder="email" value={this.state.email} onChange={this.handleInputChange} />
         <input name="password" type="password" placeholder="password" value={this.state.password} onChange={this.handleInputChange} />
         <div className="button-bar">
-          <a className="button" onClick={this.login} href="#" disabled={this.state.isLoggingIn}>Login</a>
-          <a className="button button-clear" onClick={this.signup} href="#">I need an account</a>
+          <a className="button" onClick={this.signup} href="#" disabled={this.state.isSigninUp}>Signup</a>
+          <a className="button button-clear" onClick={this.login} href="#">I have an account</a>
         </div>
       </div>
     );
@@ -71,4 +77,4 @@ const mapStateToProps = (state) => {
   return { }
 };
 
-export default connect(mapStateToProps)(Login);
+export default connect(mapStateToProps)(Signup);

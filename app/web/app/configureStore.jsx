@@ -5,33 +5,32 @@ import { persistStore, autoRehydrate } from 'redux-persist';
 
 export default function configureStore(configurationCompleted) {
 
-    const enhancer = compose(
-        autoRehydrate(),
-        composeWithDevTools()
-    );
+  const enhancer = compose(
+    autoRehydrate(),
+    composeWithDevTools()
+  );
 
-    const reducers = combineReducers();
+  const reducers = combineReducers();
 
-    let store = createStore(reducers, enhancer);
-    persistStore(store, () => {
-        if (configurationCompleted) {
-            configurationCompleted(store);
-        }
+  let store = createStore(reducers, enhancer);
+  persistStore(store, () => {
+    if (configurationCompleted) {
+      configurationCompleted(store);
+    }
+  });
+
+  if (module.hot) {
+    module.hot.accept(() => {
+      const nextRootReducer = require('./reducers').default;
+      store.replaceReducer(nextRootReducer);
     });
+  }
 
-    if (module.hot) {
-    // Enable hot module replacement for reducers
-      module.hot.accept(() => {
-        const nextRootReducer = require('./reducers').default;
-        store.replaceReducer(nextRootReducer);
-      });
-    }
+  // If you have other enhancers & middlewares
+  // update the store after creating / changing to allow devTools to use them
+  if (global.reduxNativeDevTools) {
+    global.reduxNativeDevTools.updateStore(store);
+  }
 
-    // If you have other enhancers & middlewares
-    // update the store after creating / changing to allow devTools to use them
-    if (global.reduxNativeDevTools) {
-      global.reduxNativeDevTools.updateStore(store);
-    }
-
-    return store;
+  return store;
 };

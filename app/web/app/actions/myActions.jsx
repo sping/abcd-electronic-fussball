@@ -1,7 +1,6 @@
 const Actions = {
   DO_INCREMENT: 'DO_INCREMENT',
-  DO_DECREMENT: 'DO_DECREMENT',
-  PLAYER_STATS: 'PLAYER_STATS'
+  DO_DECREMENT: 'DO_DECREMENT'
 };
 
 const increment = (number) => {
@@ -18,11 +17,4 @@ const decrement = (number) => {
   };
 };
 
-const playerStats = (stats) => {
-  return {
-    type: Actions.PLAYER_STATS,
-    stats
-  };
-};
-
-export { Actions, increment, decrement, playerStats };
+export { Actions, increment, decrement };

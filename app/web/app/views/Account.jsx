@@ -1,19 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import axios from '../axios'
+import { browserHistory } from 'react-router'
 
 class Account extends Component {
   constructor (props) {
     super(props);
-    this.state = {
-      user: null
-    }
+  }
+
+  logout () {
+    browserHistory.push('/logout')
   }
 
   getUser () {
     axios.get('/current_user')
     .then((response) => {
-      this.setState({user: response.data})
+      if (response) {
+        this.setState({user: response.data})
+      }
     })
     .catch((error) => {
       console.log(error);
@@ -25,7 +29,7 @@ class Account extends Component {
   }
 
   render() {
-    if (!this.state.user) {
+    if (!this.props.user) {
       return (
         <div>
           Loading..
@@ -33,15 +37,18 @@ class Account extends Component {
       );
     }
     return (
-      <div id="home">
-        <h1>{this.state.user.firstName} {this.state.user.lastName}</h1>
+      <div id="account">
+        <h1>{this.props.user.firstName} {this.props.user.lastName}</h1>
+        <a className="button button-clear" onClick={this.logout} href="#">Logout</a>
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  return { }
+  return {
+    user: state.user.currentUser,
+  }
 };
 
 export default connect(mapStateToProps)(Account);

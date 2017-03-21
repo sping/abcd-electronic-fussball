@@ -16,6 +16,9 @@ const imgPath = path.join(__dirname, './app/assets/img');
 const sourcePath = path.join(__dirname, './app');
 const staticPath = path.join(__dirname, './app/static');
 
+// Enable for testing
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 // Common plugins
 const plugins = [
   new webpack.optimize.CommonsChunkPlugin({
@@ -68,6 +71,7 @@ const rules = [
 if (isProduction) {
   // Production plugins
   plugins.push(
+    new BundleAnalyzerPlugin(),               
     new webpack.LoaderOptionsPlugin({
       minimize: true,
       debug: false,

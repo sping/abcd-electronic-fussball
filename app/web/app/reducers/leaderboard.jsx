@@ -1,8 +1,8 @@
-import { Actions } from '../actions/myActions';
+import { LeaderboardActions } from '../actions/leaderboardActions';
 
 export default (state = { playerStats: [] }, action) => {
   switch (action.type) {
-    case Actions.PLAYER_STATS:
+    case LeaderboardActions.PLAYER_STATS:
       return {
         ...state,
         playerStats: action.stats

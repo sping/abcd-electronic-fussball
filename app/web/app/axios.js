@@ -2,11 +2,12 @@ import axios from 'axios'
 import { browserHistory } from 'react-router'
 
 var instance = axios.create({
-  baseURL: 'http://localhost:5000/api/v1',
-  headers: {
-    'authorization': 'Token token=ZdI9d7rxxTDFt5PxfUBVPsuo'
-  }
+  baseURL: 'http://localhost:5000/api/v1'
 });
+
+if (localStorage.getItem('apiToken')) {
+  axios.defaults.headers.common['authorization'] = 'Token token=' + localStorage.getItem('apiToken');
+}
 
 // Add a response interceptor
 instance.interceptors.response.use((response) => {

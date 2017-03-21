@@ -1,7 +1,7 @@
 {
-  "name": "Foosball",
+  "name": "Fussball",
   "version": "0.0.1",
-  "description": "Foosball",
+  "description": "Fussball",
   "author": "Bing Steup <b.steup@sping.nl>",
   "private": true,
   "scripts": {

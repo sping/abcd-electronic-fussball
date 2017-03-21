@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { playerStats } from '../actions/myActions';
-import axios from '../axios'
+import { playerStats } from '../actions/leaderboardActions';
+import { setTitle, resetTitle } from '../actions/titlebarActions';
+import axios from '../axios';
 
 class Leaderboard extends Component {
   constructor (props) {
@@ -9,12 +10,15 @@ class Leaderboard extends Component {
   }
 
   getStats () {
+    this.props.dispatch(setTitle('Loading..'));
     axios.get('/players/stats')
     .then((response) => {
+      console.log(response)
       this.props.dispatch(playerStats(response.data));
+      this.props.dispatch(resetTitle())
     })
     .catch((error) => {
-      console.log(error);
+      this.props.dispatch(resetTitle());
     });
   }
 
