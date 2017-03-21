@@ -1,8 +1,8 @@
 import axios from 'axios'
 import { browserHistory } from 'react-router'
-
+  
 var instance = axios.create({
-  baseURL: 'http://localhost:5000/api/v1'
+  baseURL: webpackEnv.SERVER_HOST + '/api/v1'
 });
 
 if (localStorage.getItem('apiToken')) {

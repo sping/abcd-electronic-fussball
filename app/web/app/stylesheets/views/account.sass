@@ -1,11 +1,22 @@
-#account
-  display: flex
-  height: 100%
-  width: 100vw
-  flex-direction: column
-  justify-content: center
-  align-items: center
+@import '../vars.sass'
 
-  h1
-    text-align: center
-    color: black
+#account
+  width: 100%
+  display: flex
+  flex-direction: column
+
+  .card-row
+    flex: 1
+    display: block
+
+  .place-row
+    display: flex
+    justify-content: center
+
+    h1
+      margin-bottom: 0
+      padding: $dimension-space
+
+  .action-row
+    display: flex
+    justify-content: center

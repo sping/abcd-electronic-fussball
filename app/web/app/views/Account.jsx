@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import axios from '../axios'
 import { browserHistory } from 'react-router'
+import { userStats } from '../actions/userActions';
+import constants from '../constants'
+import LeaderboardCard from './LeaderboardCard';
 
 class Account extends Component {
   constructor (props) {
@@ -12,20 +15,16 @@ class Account extends Component {
     browserHistory.push('/logout')
   }
 
-  getUser () {
-    axios.get('/current_user')
-    .then((response) => {
-      if (response) {
-        this.setState({user: response.data})
-      }
-    })
-    .catch((error) => {
+  getPlayerStats () {
+    axios.get('/current_user/stats').then((response) => {
+      this.props.dispatch(userStats(response.data));
+    }).catch((error) => {
       console.log(error);
-    });
+    })
   }
 
   componentWillMount () {
-    this.getUser()
+    this.getPlayerStats()
   }
 
   render() {
@@ -38,8 +37,15 @@ class Account extends Component {
     }
     return (
       <div id="account">
-        <h1>{this.props.user.firstName} {this.props.user.lastName}</h1>
-        <a className="button button-clear" onClick={this.logout} href="#">Logout</a>
+        <div className="place-row">
+          <h1>You are 5th!</h1>
+        </div>
+        <div className="card-row">
+          <LeaderboardCard stat={this.props.stats} />
+        </div>
+        <div className="action-row">
+          <a className="button button-clear" onClick={this.logout} href="#">Logout</a>
+        </div>
       </div>
     );
   }
@@ -48,6 +54,7 @@ class Account extends Component {
 const mapStateToProps = (state) => {
   return {
     user: state.user.currentUser,
+    stats: state.user.userStats
   }
 };
 

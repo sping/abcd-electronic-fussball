@@ -8,6 +8,11 @@ export default (state = initialState, action) => {
         ...state,
         currentUser: action.user
       };
+    case UserActions.STATS:
+      return {
+        ...state,
+        userStats: action.stats
+      };
     default:
       return state;
   }

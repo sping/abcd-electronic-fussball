@@ -65,7 +65,7 @@ PlayerController.prototype.calculateStatsForPlayer = async (ctx, next) => {
     },
     include: [{
       model: MatchPlayer,
-      include: [Match]
+      include: [Match, User]
     },
     {
       model: User

@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "./node_modules/webpack-dashboard/bin/webpack-dashboard.js -t 'Fussball' -- ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "start": "./node_modules/webpack-dashboard/bin/webpack-dashboard.js -t 'Fussball' -- ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --compress",
     "build": "rm -rf ./build && NODE_ENV=\"production\" ./node_modules/webpack/bin/webpack.js",
     "lint-break-on-errors": "./node_modules/eslint/bin/eslint.js ./source/js ./webpack.config.js -f table --ext .js --ext .jsx",
     "lint": "./node_modules/eslint/bin/eslint.js ./source/js ./webpack.config.js -f table --ext .js --ext .jsx || true",
@@ -30,6 +30,7 @@
     "babel-runtime": "^6.6.1",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "0.14.5",
+    "dotenv-webpack": "^1.4.3",
     "eslint": "^3.10.1",
     "eslint-config-airbnb": "^13.0.0",
     "eslint-plugin-import": "^2.2.0",

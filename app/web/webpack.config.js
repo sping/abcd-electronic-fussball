@@ -17,10 +17,20 @@ const sourcePath = path.join(__dirname, './app');
 const staticPath = path.join(__dirname, './app/static');
 
 // Enable for testing
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+var environment = require('./dev.env.js');
+if (isProduction) {
+  environment = require('./prod.env.js');
+}
+
+console.log(environment)
 
 // Common plugins
 const plugins = [
+  new webpack.DefinePlugin({
+    webpackEnv: JSON.stringify(environment)
+  }),
   new webpack.optimize.CommonsChunkPlugin({
     name: 'vendor',
     minChunks: Infinity,
@@ -71,7 +81,7 @@ const rules = [
 if (isProduction) {
   // Production plugins
   plugins.push(
-    new BundleAnalyzerPlugin(),               
+    // new BundleAnalyzerPlugin(),               
     new webpack.LoaderOptionsPlugin({
       minimize: true,
       debug: false,

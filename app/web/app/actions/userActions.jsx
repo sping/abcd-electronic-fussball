@@ -1,5 +1,6 @@
 const UserActions = {
-  CURRENT_USER: 'CURRENT_USER'
+  CURRENT_USER: 'CURRENT_USER',
+  STATS: 'STATS'
 };
 
 const currentUser = (user) => {
@@ -9,4 +10,11 @@ const currentUser = (user) => {
   };
 };
 
-export { UserActions, currentUser };
+const userStats = (stats) => {
+  return {
+    type: UserActions.STATS,
+    stats
+  };
+};
+
+export { UserActions, currentUser, userStats };
