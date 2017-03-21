@@ -10,15 +10,12 @@ class Leaderboard extends Component {
   }
 
   getStats () {
-    this.props.dispatch(setTitle('Loading..'));
     axios.get('/players/stats')
     .then((response) => {
-      console.log(response)
       this.props.dispatch(playerStats(response.data));
-      this.props.dispatch(resetTitle())
     })
     .catch((error) => {
-      this.props.dispatch(resetTitle());
+      console.log(error);
     });
   }
 
