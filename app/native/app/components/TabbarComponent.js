@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import TabNavigator from 'react-native-tab-navigator';
+import {
+  Tabs,
+  Tab,
+  Icon
+} from 'react-native-elements';
 
 import colors from '../config/colors';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-
 import StatsScreen from '../screens/StatsScreen';
 import AccountScreen from '../screens/AccountScreen';
 import TimelineScreen from '../screens/TimelineScreen';
@@ -30,40 +32,40 @@ class TabbarComponent extends Component {
     const { selectedTab } = this.state
 
     return (
-      <TabNavigator>
-        <TabNavigator.Item
+      <Tabs>
+        <Tab
           selected={selectedTab === 'timeline'}
-          title="Timeline"
+          title='timeline'
           renderIcon={() => <Icon color={colors.grey2} name='home' size={26} />}
           renderSelectedIcon={() => <Icon color={colors.selectedTabColor} name='home' size={26} />}
           onPress={() => this.changeTab('timeline')}>
-          <TimelineScreen />
-        </TabNavigator.Item>
-        <TabNavigator.Item
+            <TimelineScreen />
+        </Tab>
+        <Tab
           selected={selectedTab === 'leaderboard'}
-          title="Leaderboard"
+          title='leaderboard'
           renderIcon={() => <Icon color={colors.grey2} name='format-list-numbered' size={26} />}
           renderSelectedIcon={() => <Icon color={colors.selectedTabColor} name='format-list-numbered' size={26} />}
           onPress={() => this.changeTab('leaderboard')}>
-          <LeaderboardScreen />
-        </TabNavigator.Item>
-        <TabNavigator.Item
+            <LeaderboardScreen />
+        </Tab>
+        <Tab
           selected={selectedTab === 'stats'}
           title="Stats"
           renderIcon={() => <Icon color={colors.grey2} name='equalizer' size={26} />}
           renderSelectedIcon={() => <Icon color={colors.selectedTabColor} name='equalizer' size={26} />}
           onPress={() => this.changeTab('stats')}>
           <StatsScreen />
-        </TabNavigator.Item>
-        <TabNavigator.Item
+        </Tab>
+        <Tab
           selected={selectedTab === 'account'}
           title="Account"
           renderIcon={() => <Icon color={colors.grey2} name='mood' size={26} />}
           renderSelectedIcon={() => <Icon color={colors.selectedTabColor} name='mood' size={26} />}
           onPress={() => this.changeTab('account')}>
-          <AccountScreen />
-        </TabNavigator.Item>
-      </TabNavigator>
+            <AccountScreen />
+        </Tab>
+      </Tabs>
     )
   }
 }
