@@ -32,10 +32,10 @@ class TimelineCard extends Component {
         </View>
         <View style={styles.containerView}>
           <View style={styles.teamAView}>
-            <Text>
+            <Text style={styles.playerText}>
               {this.props.player1}
             </Text>
-            <Text>
+            <Text style={styles.playerText}>
               {this.props.player2}
             </Text>
           </View>
@@ -45,10 +45,10 @@ class TimelineCard extends Component {
             </Text>
           </View>
           <View style={styles.teamBView}>
-            <Text>
+            <Text style={styles.playerText}>
               {this.props.player3}
             </Text>
-            <Text>
+            <Text style={styles.playerText}>
               {this.props.player4}
             </Text>
           </View>
@@ -62,14 +62,17 @@ const styles = StyleSheet.create({
   headerView: {
     flex: 1,
     flexDirection: 'row',
-    height: 40,
+    height: 30
   },
   time: {
     flex: 1,
-    fontSize: 20,
+    fontSize: 12
   },
   date: {
-    fontSize: 20,
+    fontSize: 12
+  },
+  playerText: {
+    fontSize: 16
   },
   containerView: {
     flex: 1,
