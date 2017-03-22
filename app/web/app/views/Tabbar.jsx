@@ -24,11 +24,6 @@ class Tabbar extends Component {
           <img className="active-icon" src={ this.tabIcon('home', true) } />
         </Link>
 
-        <Link to="/search" activeClassName="active">
-          <img src={ this.tabIcon('search', false) } />
-          <img className="active-icon" src={ this.tabIcon('search', true) } />
-        </Link>
-
         <Link to="/alexis" activeClassName="active">
           <img src={ this.tabIcon('heart', false) } />
           <img className="active-icon" src={ this.tabIcon('heart', true) } />

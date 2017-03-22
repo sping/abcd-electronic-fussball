@@ -5,8 +5,6 @@ import constants from '../constants'
 class LeaderboardCard extends Component {
   constructor (props) {
     super(props);
-
-    console.log(props)
   }
   
 

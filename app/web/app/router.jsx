@@ -23,7 +23,6 @@ class Routes extends React.Component {
               <Route path="/" component={Index}>
                 <IndexRedirect to = "home"/>
                 <Route path="home" component={Home} />
-                <Route path="search" component={RedScreen} />
                 <Route path="alexis" component={Alexis} />
                 <Route path="leaderboard" component={Leaderboard} />
                 <Route path="account" component={Account} />
