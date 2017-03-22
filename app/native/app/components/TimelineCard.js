@@ -30,22 +30,28 @@ class TimelineCard extends Component {
             {this.props.date}
           </Text>
         </View>
-        <View style={styles.scoreView}>
-          <Text>
-            {this.props.player1}
-          </Text>
-          <Text>
-            {this.props.player2}
-          </Text>
-          <Text>
-            {this.props.player3}
-          </Text>
-          <Text>
-            {this.props.player4}
-          </Text>
-          <Text>
-            {this.props.score}
-          </Text>
+        <View style={styles.containerView}>
+          <View style={styles.teamAView}>
+            <Text>
+              {this.props.player1}
+            </Text>
+            <Text>
+              {this.props.player2}
+            </Text>
+          </View>
+          <View style={styles.scoreView}>
+            <Text style={styles.scoreText}>
+              {this.props.score}
+            </Text>
+          </View>
+          <View style={styles.teamBView}>
+            <Text>
+              {this.props.player3}
+            </Text>
+            <Text>
+              {this.props.player4}
+            </Text>
+          </View>
         </View>
       </Card>
     );
@@ -65,10 +71,26 @@ const styles = StyleSheet.create({
   date: {
     fontSize: 20,
   },
+  containerView: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  teamAView: {
+    width: 80,
+    alignItems: 'flex-start'
+  },
+  teamBView: {
+    width: 80,
+    alignItems: 'flex-end'
+  },
   scoreView: {
-
+    width: 100,
+    alignItems: 'center'
+  },
+  scoreText: {
+    fontSize: 30
   }
-
 })
 
 export default TimelineCard;
