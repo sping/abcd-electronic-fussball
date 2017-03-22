@@ -85,7 +85,6 @@ class TimelineScreen extends Component {
       .done();
   }
 
-
   render() {
     return (
       <View style={styles.container}>

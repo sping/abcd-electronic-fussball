@@ -12,7 +12,10 @@ import {
   CheckBox,
 } from 'react-native-elements';
 
+import { Actions } from 'react-native-router-flux';
 import colors from '../config/colors';
+import TabbarComponent from '../components/TabbarComponent';
+import TimelineScreen from './TimelineScreen';
 
 class LoginScreen extends Component {
 
@@ -27,6 +30,7 @@ class LoginScreen extends Component {
 
   login() {
     console.log(this.state);
+    Actions.Timeline();
   }
 
   remember() {

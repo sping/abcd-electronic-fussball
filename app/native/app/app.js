@@ -12,7 +12,8 @@ import styles from './styles';
 import Counter from './screens/Counter';
 import configureStore from './configureStore';
 
-import TabbarComponent from './components/TabbarComponent';
+import LoginScreen from './screens/LoginScreen';
+import Router from './router';
 
 class CounterApp extends Component {
 
@@ -37,7 +38,7 @@ class CounterApp extends Component {
 
         return (
             <Provider store={this.state.store}>
-                <TabbarComponent />
+                <Router />
             </Provider>
         );
     }

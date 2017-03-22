@@ -28,7 +28,6 @@ class TabbarComponent extends Component {
   }
 
   render() {
-
     const { selectedTab } = this.state
 
     return (
