@@ -96,7 +96,8 @@ export default StatsScreen;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    marginTop: 60
   },
   imageContainer: {
     marginTop: 40,

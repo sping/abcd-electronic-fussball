@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: 'white',
         marginBottom: 0,
-        marginTop: 30,
+        marginTop: 60,
     },
     row: {
         marginTop: 4,
