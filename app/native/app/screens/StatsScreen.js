@@ -36,10 +36,6 @@ class StatsScreen extends Component {
             </View>
             <Card style={styles.contentview}>
               <View style={styles.item}>
-                <Text style={styles.text}>Position</Text>
-                <Text style={styles.text}>{this.state.playerStats.ranking}</Text>
-              </View>
-              <View style={styles.item}>
                 <Text style={styles.text}>Win ratio</Text>
                 <Text style={styles.text}>{this.state.playerStats.winRatio}</Text>
               </View>
@@ -48,7 +44,7 @@ class StatsScreen extends Component {
                 <Text style={styles.text}>{this.state.playerStats.wins}</Text>
               </View>
               <View style={styles.item}>
-                <Text style={styles.text}>Fails</Text>
+                <Text style={styles.text}>Losses</Text>
                 <Text style={styles.text}>{this.state.playerStats.losses}</Text>
               </View>
               <View style={styles.item}>
@@ -62,6 +58,10 @@ class StatsScreen extends Component {
               <View style={styles.item}>
                 <Text style={styles.text}>Goals diff</Text>
                 <Text style={styles.text}>{this.state.playerStats.goalsDiff}</Text>
+              </View>
+              <View style={styles.item}>
+                <Text style={styles.text}>Games</Text>
+                <Text style={styles.text}>{this.state.playerStats.wins + this.state.playerStats.losses}</Text>
               </View>
             </Card>
           </View>

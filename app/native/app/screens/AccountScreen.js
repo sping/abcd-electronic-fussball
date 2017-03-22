@@ -11,6 +11,7 @@ import {
   FormInput,
   CheckBox,
 } from 'react-native-elements';
+import Avatar from 'react-native-interactive-avatar';
 
 import colors from '../config/colors';
 
@@ -41,6 +42,16 @@ class AccountScreen extends Component {
   render() {
       return (
         <View style={styles.containerStyle}>
+          <View style={styles.animatedView}>
+            <Avatar
+              uri={'https://media1.giphy.com/media/l3q2zbskZp2j8wniE/giphy.gif'}
+              size={'default'}
+              placeholderSource={require('../assets/images/avatar.png')}
+              interactive
+              onChange={this.handleImageChange}
+              style={styles.animatedGif}
+            />
+          </View>
           <FormLabel
             containerStyle={styles.labelContainerStyle}>Gebruikersnaam</FormLabel>
           <FormInput
@@ -83,6 +94,9 @@ const styles = StyleSheet.create({
   checkbox: {
     backgroundColor: 'transparent',
     borderColor: 'transparent'
+  },
+  animatedView: {
+    alignItems: 'center'
   }
 });
 
