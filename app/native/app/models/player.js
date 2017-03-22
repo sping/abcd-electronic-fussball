@@ -1,11 +1,5 @@
 export default class Player {
 
-  public email;
-  public firstName;
-  public lastName;
-
-  private avatarUrl;
-
   constructor(player) {
     if (player) {
       this.avatarUrl = player.avatarUrl;
