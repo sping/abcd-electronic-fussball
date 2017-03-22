@@ -6,9 +6,27 @@ import {
     View
 } from 'react-native';
 
-import { List, ListItem } from 'react-native-elements'
+import {
+  Card
+} from 'react-native-elements'
+
+import Constants from '../config/constants';
+
+const GET_CURRENT_PLAYER_STATS_URI = Constants.BASE_URL + 'current_user/stats';
 
 class StatsScreen extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      playerStats: {},
+    };
+  }
+
+  componentDidMount() {
+    this.fetchData();
+  }
+
   render() {
     let pic = {
       uri: 'http://kingofwallpapers.com/fussball/fussball-005.jpg'
@@ -18,26 +36,44 @@ class StatsScreen extends Component {
             <View style={styles.imageContainer}>
               <Image source={pic} style={styles.theimage} />
             </View>
-            <View style={styles.contentview}>
+            <Card style={styles.contentview}>
               <View style={styles.item}>
                 <Text style={styles.text}>Position</Text>
-                <Text style={styles.text}>1</Text>
+                <Text style={styles.text}>{this.state.playerStats.ranking}</Text>
               </View>
               <View style={styles.item}>
-                <Text style={styles.text}>Ratio</Text>
-                <Text style={styles.text}>0.9</Text>
+                <Text style={styles.text}>Win ratio</Text>
+                <Text style={styles.text}>{this.state.playerStats.winRatio}</Text>
               </View>
               <View style={styles.item}>
                 <Text style={styles.text}>Wins</Text>
-                <Text style={styles.text}>9999</Text>
+                <Text style={styles.text}>{this.state.playerStats.wins}</Text>
               </View>
               <View style={styles.item}>
                 <Text style={styles.text}>Fails</Text>
-                <Text style={styles.text}>0</Text>
+                <Text style={styles.text}>{this.state.playerStats.losses}</Text>
               </View>
-            </View>
+            </Card>
           </View>
       );
+  }
+
+  fetchData() {
+    var headers = new Headers();
+    headers.append("Authorization", "Token token=" + Constants.API_TOKEN);
+
+    fetch(GET_CURRENT_PLAYER_STATS_URI, {
+      headers: headers,
+    })
+      .then((response) => response.json())
+      .then((responseData) => {
+
+        console.log(responseData);
+        this.setState({
+          playerStats: responseData,
+        });
+      })
+      .done();
   }
 }
 
