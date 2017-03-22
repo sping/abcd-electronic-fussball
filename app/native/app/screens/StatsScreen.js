@@ -11,6 +11,7 @@ import {
 } from 'react-native-elements'
 
 import Constants from '../config/constants';
+import Player from '../models/player';
 
 const GET_CURRENT_PLAYER_STATS_URI = Constants.BASE_URL + 'current_user/stats';
 
@@ -28,13 +29,10 @@ class StatsScreen extends Component {
   }
 
   render() {
-    let pic = {
-      uri: 'http://kingofwallpapers.com/fussball/fussball-005.jpg'
-    }
       return (
           <View style={styles.container}>
             <View style={styles.imageContainer}>
-              <Image source={pic} style={styles.theimage} />
+              <Image source={this.state.pic} style={styles.theimage} />
             </View>
             <Card style={styles.contentview}>
               <View style={styles.item}>
@@ -53,6 +51,18 @@ class StatsScreen extends Component {
                 <Text style={styles.text}>Fails</Text>
                 <Text style={styles.text}>{this.state.playerStats.losses}</Text>
               </View>
+              <View style={styles.item}>
+                <Text style={styles.text}>Goals for</Text>
+                <Text style={styles.text}>{this.state.playerStats.goalsFor}</Text>
+              </View>
+              <View style={styles.item}>
+                <Text style={styles.text}>Goals against</Text>
+                <Text style={styles.text}>{this.state.playerStats.goalsAgainst}</Text>
+              </View>
+              <View style={styles.item}>
+                <Text style={styles.text}>Goals diff</Text>
+                <Text style={styles.text}>{this.state.playerStats.goalsDiff}</Text>
+              </View>
             </Card>
           </View>
       );
@@ -69,8 +79,13 @@ class StatsScreen extends Component {
       .then((responseData) => {
 
         console.log(responseData);
+        var player = new Player(responseData.user);
         this.setState({
           playerStats: responseData,
+          player: player,
+          pic: {
+            uri: player.getPlayerImageUrl()
+          }
         });
       })
       .done();
@@ -91,9 +106,9 @@ const styles = StyleSheet.create({
   },
   theimage: {
     flex: 0,
-    width: 50,
-    height: 50,
-    borderRadius: 25
+    width: 80,
+    height: 80,
+    borderRadius: 40
   },
   contentview: {
     flexDirection: 'column',
