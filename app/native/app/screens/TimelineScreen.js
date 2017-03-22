@@ -52,7 +52,7 @@ const list = [
     time: '10:35',
     date: '15-03-2017',
     score: '1 vs 10',
-  }
+  },
 ];
 
 
@@ -113,7 +113,10 @@ class TimelineScreen extends Component {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     backgroundColor: Colors.grey6,
+    marginTop: 40,
+    marginBottom: 40,
   },
   list: {
     backgroundColor: 'transparent'
