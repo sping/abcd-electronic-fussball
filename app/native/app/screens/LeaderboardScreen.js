@@ -28,13 +28,9 @@ class LeaderboardScreen extends Component {
     }
 
     getPlayerImageUrl(player) {
-        // if (player.photo && player.photo.highres_link) {
-        //     return player.photo.highres_link;
-        // }
-
-        // if (player.photo && player.photo.photo_link) {
-        //     return player.photo.photo_link;
-        // }
+        if (player.avatarUrl) {
+            return player.avatarUrl;
+        }
 
         return 'http://combonetwork.com/img/empty_profile.png';
     }
@@ -48,9 +44,8 @@ class LeaderboardScreen extends Component {
             })
             .then((response) => response.json())
             .then((responseData) => {
-                // console.log('Response from meetup api: ', responseData);
                 this.setState({
-                    players: responseData,
+                    players: responseData
                 });
             })
             .done();
