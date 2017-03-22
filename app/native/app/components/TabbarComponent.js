@@ -35,7 +35,7 @@ class TabbarComponent extends Component {
       <Tabs>
         <Tab
           selected={selectedTab === 'timeline'}
-          title='timeline'
+          title='Timeline'
           renderIcon={() => <Icon color={colors.grey2} name='home' size={26} />}
           renderSelectedIcon={() => <Icon color={colors.selectedTabColor} name='home' size={26} />}
           onPress={() => this.changeTab('timeline')}>
@@ -43,7 +43,7 @@ class TabbarComponent extends Component {
         </Tab>
         <Tab
           selected={selectedTab === 'leaderboard'}
-          title='leaderboard'
+          title='Leaderboard'
           renderIcon={() => <Icon color={colors.grey2} name='format-list-numbered' size={26} />}
           renderSelectedIcon={() => <Icon color={colors.selectedTabColor} name='format-list-numbered' size={26} />}
           onPress={() => this.changeTab('leaderboard')}>
