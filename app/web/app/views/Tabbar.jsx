@@ -19,19 +19,24 @@ class Tabbar extends Component {
   render() {
     return (
       <div id="tabbar">
-        <Link to="/home" activeClassName="active">
+        <Link to="/timeline" activeClassName="active">
+          <img src={ this.tabIcon('time', false) } />
+          <img className="active-icon" src={ this.tabIcon('time', true) } />
+        </Link>
+
+        <Link to="/leaderboard" activeClassName="active">
+          <img src={ this.tabIcon('leaderboard', false) } />
+          <img className="active-icon" src={ this.tabIcon('leaderboard', true) } />
+        </Link>
+
+        <Link to="/add-match" activeClassName="active">
           <img src={ this.tabIcon('home', false) } />
           <img className="active-icon" src={ this.tabIcon('home', true) } />
         </Link>
 
-        <Link to="/alexis" activeClassName="active">
-          <img src={ this.tabIcon('heart', false) } />
-          <img className="active-icon" src={ this.tabIcon('heart', true) } />
-        </Link>
-
-        <Link to="/leaderboard" activeClassName="active">
-          <img src={ this.tabIcon('time', false) } />
-          <img className="active-icon" src={ this.tabIcon('time', true) } />
+        <Link to="/my-stats" activeClassName="active">
+          <img src={ this.tabIcon('home', false) } />
+          <img className="active-icon" src={ this.tabIcon('home', true) } />
         </Link>
 
         <Link to="/account" activeClassName="active">

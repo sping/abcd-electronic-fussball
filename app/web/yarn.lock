@@ -1241,6 +1241,10 @@ circular-json@^0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/circular-json/-/circular-json-0.3.1.tgz#be8b36aefccde8b3ca7aa2d6afc07a37242c0d2d"
 
+classnames@^2.2.5:
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.5.tgz#fb3801d453467649ef3603c7d61a02bd129bde6d"
+
 clean-css@^3.1.9:
   version "3.4.25"
   resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-3.4.25.tgz#9e9a52d5c1e6bc5123e1b2783fa65fe958946ede"
@@ -3375,6 +3379,10 @@ mkdirp@^0.5.0, mkdirp@^0.5.1, "mkdirp@>=0.5 0", mkdirp@~0.5.0, mkdirp@~0.5.1, mk
   dependencies:
     minimist "0.0.8"
 
+moment, moment@^2.17.1:
+  version "2.18.1"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.18.1.tgz#c36193dd3ce1c2eed2adb7c802dbbc77a81b1c0f"
+
 moment@^2.12.0, moment@2.17.1:
   version "2.17.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.17.1.tgz#fed9506063f36b10f066c8b59a144d7faebe1d82"
@@ -4034,6 +4042,15 @@ react-base16-styling@^0.4.1:
     lodash.flow "^3.3.0"
     pure-color "^1.2.0"
 
+react-datepicker:
+  version "0.43.0"
+  resolved "https://registry.yarnpkg.com/react-datepicker/-/react-datepicker-0.43.0.tgz#a648ab9df13eb2daa2fbcc150c8cdf983f09a31c"
+  dependencies:
+    classnames "^2.2.5"
+    moment "^2.17.1"
+    react-onclickoutside "^5.9.0"
+    tether "^1.4.0"
+
 react-deep-force-update@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/react-deep-force-update/-/react-deep-force-update-1.0.1.tgz#f911b5be1d2a6fe387507dd6e9a767aa2924b4c7"
@@ -4060,6 +4077,10 @@ react-json-tree@^0.10.0:
     babel-runtime "^6.6.1"
     react-base16-styling "^0.4.1"
     react-pure-render "^1.0.2"
+
+react-onclickoutside@^5.9.0:
+  version "5.10.0"
+  resolved "https://registry.yarnpkg.com/react-onclickoutside/-/react-onclickoutside-5.10.0.tgz#6831f1bd8683ce75f3f4f9821aa012919e907684"
 
 react-proxy@^1.1.7:
   version "1.1.8"
@@ -4908,6 +4929,10 @@ tar@^2.0.0, tar@~2.2.1:
     block-stream "*"
     fstream "^1.0.2"
     inherits "2"
+
+tether@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/tether/-/tether-1.4.0.tgz#0f9fa171f75bf58485d8149e94799d7ae74d1c1a"
 
 text-table@~0.2.0:
   version "0.2.0"

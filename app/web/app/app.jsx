@@ -12,8 +12,8 @@ let store = configureStore()
 
 // Render it to DOM
 ReactDOM.render(
-  <Provider store={ store }>
-    <Routes />
-  </Provider>,
-  document.getElementById('root')
-);
+    <Provider store={ store }>
+      <Routes />
+    </Provider>,
+    document.getElementById('root')
+  );

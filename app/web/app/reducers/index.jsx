@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
 
+import rehydrated from './rehydrated';
 import counter from './counter';
 import leaderboard from './leaderboard';
 import user from './user';
 import titlebar from './titlebar';
+import timeline from './timeline';
 
 export default function createReducers() {
-  return combineReducers({ counter, leaderboard, user, titlebar });
+  return combineReducers({ rehydrated, counter, leaderboard, user, titlebar, timeline });
 }

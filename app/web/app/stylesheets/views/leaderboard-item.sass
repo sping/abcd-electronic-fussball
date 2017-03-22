@@ -1,0 +1,35 @@
+@import '../vars.sass'
+
+.app-leaderboard-item
+  display: flex
+  flex-direction: column
+  background: $color-navbar-background
+  border-radius: $dimension-border-radius
+  margin: $dimension-space
+  padding: $dimension-space
+
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.2)
+  transition: 0.3s
+
+  &-title
+    display: flex
+    flex-direction: row
+    flex: 1
+    img
+      height: $dimension-card-avatar
+      width: $dimension-card-avatar
+      border-radius: 50%
+      margin-right: $dimension-space
+
+  &-content
+    text-align: left
+
+    span
+      margin-right: $dimension-space
+
+  h3, h6
+    margin: 0
+
+  hr
+    margin: $dimension-space / 2 0
+

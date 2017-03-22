@@ -19,37 +19,37 @@ class LeaderboardCard extends Component {
           <div className="content-col">
             <span>
               <strong>Wins: </strong>
-              { this.props.stat.wins }
+              { this.props.stat.stat.gamesWon }
             </span>
             <span>
               <strong>Losses: </strong>
-              { this.props.stat.losses }
+              { this.props.stat.stat.gamesLost }
             </span>
           </div>
           <div className="content-col">
             <span>
               <strong>Percentage: </strong>
-              { this.props.stat.winRatio * 100 }%
+              { this.props.stat.stat.gameRatio * 100 }%
             </span>
           </div>
           <hr />
           <div className="content-col">
             <span>
               <strong>Goals for: </strong>
-              { this.props.stat.goalsFor }
+              { this.props.stat.stat.goalsFor }
             </span>
             <span>
               <strong>Goals against: </strong>
-              { this.props.stat.goalsAgainst }
+              { this.props.stat.stat.goalsAgainst }
             </span>
           </div>
           <div className="content-col">
             <span>
               <strong>Difference: </strong>
-              { (this.props.stat.goalsDiff > 0) ? (
-                  '+' + this.props.stat.goalsDiff
+              { (this.props.stat.stat.goalsDiff > 0) ? (
+                  '+' + this.props.stat.stat.goalsDiff
                 ) : (
-                  this.props.stat.goalsDiff
+                  this.props.stat.stat.goalsDiff
                 )
               }
             </span>

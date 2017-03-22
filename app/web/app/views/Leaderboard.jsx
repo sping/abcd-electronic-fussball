@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { playerStats } from '../actions/leaderboardActions';
 import { setTitle, resetTitle } from '../actions/titlebarActions';
-import LeaderboardCard from './LeaderboardCard';
+import LeaderboardItem from './LeaderboardItem';
 import axios from '../axios';
 import constants from '../constants'
 
@@ -26,6 +26,10 @@ class Leaderboard extends Component {
     this.getStats()
   }
 
+  openDetailStats (stat) {
+    console.log('test', stat)
+  }
+
   render() {
     if (!this.props.playerStats) {
       return (
@@ -35,10 +39,10 @@ class Leaderboard extends Component {
       );
     }
     return (
-      <div id="leaderboard">
+      <div id="leaderboard" onClick={this.test}>
         {
           this.props.playerStats.map((stat, index) => {
-            return <LeaderboardCard stat={stat} key={index} />    
+            return <LeaderboardItem stat={stat} key={index} onClick={() => {this.openDetailStats(stat)}} />    
           })
         }
       </div>
