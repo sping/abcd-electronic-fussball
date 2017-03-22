@@ -14,6 +14,7 @@ export default {
   dkGreyBg: '#232323',
   greyOutline: '#cbd2d9',
   selectedTabColor: '#BF1F2E',
+  tabbarColor: '#FAFAFA',
 
   indigo_500: '#3F51B5',
   red_500: '#F44336',
