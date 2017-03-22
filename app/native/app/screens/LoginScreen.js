@@ -30,7 +30,7 @@ class LoginScreen extends Component {
 
   login() {
     console.log(this.state);
-    Actions.Timeline();
+    Actions.tabbar();
   }
 
   remember() {
