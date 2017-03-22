@@ -6,7 +6,7 @@ const scheme = {
   assoc: {
     match_players: {
       include: ['@all', 'player'],
-      exclude: ['@auto', '@pk', '@fk'],
+      exclude: ['@auto', '@fk'],
       assoc: {
         player: {
           include: ['@all', 'user'],
