@@ -12,10 +12,8 @@ class Account extends Component {
     super(props);
 
     this.state = {
-      firstName: this.props.firstName,
-      lastName: this.props.lastName,
-      avatarUrl: this.props.avatarUrl,
-      isSaving: false
+      isSaving: false,
+      hasSaved: false
     }
 
     this.save = this.save.bind(this)
@@ -26,8 +24,19 @@ class Account extends Component {
     browserHistory.push('/logout')
   }
 
+  getUser () {
+    axios.get('/current_user')
+    .then((response) => {
+      this.props.dispatch(currentUser(response.data));
+      this.setState({user: response.data})
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  }
+
   componentDidMount () {
-    this.setState(this.props.user)
+    this.getUser()
   }
 
   save () {
@@ -40,12 +49,14 @@ class Account extends Component {
     }
 
     axios.put('/current_user', payload).then((response) => {
-      this.setState({isSaving: false});
+      this.setState({isSaving: false, hasSaved: true});
+
+      setTimeout(() => {
+        this.setState({hasSaved: false});
+      }, 3000)
 
       // Set in store
       this.props.dispatch(currentUser(response.data));
-
-      alert('Saved!')
     }).catch((error) => {
       console.log(error);
       this.setState({isSaving: false});
@@ -63,10 +74,9 @@ class Account extends Component {
   }
 
   render() {
-    if (!this.props.user) {
+    if (!this.state.user) {
       return (
         <div>
-          Loading..
         </div>
       );
     }
@@ -74,15 +84,17 @@ class Account extends Component {
     return (
       <div id="account" className="app-account">
         <div className="app-account-user-details">
-          <img src={this.props.user.avatarUrl || constants.defaultAvatarUrl} />
+          <div className="app-account-avatar">
+            <img src={this.state.user.avatarUrl || constants.defaultAvatarUrl} />
+          </div>
         </div>
 
         <div className="app-account-form">
-          <input name="firstName" type="text" placeholder="First name" defaultValue={this.props.user.firstName} onChange={this.handleInputChange} />
-          <input name="lastName" type="text" placeholder="Last name" defaultValue={this.props.user.lastName} onChange={this.handleInputChange} />
-          <input name="avatarUrl" type="text" placeholder="Avatar url" defaultValue={this.props.user.avatarUrl} onChange={this.handleInputChange} />
+          <input name="firstName" type="text" placeholder="First name" defaultValue={this.state.user.firstName} onChange={this.handleInputChange} />
+          <input name="lastName" type="text" placeholder="Last name" defaultValue={this.state.user.lastName} onChange={this.handleInputChange} />
+          <input name="avatarUrl" type="text" placeholder="Avatar url" defaultValue={this.state.user.avatarUrl} onChange={this.handleInputChange} />
           <div className="app-account-form-button-bar">
-            <a className="button" onClick={this.save} href="#" disabled={this.state.isSaving}>Save</a>
+            <a className="button" onClick={this.save} href="#" disabled={this.state.isSaving || this.state.hasSaved}>{this.state.hasSaved ? 'Saved!' : 'Save'}</a>
             <a className="button button-clear" onClick={this.logout} href="#">Logout</a>
           </div>
         </div>
@@ -93,9 +105,7 @@ class Account extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {
-    user: state.user.currentUser
-  }
+  return { }
 };
 
 export default connect(mapStateToProps)(Account);

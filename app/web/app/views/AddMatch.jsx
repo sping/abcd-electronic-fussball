@@ -9,20 +9,16 @@ class AddMatch extends Component {
 
     this.state = {
       isSaving: false,
-      homeScore: 0,
-      awayScore: 0,
-      playedAt: new Date().toISOString().substring(0, 10),
-      homePlayerOne: null,
-      homePlayerTwo: null,
-      awayPlayer1: null,
-      awayPlayer2: null
+      hasSaved: false
     }
 
     this.save = this.save.bind(this)
     this.handleInputChange = this.handleInputChange.bind(this)
   }
 
-  componentWillMount () {
+  componentDidMount () {
+    this.setInititalFormState();
+
     axios.get('/players').then((response) => {
       this.setState({availablePlayers: response.data})
     })
@@ -57,15 +53,27 @@ class AddMatch extends Component {
     }
 
     axios.post('/matches', payload).then((response) => {
-      this.setState({isSaving: false});
+      this.setState({isSaving: false, hasSaved: true});
 
-      // Set in store
-      console.log(response)
-
-      alert('Saved!')
+      setTimeout(() => {
+        this.setState({hasSaved: false});
+        this.setInititalFormState();
+      }, 3000)
     }).catch((error) => {
       alert(JSON.stringify(error));
       this.setState({isSaving: false});
+    })
+  }
+
+  setInititalFormState () {
+    this.setState({
+      homeScore: 0,
+      awayScore: 0,
+      playedAt: new Date().toISOString().substring(0, 10),
+      homePlayerOne: null,
+      homePlayerTwo: null,
+      awayPlayer1: null,
+      awayPlayer2: null
     })
   }
 
@@ -82,14 +90,14 @@ class AddMatch extends Component {
   render() {
     if (!this.state.availablePlayers) {
       return (
-        <div>Loading..</div>
+        <div></div>
       )
     }
 
     return (
       <div id="account" className="app-account">
         <div className="app-account-form">
-          <input className="app-add-match-date-picker" name="playedAt" type="date" defaultValue={new Date().toISOString().substring(0, 10)} onChange={this.handleInputChange} />
+          <input className="app-add-match-date-picker" name="playedAt" type="datetime-local" defaultValue={new Date().toISOString().substring(0, 10)} onChange={this.handleInputChange} />
 
           <div className="app-add-match-select-players">
             <div className="app-add-match-select-players-col">
@@ -137,7 +145,7 @@ class AddMatch extends Component {
           </div>
           
           <div className="app-account-form-button-bar">
-            <a className="button" onClick={this.save} href="#" disabled={this.state.isSaving}>Save</a>
+            <a className="button" onClick={this.save} href="#" disabled={this.state.isSaving || this.state.hasSaved}>{this.state.hasSaved ? 'Saved!' : 'Save'}</a>
           </div>
         </div>
       </div>

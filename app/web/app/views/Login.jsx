@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import axios from '../axios'
 import { browserHistory } from 'react-router'
-import { currentUser, logout } from '../actions/userActions';
+import { currentUser } from '../actions/userActions';
 
 class Login extends Component {
   constructor (props) {
