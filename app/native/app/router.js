@@ -8,7 +8,7 @@ import {
 import {
     Router,
     Scene,
-    Actions,
+    Actions
 } from 'react-native-router-flux';
 
 import colors from './config/colors';
@@ -18,6 +18,7 @@ import LoginScreen from './screens/LoginScreen';
 import AccountScreen from './screens/AccountScreen';
 import TimelineScreen from './screens/TimelineScreen';
 import LeaderBoardScreen from './screens/LeaderboardScreen';
+import AddMatchScreen from './screens/AddMatchScreen';
 
 // Simple component to render something in place of icon
 const TabIcon = ({ selected, title, iconName }) => {
@@ -30,11 +31,16 @@ const TabIcon = ({ selected, title, iconName }) => {
 
 const defaultScene = Actions.create(
   <Scene key="root">
+
     <Scene key="Login" component={LoginScreen} hideNavBar/>
     <Scene key="tabbar" tabs={true} tabBarStyle={{backgroundColor: '#FAFAFA'}}>
       {/* Timeline scene */}
       <Scene key="timelineScene" title="Timeline" iconName='home' icon={TabIcon}>
-        <Scene key="timeline" component={TimelineScreen} title="Timeline" renderBackButton={()=>(null)}/>
+        <Scene key="timeline" component={TimelineScreen} title="Timeline" renderBackButton={()=>(null)} onRight={function(){
+            console.log("Right button pressed");
+            Actions.AddMatch();
+          }}
+          rightTitle="Toevoegen"/>
       </Scene>
       {/* Leaderboard scene */}
       <Scene key="leaderboardScene" title="LeaderBoard" iconName='format-list-numbered' icon={TabIcon}>
@@ -48,6 +54,12 @@ const defaultScene = Actions.create(
       <Scene key="accountScene" title="Account" iconName='mood' icon={TabIcon}>
         <Scene key="account" component={AccountScreen} title="Account" renderBackButton={()=>(null)}/>
       </Scene>
+    </Scene>
+    <Scene key="AddMatch">
+      <Scene key="AddMatchScreen" component={AddMatchScreen} leftTitle="<" title="Nieuwe wedstrijd"
+      onLeft={function(){
+            Actions.tabbar();
+          }} />
     </Scene>
   </Scene>
 )
