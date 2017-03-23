@@ -2,41 +2,115 @@ import React, { Component } from 'react';
 import {
     StyleSheet,
     Text,
-    View
+    View,
+    Alert
 } from 'react-native';
 
 import {
   Button,
   FormLabel,
   FormInput,
-  CheckBox,
+  CheckBox
 } from 'react-native-elements';
 import Avatar from 'react-native-interactive-avatar';
-
+import Constants from '../config/constants';
 import colors from '../config/colors';
+import Player from '../models/player';
+
+const LOGOUT_URL = Constants.BASE_URL + 'logout';
+const GET_CURRENT_PLAYER_URL = Constants.BASE_URL + 'current_user';
 
 class AccountScreen extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      username: String,
-      password: String,
-      checked: Boolean,
+      firstName: String,
+      lastName: String,
+      avatarUrl: String,
+      player: {}
     }
+    this.state.firstName = "";
+    this.state.lastName = "";
+    this.state.avatarUrl = "";
   }
 
-  login() {
-    console.log(this.state);
+  componentDidMount() {
+    this.fetchCurrentPlayer();
   }
 
-  remember() {
-    let checked = this.state.checked;
-    if (checked) {
-      this.setState({checked: false})
-    } else {
-      this.setState({checked: true})
-    }
+  fetchCurrentPlayer() {
+    var headers = new Headers();
+    headers.append("Authorization", "Token token=" + Constants.API_TOKEN);
+
+    fetch(GET_CURRENT_PLAYER_URL, {
+      headers: headers
+    })
+      .then((response) => response.json())
+      .then((responseData) => {
+
+        console.log(responseData);
+        var player = new Player(responseData);
+        this.setState({
+          player: player,
+          firstName: player.firstName,
+          lastName: player.lastName,
+          avatarUrl: player.avatarUrl
+        });
+      })
+      .done();
+  }
+
+  updateAccount() {
+
+    fetch(GET_CURRENT_PLAYER_URL, {
+      method: 'PUT',
+      headers: {
+        "Authorization": "Token token=" + Constants.API_TOKEN,
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        avatarUrl: this.state.avatarUrl
+      })
+    })
+      .then((response) => response.json())
+      .then((responseData) => {
+
+        console.log(responseData);
+        var player = new Player(responseData);
+        this.setState({
+          player: player,
+          firstName: player.firstName,
+          lastName: player.lastName,
+          avatarUrl: player.avatarUrl
+        });
+        Alert.alert(
+          'Account aanpassingen',
+          'Succesvol doorgevoerd!',
+          [
+            {text: 'OK', onPress: () => console.log('OK Pressed')},
+          ],
+          { cancelable: false }
+        )
+      })
+      .done();
+  }
+
+  logout() {
+      var headers = new Headers();
+      headers.append("Authorization", "Token token=" + Constants.API_TOKEN);
+
+      fetch(LOGOUT_URL, {
+        headers: headers
+      })
+        .then((response) => response.json())
+        .then((responseData) => {
+          console.log(responseData);
+        })
+        .done();
   }
 
   render() {
@@ -53,31 +127,33 @@ class AccountScreen extends Component {
             />
           </View>
           <FormLabel
-            containerStyle={styles.labelContainerStyle}>Gebruikersnaam</FormLabel>
+            containerStyle={styles.labelContainerStyle}>Voornaam</FormLabel>
           <FormInput
-            placeholder='Gebruikersnaam'
-            onChangeText={(text) => this.setState({username: text})}
-          />
-          <FormLabel containerStyle={styles.labelContainerStyle}>Wachtwoord</FormLabel>
+            placeholder='Voornaam'
+            onChangeText={(text) => this.setState({firstName: text})}
+            value={this.state.firstName} />
+          <FormLabel containerStyle={styles.labelContainerStyle}>Achternaam</FormLabel>
           <FormInput
-            secureTextEntry={true}
-            placeholder='Wachtwoord'
-            onChangeText={(text) => this.setState({password: text})}/>
-          <CheckBox
-            containerStyle={styles.checkbox}
-            title='Onthoud mijn inloggegevens'
-            iconType='material'
-            checkedIcon='check'
-            uncheckedIcon='clear'
-            onPress={() => this.remember()}
-            checked={this.state.checked}
-          />
+            placeholder='Achternaam'
+            onChangeText={(text) => this.setState({lastName: text})}
+            value={this.state.lastName} />
+          <FormLabel containerStyle={styles.labelContainerStyle}>Avatar URL</FormLabel>
+          <FormInput
+            placeholder='http://images.askmen.com/top_10/entertainment/1271175585_top-10-douchebag-fashions_5.jpg'
+            onChangeText={(text) => this.setState({avatarUrl: text})}
+            value={this.state.avatarUrl} />
           <Button
             buttonStyle={styles.button}
             backgroundColor={colors.green_500}
-            onPress={() => this.login()}
-            icon={{name: 'done'}}
-            title='SUBMIT' />
+            onPress={() => this.updateAccount()}
+            title='Aanpassen' />
+          <View>
+            <Button
+              buttonStyle={styles.button}
+              backgroundColor={colors.red_500}
+              onPress={() => this.logout()}
+              title='Log out' />
+          </View>
         </View>
       );
   }
