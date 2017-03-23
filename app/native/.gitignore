@@ -75,3 +75,6 @@ xcuserdata
 *.moved-aside
 DerivedData
 *.xcuserstate
+
+### Android ###
+android/.gradle
