@@ -3,7 +3,8 @@ import {
     StyleSheet,
     Text,
     Image,
-    View
+    View,
+    ScrollView
 } from 'react-native';
 
 import {
@@ -35,34 +36,36 @@ class StatsScreen extends Component {
               <Image source={this.state.pic} style={styles.theimage} />
             </View>
             <Card style={styles.contentview}>
-              <View style={styles.item}>
-                <Text style={styles.text}>Win ratio</Text>
-                <Text style={styles.text}>{this.state.playerStats.winRatio}</Text>
-              </View>
-              <View style={styles.item}>
-                <Text style={styles.text}>Wins</Text>
-                <Text style={styles.text}>{this.state.playerStats.wins}</Text>
-              </View>
-              <View style={styles.item}>
-                <Text style={styles.text}>Losses</Text>
-                <Text style={styles.text}>{this.state.playerStats.losses}</Text>
-              </View>
-              <View style={styles.item}>
-                <Text style={styles.text}>Goals for</Text>
-                <Text style={styles.text}>{this.state.playerStats.goalsFor}</Text>
-              </View>
-              <View style={styles.item}>
-                <Text style={styles.text}>Goals against</Text>
-                <Text style={styles.text}>{this.state.playerStats.goalsAgainst}</Text>
-              </View>
-              <View style={styles.item}>
-                <Text style={styles.text}>Goals diff</Text>
-                <Text style={styles.text}>{this.state.playerStats.goalsDiff}</Text>
-              </View>
-              <View style={styles.item}>
-                <Text style={styles.text}>Games</Text>
-                <Text style={styles.text}>{this.state.playerStats.wins + this.state.playerStats.losses}</Text>
-              </View>
+              <ScrollView>
+                <View style={styles.item}>
+                  <Text style={styles.text}>Position</Text>
+                  <Text style={styles.text}>{this.state.playerStats.ranking}</Text>
+                </View>
+                <View style={styles.item}>
+                  <Text style={styles.text}>Win ratio</Text>
+                  <Text style={styles.text}>{this.state.playerStats.winRatio}</Text>
+                </View>
+                <View style={styles.item}>
+                  <Text style={styles.text}>Wins</Text>
+                  <Text style={styles.text}>{this.state.playerStats.wins}</Text>
+                </View>
+                <View style={styles.item}>
+                  <Text style={styles.text}>Fails</Text>
+                  <Text style={styles.text}>{this.state.playerStats.losses}</Text>
+                </View>
+                <View style={styles.item}>
+                  <Text style={styles.text}>Goals for</Text>
+                  <Text style={styles.text}>{this.state.playerStats.goalsFor}</Text>
+                </View>
+                <View style={styles.item}>
+                  <Text style={styles.text}>Goals against</Text>
+                  <Text style={styles.text}>{this.state.playerStats.goalsAgainst}</Text>
+                </View>
+                <View style={styles.item}>
+                  <Text style={styles.text}>Goals diff</Text>
+                  <Text style={styles.text}>{this.state.playerStats.goalsDiff}</Text>
+                </View>
+              </ScrollView>
             </Card>
           </View>
       );
