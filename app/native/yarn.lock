@@ -3026,6 +3026,20 @@ react-native-experimental-navigation@0.26.x:
     fbjs "^0.8.1"
     react-addons-pure-render-mixin "^15.0.2"
 
+react-native-image-picker@^0.25.1:
+  version "0.25.7"
+  resolved "https://registry.yarnpkg.com/react-native-image-picker/-/react-native-image-picker-0.25.7.tgz#1475fd72111a74f434598f2c99453998ac21b599"
+
+react-native-image-picker@^0.26.2:
+  version "0.26.2"
+  resolved "https://registry.yarnpkg.com/react-native-image-picker/-/react-native-image-picker-0.26.2.tgz#1280627d61438027284c97d0a8892b7d3777f2e3"
+
+react-native-interactive-avatar@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-interactive-avatar/-/react-native-interactive-avatar-1.1.0.tgz#a8b1fe0e44a511d3ff2964048aa9bee3e379e501"
+  dependencies:
+    react-native-image-picker "^0.25.1"
+
 react-native-popup-dialog@^0.7.22:
   version "0.7.22"
   resolved "https://registry.yarnpkg.com/react-native-popup-dialog/-/react-native-popup-dialog-0.7.22.tgz#993d6d4f819dfb59e4463c8de5f4859c59fd274f"

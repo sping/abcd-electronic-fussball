@@ -15,6 +15,7 @@ import {
 } from '../actions/userActions';
 
 import TimelineCard from '../components/TimelineCard';
+// import TimelineObject from '../models/timelineObject';
 import Constants from '../config/constants';
 import Colors from '../config/colors';
 import { connect } from 'react-redux'
@@ -84,6 +85,9 @@ class TimelineScreen extends Component {
       .then((response) => response.json())
       .then((responseData) => {
         if (responseData && responseData.message != 'Unauthorized') {
+          for (obj in responseData) {
+            console.log(obj);
+          }
           this.setState({
             timeLineCards: responseData,
           });
@@ -135,7 +139,6 @@ const styles = StyleSheet.create({
 })
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     apiToken: state.user.apiToken
   }
