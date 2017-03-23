@@ -17,4 +17,9 @@ Player = database.define('players',
     }
   });
 
+Player.hook('afterCreate', async (player, options) => {
+  await player.createStat()
+  return player
+});
+
 module.exports = Player

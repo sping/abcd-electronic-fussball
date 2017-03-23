@@ -1,6 +1,8 @@
 const Sequelize = require('sequelize');
 const database = require('databaseConnection');
 
+const StatHelper = require('../helpers/StatHelper')
+
 MatchPlayer = database.define('match_players',
   {
     id: {
@@ -26,5 +28,22 @@ MatchPlayer = database.define('match_players',
       }
     }
   });
+
+MatchPlayer.afterUpdate(async (matchPlayer, options) => {
+  await StatHelper.updateStatsForMatchPlayer(matchPlayer)
+  return matchPlayer
+});
+
+MatchPlayer.afterCreate(async (matchPlayer, options) => {
+  console.log('updateing')
+  await StatHelper.updateStatsForMatchPlayer(matchPlayer)
+  return matchPlayer
+});
+
+MatchPlayer.afterDestroy(async (matchPlayer, options) => {
+  console.log('destroy')
+  await StatHelper.updateStatsForMatchPlayer(matchPlayer)
+  return matchPlayer
+});
 
 module.exports = MatchPlayer

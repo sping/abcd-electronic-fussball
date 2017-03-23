@@ -15,6 +15,6 @@ PlayerRouter.get('/stats', PlayerController.calculateStatsForAllPlayers)
 PlayerRouter.use('/:id', PlayerHelper.loadPlayer)
 PlayerRouter.get('/:id', PlayerController.getPlayer)
 PlayerRouter.get('/:id/matches', PlayerController.getMatches)
-PlayerRouter.get('/:id/stats', PlayerController.calculateStatsForPlayer)
+PlayerRouter.get('/:id/stats', PlayerController.getStatsForPlayer)
 
 module.exports = PlayerRouter

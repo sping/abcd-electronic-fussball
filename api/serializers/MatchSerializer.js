@@ -13,7 +13,7 @@ const scheme = {
           exclude: ['@auto', '@pk', '@fk'],
           assoc: {
             user: {
-              exclude: ['password', 'active', '@pk', '@fk', '@auto']
+              exclude: ['password', 'apiToken', 'active', '@pk', '@fk', '@auto']
             }
           }
         }

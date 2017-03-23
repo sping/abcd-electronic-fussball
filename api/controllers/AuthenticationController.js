@@ -1,8 +1,11 @@
-const UserSerializer = require('serializers/UserSerializer');
-const User = require('models').User;
-const Match = require('models').Match;
-const MatchPlayer = require('models').MatchPlayer;
-const PlayerHelper = require('helpers/PlayerHelper');
+const Sequelize             = require('sequelize');
+const UserSerializer        = require('serializers/UserSerializer');
+const PlayerStatSerializer  = require('serializers/PlayerStatSerializer');
+const User                  = require('models').User;
+const Match                 = require('models').Match;
+const Stat                  = require('models').Stat;
+const MatchPlayer           = require('models').MatchPlayer;
+const PlayerHelper          = require('helpers/PlayerHelper');
 
 var AuthenticationController = function () {};
 
@@ -10,7 +13,7 @@ AuthenticationController.prototype.getCurrentUser = async (ctx, next) => {
   ctx.body = ctx.state.currentUser.serialize(UserSerializer)
 }
 
-AuthenticationController.prototype.updateCurrentUser = async (ctx, next) => { 
+AuthenticationController.prototype.updateCurrentUser = async (ctx, next) => {
   var user = await ctx.state.currentUser.update(userParams(ctx.request.body))
   ctx.body = user.serialize(UserSerializer)
 }
@@ -52,11 +55,45 @@ AuthenticationController.prototype.calculateStatsForUser = async (ctx, next) => 
     },
     {
       model: User
-    }]
+    },
+    Stat]
   })
   
-  var stats = PlayerHelper.calculateStatsFromMatchPlayers(player.match_players)
-  ctx.body = stats
+  var ranking = await Stat.count({
+    where: Sequelize.or(
+      {
+        gameRatio: {
+          $gt: player.stat.gameRatio 
+        }
+      },
+      Sequelize.and(
+        {
+          gameRatio: player.stat.gameRatio
+        }, {
+          gamesWon: {
+            $gt: player.stat.gamesWon   
+          }
+        }
+      ),
+      Sequelize.and(
+        {
+          gameRatio: player.stat.gameRatio
+        }, 
+        {
+          gamesWon: player.stat.gamesWon
+        }, 
+        {
+          goalsDiff: {
+            $gt: player.stat.goalsDiff   
+          }
+        }
+      )
+    )
+  })
+
+  serialisedPlayer = player.serialize(PlayerStatSerializer);
+  serialisedPlayer.stat['ranking'] = ranking + 1;
+  ctx.body = serialisedPlayer
 }
 
 AuthenticationController.prototype.logout = async (ctx, next) => {

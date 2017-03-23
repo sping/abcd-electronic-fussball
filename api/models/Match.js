@@ -2,6 +2,8 @@ const
   Sequelize = require('sequelize'),
   database = require('databaseConnection')
 
+const StatHelper = require('../helpers/StatHelper')
+
 Match = database.define('matches',
   {
     id: {
@@ -27,5 +29,15 @@ Match = database.define('matches',
       type: Sequelize.TEXT
     }
   });
+
+Match.afterUpdate(async (match, options) => {
+  await StatHelper.updateStatsForMatch(match)
+  return match
+});
+
+Match.afterDestroy(async (match, options) => {
+  await StatHelper.updateStatsForMatch(match)
+  return match
+});
 
 module.exports = Match

@@ -27,6 +27,21 @@ MatchController.prototype.getMatches = async (ctx, next) => {
 
 MatchController.prototype.createMatch = async (ctx, next) => {
   match = await Match.create(matchParams(ctx.request.body))
+
+  // create match players
+  for(var matchPlayer of ctx.request.body.matchPlayers) {
+    if (!matchPlayer.playerId) {
+      continue;
+    }
+    
+    await MatchPlayer.create({
+      matchId: match.id,
+      playerId: matchPlayer.playerId,
+      homeTeam: matchPlayer.homeTeam
+    })  
+  }
+
+  match = await match.reload()
   ctx.body = match.serialize(MatchSerializer)
 }
 
@@ -36,10 +51,12 @@ MatchController.prototype.updateMatch = async (ctx, next) => {
 }
 
 MatchController.prototype.setMatchPlayers = async (ctx, next) => {
+  var matchPlayers = await ctx.state.currentMatch.match_players
   await MatchPlayer.destroy({
     where: {
       matchId: ctx.state.currentMatch.id
-    }
+    },
+    individualHooks: true
   })
 
   for (matchPlayer of ctx.request.body) {
