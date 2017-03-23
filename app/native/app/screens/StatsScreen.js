@@ -12,6 +12,7 @@ import {
 } from 'react-native-elements'
 
 import Constants from '../config/constants';
+import Colors from '../config/colors';
 import Player from '../models/player';
 
 const GET_CURRENT_PLAYER_STATS_URI = Constants.BASE_URL + 'current_user/stats';
@@ -31,8 +32,8 @@ class StatsScreen extends Component {
 
   render() {
       return (
-          <ScrollView>
-            <View style={styles.container}>
+          <ScrollView style={styles.container}>
+            <View>
               <View style={styles.imageContainer}>
                 <Image source={this.state.pic} style={styles.theimage} />
               </View>
@@ -100,10 +101,10 @@ export default StatsScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 60
+    backgroundColor: Colors.grey6
   },
   imageContainer: {
-    marginTop: 40,
+    marginTop: 100,
     marginBottom: 40,
     alignItems: 'center',
     justifyContent: 'center'
