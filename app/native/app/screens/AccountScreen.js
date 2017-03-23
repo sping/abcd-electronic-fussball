@@ -16,6 +16,7 @@ import Avatar from 'react-native-interactive-avatar';
 import Constants from '../config/constants';
 import colors from '../config/colors';
 import Player from '../models/player';
+import { Actions } from 'react-native-router-flux';
 
 const LOGOUT_URL = Constants.BASE_URL + 'logout';
 const GET_CURRENT_PLAYER_URL = Constants.BASE_URL + 'current_user';
@@ -100,17 +101,19 @@ class AccountScreen extends Component {
   }
 
   logout() {
-      var headers = new Headers();
-      headers.append("Authorization", "Token token=" + Constants.API_TOKEN);
-
       fetch(LOGOUT_URL, {
-        headers: headers
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: "Token token=" + Constants.API_TOKEN
+        }
       })
         .then((response) => response.json())
         .then((responseData) => {
           console.log(responseData);
+          Actions.pop();
         })
-        .done();
+        .done( );
   }
 
   render() {

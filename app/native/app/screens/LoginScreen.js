@@ -39,7 +39,7 @@ class LoginScreen extends Component {
     this.state = {
       username: '',
       password: '',
-      checked: false,
+      checked: true,
     }
   }
 
