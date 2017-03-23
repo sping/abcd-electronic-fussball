@@ -40,7 +40,10 @@ class LeaderboardScreen extends Component {
       headers.append("Authorization", "Token token=" + Constants.API_TOKEN);
 
         fetch(REQUEST_URL, {
-          headers: headers
+          headers: {
+            Accept: 'application/json',
+            Authorization: 'Token token=' + Constants.API_TOKEN,
+          }
             })
             .then((response) => response.json())
             .then((responseData) => {

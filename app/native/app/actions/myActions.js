@@ -1,6 +1,6 @@
 const Actions = {
   DO_INCREMENT: 'DO_INCREMENT',
-  DO_DECREMENT: 'DO_DECREMENT'
+  DO_DECREMENT: 'DO_DECREMENT',
 };
 
 const increment = (number) => {

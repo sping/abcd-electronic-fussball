@@ -10,9 +10,14 @@ import {
   List,
 } from 'react-native-elements';
 
+import {
+  apiToken
+} from '../actions/userActions';
+
 import TimelineCard from '../components/TimelineCard';
 import Constants from '../config/constants';
 import Colors from '../config/colors';
+import { connect } from 'react-redux'
 
 const GET_ALL_MATCHES = Constants.BASE_URL + 'matches';
 
@@ -66,21 +71,27 @@ class TimelineScreen extends Component {
   }
 
   componentDidMount() {
-    //this.fetchData();
+    this.fetchData();
   }
 
   fetchData() {
     var headers = new Headers();
-    headers.append("Authorization", "Token token=" + Constants.API_TOKEN);
+    headers.append("Authorization", "Token token=" + this.props.apiToken);
 
     fetch(GET_ALL_MATCHES, {
       headers: headers,
     })
       .then((response) => response.json())
       .then((responseData) => {
-        this.setState({
-          timeLineCards: responseData,
-        });
+        if (responseData && responseData.message != 'Unauthorized') {
+          this.setState({
+            timeLineCards: responseData,
+          });
+
+        } else {
+          console.log('ERROR');
+        }
+
       })
       .done();
   }
@@ -123,4 +134,11 @@ const styles = StyleSheet.create({
   }
 })
 
-export default TimelineScreen;
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    apiToken: state.user.apiToken
+  }
+}
+
+export default connect(mapStateToProps)(TimelineScreen);
