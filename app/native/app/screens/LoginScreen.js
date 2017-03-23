@@ -68,9 +68,9 @@ class LoginScreen extends Component {
           this.props.dispatch(avatarUrl(responseData.avatarUrl));
           this.props.dispatch(email(responseData.email));
           this.props.dispatch(apiToken(responseData.apiToken));
-          setTimeout(() => {
-            console.log(this.props.apiToken);
-          }, 1000)
+
+          constants.API_TOKEN = responseData.apiToken;
+
           Actions.tabbar();
         }
       })
