@@ -14,8 +14,6 @@ MatchRouter.post('/', MatchController.createMatch)
 
 MatchRouter.use('/:id', MatchHelper.loadMatch)
 MatchRouter.get('/:id', MatchController.getMatch)
-MatchRouter.put('/:id', MatchController.updateMatch)
 MatchRouter.delete('/:id', MatchController.destroyMatch)
-MatchRouter.put('/:id/setMatchPlayers', MatchController.setMatchPlayers)
 
 module.exports = MatchRouter

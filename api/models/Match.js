@@ -30,13 +30,13 @@ Match = database.define('matches',
     }
   });
 
-Match.afterUpdate(async (match, options) => {
-  await StatHelper.updateStatsForMatch(match)
+Match.afterUpdate((match, options) => {
+  StatHelper.updateStatsForMatch(match)
   return match
 });
 
-Match.afterDestroy(async (match, options) => {
-  await StatHelper.updateStatsForMatch(match)
+Match.afterDestroy((match, options) => {
+  StatHelper.updateStatsForMatch(match)
   return match
 });
 
