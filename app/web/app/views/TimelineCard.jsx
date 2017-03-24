@@ -27,27 +27,33 @@ class TimelineCard extends Component {
     var date = new Date(date)
     var day = date.getDate();
     var month = date.getMonth() + 1;
-    var year = date.getYear()
+    var year = date.getUTCFullYear()
     return `${day}/${month}/${year}`
   }
   
   render() {
     if (!this.props.match) {
       return (
-        <div>Loading..</div>
+        <div></div>
       )
     }
     return (
       <div className="app-timeline-card">
-        <div className="app-timeline-card-left-players">
-          <TimelineCardPlayers homeTeam={true} matchPlayers={this.props.match.match_players} />
+        <div className="app-timeline-card-datetime">
+          <h6>
+            { this.formatTime(this.props.match.playedAt) } { this.formatDate(this.props.match.playedAt) }
+          </h6>
         </div>
-        <div className="app-timeline-card-score">
-          <h6>{ this.formatTime(this.props.match.playedAt) } { this.formatDate(this.props.match.playedAt) }</h6>
-          <h3>{ this.props.match.homeScore } - { this.props.match.awayScore }</h3>
-        </div>
-        <div className="app-timeline-card-right-players">
-          <TimelineCardPlayers homeTeam={false} matchPlayers={this.props.match.match_players} />
+        <div className="app-timeline-card-scores">
+          <div className="app-timeline-card-left-players">
+            <TimelineCardPlayers homeTeam={true} matchPlayers={this.props.match.match_players} />
+          </div>
+          <div className="app-timeline-card-score">
+            <h3>{ this.props.match.homeScore } - { this.props.match.awayScore }</h3>
+          </div>
+          <div className="app-timeline-card-right-players">
+            <TimelineCardPlayers homeTeam={false} matchPlayers={this.props.match.match_players} />
+          </div>
         </div>
       </div>
     );

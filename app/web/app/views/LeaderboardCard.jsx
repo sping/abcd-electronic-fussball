@@ -28,7 +28,7 @@ class LeaderboardCard extends Component {
           </div>
           <div className="content-col">
             <span>
-              <strong>Percentage: </strong>
+              <strong>Ratio: </strong>
               { this.props.stat.stat.gameRatio * 100 }%
             </span>
           </div>

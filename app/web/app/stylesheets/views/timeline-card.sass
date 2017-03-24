@@ -2,7 +2,7 @@
 
 .app-timeline-card
   display: flex
-  flex-direction: row
+  flex-direction: column
   align-items: center
   background: $color-navbar-background
   border-radius: $dimension-border-radius
@@ -11,6 +11,11 @@
 
   box-shadow: 0 1px 2px 0 rgba(0,0,0,0.2)
   transition: 0.3s
+
+  &-scores
+    display: flex
+    flex-direction: row
+    width: 100%
 
   &-left-players, &-right-players
     flex: 1
@@ -27,6 +32,6 @@
     display: flex
     flex-direction: column
 
-    h3, h6
-      margin: 0
+  h3, h6
+    margin: 0
 

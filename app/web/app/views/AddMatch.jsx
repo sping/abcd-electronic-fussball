@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import axios from '../axios';
 import '../stylesheets/views/add-match.sass';
+import PlayerSelect from './components/playerSelect';
+
 
 class AddMatch extends Component {
   constructor (props) {
@@ -13,23 +15,31 @@ class AddMatch extends Component {
     }
 
     this.save = this.save.bind(this)
+    this.resetForm = this.resetForm.bind(this)
     this.handleInputChange = this.handleInputChange.bind(this)
   }
 
   componentDidMount () {
-    this.setInititalFormState();
-
     axios.get('/players').then((response) => {
       this.setState({availablePlayers: response.data})
     })
   }
 
+  resetForm () {
+    this.refs.form.reset();
+  }
+
   save () {
+    if (!this.state.homePlayerOne || !this.state.awayPlayerOne) {
+      alert("Please select a home and away player.")
+      return
+    }
+
     this.setState({isSaving: true})
 
     var payload = {
-      homeScore: this.state.homeScore,
-      awayScore: this.state.awayScore,
+      homeScore: this.refs.homeScore.value,
+      awayScore: this.refs.awayScore.value,
       playedAt: this.state.playedAt,
       kind: 'SINGLE',
       matchPlayers: [
@@ -54,26 +64,13 @@ class AddMatch extends Component {
 
     axios.post('/matches', payload).then((response) => {
       this.setState({isSaving: false, hasSaved: true});
+      this.resetForm();
 
       setTimeout(() => {
         this.setState({hasSaved: false});
-        this.setInititalFormState();
       }, 3000)
     }).catch((error) => {
-      alert(JSON.stringify(error));
       this.setState({isSaving: false});
-    })
-  }
-
-  setInititalFormState () {
-    this.setState({
-      homeScore: 0,
-      awayScore: 0,
-      playedAt: new Date().toISOString().substring(0, 10),
-      homePlayerOne: null,
-      homePlayerTwo: null,
-      awayPlayer1: null,
-      awayPlayer2: null
     })
   }
 
@@ -96,58 +93,35 @@ class AddMatch extends Component {
 
     return (
       <div id="account" className="app-account">
-        <div className="app-account-form">
-          <input className="app-add-match-date-picker" name="playedAt" type="datetime-local" defaultValue={new Date().toISOString().substring(0, 10)} onChange={this.handleInputChange} />
+        <form ref="form" onSubmit={this.submit} className="app-account-form">
+          <input className="app-add-match-date-picker" name="playedAt" type="datetime-local" defaultValue={new Date().toISOString().substring(0, 16)} onChange={this.handleInputChange} />
 
           <div className="app-add-match-select-players">
             <div className="app-add-match-select-players-col">
               <h6>Home</h6>
-              <input name="homeScore" type="number" min="0" min="10" defaultValue="0" onChange={this.handleInputChange} />
-              <select name="homePlayerOne" onChange={this.handleInputChange}>
-                <option>Select player</option>
-                {
-                  this.state.availablePlayers.map((player) => {
-                    return <option key={player.id} value={player.id}>{player.user.firstName}</option>
-                  })
-                }
-              </select>
-              <select name="homePlayerTwo" onChange={this.handleInputChange}>
-                <option>Select player</option>
-                {
-                  this.state.availablePlayers.map((player) => {
-                    return <option key={player.id} value={player.id}>{player.user.firstName}</option>
-                  })
-                }
-              </select>
+              <input ref="homeScore" name="homeScore" type="number" min="0" min="10" defaultValue="0" onChange={this.handleInputChange} />
+              
+              <PlayerSelect name="homePlayerOne" handleInputChange={this.handleInputChange} players={this.state.availablePlayers} onChange={this.handleInputChange} />
+
+              <PlayerSelect name="homePlayerTwo" handleInputChange={this.handleInputChange} players={this.state.availablePlayers} onChange={this.handleInputChange} />
+
             </div>
 
             <div className="app-add-match-select-players-col">
               <h6>Away</h6>
-              <input name="awayScore" type="number" min="0" min="10" defaultValue="0" onChange={this.handleInputChange} />
-              <select name="awayPlayerOne" onChange={this.handleInputChange}>
-                <option>Select player</option>
-                {
-                  this.state.availablePlayers.map((player) => {
-                    return <option key={player.id} value={player.id}>{player.user.firstName}</option>
-                  })
-                }
-              </select>
+              <input ref="awayScore" name="awayScore" type="number" min="0" min="10" defaultValue="0" onChange={this.handleInputChange} />
+              
+              <PlayerSelect name="awayPlayerOne" handleInputChange={this.handleInputChange} players={this.state.availablePlayers} onChange={this.handleInputChange} />
 
-              <select name="awayPlayerTwo" onChange={this.handleInputChange}>
-                <option>Select player</option>
-                {
-                  this.state.availablePlayers.map((player) => {
-                    return <option key={player.id} value={player.id}>{player.user.firstName}</option>
-                  })
-                }
-              </select>
+              <PlayerSelect name="awayPlayerTwo" handleInputChange={this.handleInputChange} players={this.state.availablePlayers} onChange={this.handleInputChange} />
+
             </div>
           </div>
           
           <div className="app-account-form-button-bar">
             <a className="button" onClick={this.save} href="#" disabled={this.state.isSaving || this.state.hasSaved}>{this.state.hasSaved ? 'Saved!' : 'Save'}</a>
           </div>
-        </div>
+        </form>
       </div>
     )
   }

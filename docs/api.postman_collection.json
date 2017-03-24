@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "Foosball",
-		"_postman_id": "95c71a4e-812a-f8d2-16c8-cd484ee61468",
+		"_postman_id": "15f2193e-c95a-4c82-a961-bf5a1ed338e5",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -260,7 +260,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"kind\": \"SINGLE\",\n\t\"playedAt\": {{$timestamp}},\n\t\"homeScore\": 1,\n\t\"awayScore\": 10,\n\t\"notes\": null\n}"
+							"raw": "{\n\t\"kind\": \"SINGLE\",\n\t\"playedAt\": {{$timestamp}},\n\t\"homeScore\": 1,\n\t\"awayScore\": 10,\n\t\"notes\": null,\n\t\"matchPlayers\": [\n\t\t{\n\t\t\t\"homeTeam\": true,\n\t\t\t\"playerId\": 1\n\t\t}\n\t]\n}"
 						},
 						"description": ""
 					},
@@ -449,7 +449,7 @@
 						}
 					],
 					"request": {
-						"url": "http://localhost:5000/api/v1/players",
+						"url": "http://localhost:5000/api/v1/players/{{playerId}}/matches",
 						"method": "GET",
 						"header": [
 							{
