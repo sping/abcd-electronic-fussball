@@ -22,57 +22,16 @@ import { connect } from 'react-redux'
 
 const GET_ALL_MATCHES = Constants.BASE_URL + 'matches';
 
-const list = [
-  {
-    player1: 'David',
-    player2: 'Brent',
-    player3: 'Glenn',
-    player4: 'Bing',
-    time: '10:50',
-    date: '15-03-2017',
-    score: '10 vs 3',
-  },
-  {
-    player1: 'Sebastiaan',
-    player2: 'Jaap',
-    player3: 'Jeroen',
-    player4: 'Frits',
-    time: '10:45',
-    date: '15-03-2017',
-    score: '5 vs 10',
-  },
-  {
-    player1: 'Eric',
-    player2: 'Jafeth',
-    player3: 'Jeroen',
-    player4: 'Erwin',
-    time: '10:40',
-    date: '15-03-2017',
-    score: '5 vs 10',
-  },
-  {
-    player1: 'Sebastiaan',
-    player2: 'Jaap',
-    player3: 'Jeroen',
-    player4: 'Frits',
-    time: '10:35',
-    date: '15-03-2017',
-    score: '1 vs 10',
-  },
-];
-
-
 class TimelineScreen extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      timeLineCards: [],
+      timeLineCards: []
     };
   }
 
   componentDidMount() {
-    Constants.API_TOKEN = this.props.apiToken;
     this.fetchData();
   }
 
@@ -85,17 +44,44 @@ class TimelineScreen extends Component {
     })
       .then((response) => response.json())
       .then((responseData) => {
+        console.log(responseData);
         if (responseData && responseData.message != 'Unauthorized') {
           this.setState({
-            timeLineCards: responseData,
+            timeLineCards: responseData
           });
-
         } else {
           console.log('ERROR');
         }
-
       })
       .done();
+  }
+
+  timeFromDateTime(date) {
+    return new Date(date).toLocaleTimeString();
+  }
+
+  dateFromDateTime(date) {
+    return new Date(date).toLocaleDateString();
+  }
+
+  getPlayer(index, players) {
+    if (players.length == 2) {
+      if (index == 1) {
+        return ""
+      } else if(index == 2) {
+        index = 1
+      }
+    }
+
+    if (players[index]) {
+      players = players.sort((function(index){
+          return function(a, b){
+              return (a[index] === b[index] ? 0 : (a[index].homeTeam < b[index].homeTeam ? -1 : 1));
+          };
+      }));
+      return players[index].player.user.firstName
+    }
+    return ""
   }
 
   render() {
@@ -104,15 +90,16 @@ class TimelineScreen extends Component {
         <ScrollView>
           <List containerStyle={styles.list}>
           {
-            list.map((item, index) => (
+            this.state.timeLineCards.map((item, index) => (
+
               <TimelineCard
-                time={item.time}
-                date={item.date}
-                player1={item.player1}
-                player2={item.player2}
-                player3={item.player3}
-                player4={item.player4}
-                score={item.score}
+                time={this.timeFromDateTime(item.playedAt)}
+                date={this.dateFromDateTime(item.playedAt)}
+                score={item.homeScore + " vs " + item.awayScore}
+                player1={this.getPlayer(0, item.match_players)}
+                player2={this.getPlayer(1, item.match_players)}
+                player3={this.getPlayer(2, item.match_players)}
+                player4={this.getPlayer(3, item.match_players)}
                 key={index}
               />
             ))
@@ -129,10 +116,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.grey6,
     marginTop: 40,
-    marginBottom: 40,
+    marginBottom: 50,
   },
   list: {
-    backgroundColor: 'transparent'
+    backgroundColor: 'transparent',
+    marginBottom: 10
   }
 })
 
