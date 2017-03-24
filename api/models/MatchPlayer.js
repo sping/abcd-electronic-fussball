@@ -27,7 +27,8 @@ MatchPlayer = database.define('match_players',
         key: 'id'
       }
     }
-  });
+  }
+);
 
 MatchPlayer.afterUpdate((matchPlayer, options) => {
   StatHelper.updateStatsForMatchPlayer(matchPlayer)
