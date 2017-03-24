@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 
 import Constants from '../config/constants';
+import Colors from '../config/colors';
 
 // import {Environment} from '../config/environment';
 const REQUEST_URL = Constants.BASE_URL + 'players/stats';
@@ -19,7 +20,7 @@ class LeaderboardScreen extends Component {
       props.title="Leaderboard";
         super(props);
         this.state = {
-            players: [],
+            players: []
         };
     }
 
@@ -28,7 +29,7 @@ class LeaderboardScreen extends Component {
     }
 
     getPlayerImageUrl(player) {
-        if (player.avatarUrl) {
+        if (player && player.avatarUrl) {
             return player.avatarUrl;
         }
 
@@ -36,9 +37,6 @@ class LeaderboardScreen extends Component {
     }
 
     fetchData() {
-      var headers = new Headers();
-      headers.append("Authorization", "Token token=" + Constants.API_TOKEN);
-
         fetch(REQUEST_URL, {
           headers: {
             Accept: 'application/json',
@@ -47,6 +45,7 @@ class LeaderboardScreen extends Component {
             })
             .then((response) => response.json())
             .then((responseData) => {
+                console.log(responseData);
                 this.setState({
                     players: responseData
                 });
@@ -83,9 +82,9 @@ class LeaderboardScreen extends Component {
                                 />
                                 <View>
                                   <Text style={styles.title}>{rowData.user.firstName} {rowData.user.lastName}</Text>
-                                  <Text style={styles.text}>Wins: {rowData.wins}</Text>
-                                  <Text style={styles.text}>Losses: {rowData.losses}</Text>
-                                  <Text style={styles.text}>Ratio: {rowData.winRatio}</Text>
+                                  <Text style={styles.text}>Wins: {rowData.stat.gamesWon}</Text>
+                                  <Text style={styles.text}>Losses: {rowData.stat.gamesLost}</Text>
+                                  <Text style={styles.text}>Ratio: {rowData.stat.gameRatio}</Text>
                                 </View>
                             </View>
                         </TouchableHighlight>
@@ -100,8 +99,7 @@ const styles = StyleSheet.create({
     loadingContainer: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'white',
+        alignItems: 'center'
     },
     welcome: {
         fontSize: 20,
@@ -114,15 +112,24 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         marginBottom: 0,
         marginTop: 60,
+        backgroundColor: Colors.grey6
     },
     row: {
-        marginTop: 4,
-        padding: 2,
-        paddingLeft: 0,
+        marginLeft: 14,
+        marginRight: 14,
+        marginTop: 10,
         backgroundColor: 'white',
-        borderRadius: 2,
-        borderWidth: 1,
-        borderColor: '#F0F0F0',
+         borderWidth: 1,
+        borderStyle: 'solid',
+        borderColor: '#ccc',
+        borderRadius: 3,
+        shadowColor: '#666', // shadow doesn't work on Android, perhaps use https://github.com/879479119/react-native-shadow
+        shadowOffset: {
+            width: 0,
+            height: 1
+        },
+        shadowRadius: 2,
+        shadowOpacity: 0.3
     },
     item: {
         flex: 1,

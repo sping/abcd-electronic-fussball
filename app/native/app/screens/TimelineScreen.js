@@ -64,26 +64,6 @@ class TimelineScreen extends Component {
     return new Date(date).toLocaleDateString();
   }
 
-  getPlayer(index, players) {
-    if (players.length == 2) {
-      if (index == 1) {
-        return ""
-      } else if(index == 2) {
-        index = 1
-      }
-    }
-
-    if (players[index]) {
-      players = players.sort((function(index){
-          return function(a, b){
-              return (a[index] === b[index] ? 0 : (a[index].homeTeam < b[index].homeTeam ? -1 : 1));
-          };
-      }));
-      return players[index].player.user.firstName
-    }
-    return ""
-  }
-
   render() {
     return (
       <View style={styles.container}>
@@ -96,10 +76,7 @@ class TimelineScreen extends Component {
                 time={this.timeFromDateTime(item.playedAt)}
                 date={this.dateFromDateTime(item.playedAt)}
                 score={item.homeScore + " vs " + item.awayScore}
-                player1={this.getPlayer(0, item.match_players)}
-                player2={this.getPlayer(1, item.match_players)}
-                player3={this.getPlayer(2, item.match_players)}
-                player4={this.getPlayer(3, item.match_players)}
+                match_players={item.match_players}
                 key={index}
               />
             ))

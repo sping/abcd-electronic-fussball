@@ -17,9 +17,20 @@ class TimelineCard extends Component {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      homePlayers: this.props.match_players.filter((player) => player.homeTeam),
+      awayPlayers: this.props.match_players.filter((player) => !player.homeTeam)
+    }
+  }
+
+
+  getNameFromMatchPlayer (match_player) {
+    return match_player.player.user.firstName
   }
 
   render() {
+    console.log(this.state)
     return (
       <Card>
         <View style={styles.headerView}>
@@ -32,12 +43,11 @@ class TimelineCard extends Component {
         </View>
         <View style={styles.containerView}>
           <View style={styles.teamAView}>
-            <Text style={styles.playerText}>
-              {this.props.player1}
+           { this.state.homePlayers.map((player, index) => {
+            return <Text key={index} style={styles.playerText}>
+              {this.getNameFromMatchPlayer(player)}
             </Text>
-            <Text style={styles.playerText}>
-              {this.props.player2}
-            </Text>
+           })}
           </View>
           <View style={styles.scoreView}>
             <Text style={styles.scoreText}>
@@ -45,12 +55,11 @@ class TimelineCard extends Component {
             </Text>
           </View>
           <View style={styles.teamBView}>
-            <Text style={styles.playerText}>
-              {this.props.player3}
+           { this.state.awayPlayers.map((player, index) => {
+            return <Text key={index} style={styles.playerText}>
+              {this.getNameFromMatchPlayer(player)}
             </Text>
-            <Text style={styles.playerText}>
-              {this.props.player4}
-            </Text>
+           })}
           </View>
         </View>
       </Card>
