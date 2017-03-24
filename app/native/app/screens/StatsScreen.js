@@ -76,7 +76,6 @@ class StatsScreen extends Component {
   }
 
   fetchData() {
-    debugger
     var headers = new Headers();
     headers.append("Authorization", "Token token=" + Constants.API_TOKEN);
 
