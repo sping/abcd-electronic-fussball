@@ -260,7 +260,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"kind\": \"SINGLE\",\n\t\"playedAt\": {{$timestamp}},\n\t\"homeScore\": 1,\n\t\"awayScore\": 10,\n\t\"notes\": null,\n\t\"matchPlayers\": [\n\t\t{\n\t\t\t\"homeTeam\": true,\n\t\t\t\"playerId\": 1\n\t\t}\n\t]\n}"
+							"raw": "{\n\t\"kind\": \"SINGLE\",\n\t\"playedAt\": {{$timestamp}},\n\t\"homeScore\": 1,\n\t\"awayScore\": 10,\n\t\"notes\": null,\n\t\"match_players\": [\n\t\t{\n\t\t\t\"homeTeam\": true,\n\t\t\t\"playerId\": 1\n\t\t},\n\t\t{\n\t\t\t\"homeTeam\": false,\n\t\t\t\"playerId\": 2\n\t\t}\n\t]\n}"
 						},
 						"description": ""
 					},
@@ -292,31 +292,6 @@
 					"response": []
 				},
 				{
-					"name": "Update",
-					"request": {
-						"url": "http://localhost:5000/api/v1/matches/{{matchId}}",
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "Token token={{apiToken}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"homeScore\": 10,\n\t\"awayScore\": 5,\n\t\"notes\": \"It was fun!\"\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
 					"name": "Destroy",
 					"request": {
 						"url": "http://localhost:5000/api/v1/matches/{{matchId}}",
@@ -336,31 +311,6 @@
 						"body": {
 							"mode": "raw",
 							"raw": ""
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "SetMatchPlayers",
-					"request": {
-						"url": "http://localhost:5000/api/v1/matches/{{matchId}}/setMatchPlayers",
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "Token token={{apiToken}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "[\n\t{\n\t\t\"playerId\": 2,\n\t\t\"homeTeam\": true\n\t},\n\t{\n\t\t\"playerId\": 5,\n\t\t\"homeTeam\": false\n\t}\n]"
 						},
 						"description": ""
 					},

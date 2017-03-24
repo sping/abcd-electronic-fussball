@@ -26,10 +26,26 @@ MatchController.prototype.getMatches = async (ctx, next) => {
 }
 
 MatchController.prototype.createMatch = async (ctx, next) => {
+  var matchPlayerPlayerIds = ctx.request.body.match_players.map((match_player) => {
+    return match_player.playerId
+  })
+
+  var players = await Player.findAll({attributes: ['id']})
+  var playerIds = players.map((player) => {
+    return player.id
+  })
+
+  // Verify if all PlayerIds are matched
+  for (var matchPlayerPlayerId of matchPlayerPlayerIds) {
+    if (playerIds.indexOf(matchPlayerPlayerId) === -1) {
+      ctx.throw(422, 'PLAYER_ID_NOT_FOUND')
+    }
+  }
+
   match = await Match.create(matchParams(ctx.request.body))
 
   // create match players
-  for(var matchPlayer of ctx.request.body.matchPlayers) {
+  for(var matchPlayer of ctx.request.body.match_players) {
     if (!matchPlayer.playerId) {
       continue;
     }
@@ -41,33 +57,7 @@ MatchController.prototype.createMatch = async (ctx, next) => {
     })  
   }
 
-  match = await match.reload()
-  ctx.body = match.serialize(MatchSerializer)
-}
-
-MatchController.prototype.updateMatch = async (ctx, next) => {
-  match = await ctx.state.currentMatch.update(matchParams(ctx.request.body))
-  ctx.body = match.serialize(MatchSerializer)
-}
-
-MatchController.prototype.setMatchPlayers = async (ctx, next) => {
-  var matchPlayers = await ctx.state.currentMatch.match_players
-  await MatchPlayer.destroy({
-    where: {
-      matchId: ctx.state.currentMatch.id
-    },
-    individualHooks: true
-  })
-
-  for (matchPlayer of ctx.request.body) {
-    await MatchPlayer.create({
-      matchId: ctx.state.currentMatch.id,
-      playerId: matchPlayer.playerId,
-      homeTeam: matchPlayer.homeTeam
-    })
-  }
-  
-  match = await ctx.state.currentMatch.reload()
+  match = await match.reload({include: [MatchPlayer]})
   ctx.body = match.serialize(MatchSerializer)
 }
 

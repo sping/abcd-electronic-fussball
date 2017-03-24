@@ -29,20 +29,18 @@ MatchPlayer = database.define('match_players',
     }
   });
 
-MatchPlayer.afterUpdate(async (matchPlayer, options) => {
-  await StatHelper.updateStatsForMatchPlayer(matchPlayer)
+MatchPlayer.afterUpdate((matchPlayer, options) => {
+  StatHelper.updateStatsForMatchPlayer(matchPlayer)
   return matchPlayer
 });
 
-MatchPlayer.afterCreate(async (matchPlayer, options) => {
-  console.log('updateing')
-  await StatHelper.updateStatsForMatchPlayer(matchPlayer)
+MatchPlayer.afterCreate((matchPlayer, options) => {
+  StatHelper.updateStatsForMatchPlayer(matchPlayer)
   return matchPlayer
 });
 
-MatchPlayer.afterDestroy(async (matchPlayer, options) => {
-  console.log('destroy')
-  await StatHelper.updateStatsForMatchPlayer(matchPlayer)
+MatchPlayer.afterDestroy((matchPlayer, options) => {
+  StatHelper.updateStatsForMatchPlayer(matchPlayer)
   return matchPlayer
 });
 
