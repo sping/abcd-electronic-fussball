@@ -23,6 +23,9 @@ class StatsScreen extends Component {
     super(props);
     this.state = {
       playerStats: {},
+      pic: {
+        uri: "http://simpleicon.com/wp-content/uploads/football.png"
+      }
     };
   }
 
@@ -35,24 +38,24 @@ class StatsScreen extends Component {
           <ScrollView style={styles.container}>
             <View>
               <View style={styles.imageContainer}>
-                <Image source={this.state.pic} style={styles.theimage} />
+                  <Image source={this.state.pic} style={styles.theimage} />
               </View>
               <Card style={styles.contentview}>
                   <View style={styles.item}>
-                    <Text style={styles.text}>Position</Text>
+                    <Text style={styles.text}>Ranking</Text>
                     <Text style={styles.text}>{this.state.playerStats.ranking}</Text>
                   </View>
                   <View style={styles.item}>
                     <Text style={styles.text}>Win ratio</Text>
-                    <Text style={styles.text}>{this.state.playerStats.winRatio}</Text>
+                    <Text style={styles.text}>{this.state.playerStats.gameRatio}</Text>
                   </View>
                   <View style={styles.item}>
                     <Text style={styles.text}>Wins</Text>
-                    <Text style={styles.text}>{this.state.playerStats.wins}</Text>
+                    <Text style={styles.text}>{this.state.playerStats.gamesWon}</Text>
                   </View>
                   <View style={styles.item}>
                     <Text style={styles.text}>Fails</Text>
-                    <Text style={styles.text}>{this.state.playerStats.losses}</Text>
+                    <Text style={styles.text}>{this.state.playerStats.gamesLost}</Text>
                   </View>
                   <View style={styles.item}>
                     <Text style={styles.text}>Goals for</Text>
@@ -73,6 +76,7 @@ class StatsScreen extends Component {
   }
 
   fetchData() {
+    debugger
     var headers = new Headers();
     headers.append("Authorization", "Token token=" + Constants.API_TOKEN);
 
@@ -85,7 +89,7 @@ class StatsScreen extends Component {
         console.log(responseData);
         var player = new Player(responseData.user);
         this.setState({
-          playerStats: responseData,
+          playerStats: responseData.stat,
           player: player,
           pic: {
             uri: player.getPlayerImageUrl()
