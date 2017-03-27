@@ -42,24 +42,34 @@ class AddMatch extends Component {
       awayScore: this.refs.awayScore.value,
       playedAt: this.state.playedAt,
       kind: 'SINGLE',
-      matchPlayers: [
+      match_players: [
         {
           homeTeam: true,
           playerId: this.state.homePlayerOne
         },
         {
-          homeTeam: true,
-          playerId: this.state.homePlayerTwo
-        },
-        {
           homeTeam: false,
           playerId: this.state.awayPlayerOne
-        },
+        }
+      ]
+    }
+
+    if (this.state.homePlayerTwo) {
+      payload.match_players.push(
+        {
+          homeTeam: true,
+          playerId: this.state.homePlayerTwo
+        }
+      )
+    }
+
+    if (this.state.awayPlayerTwo) {
+      payload.match_players.push(
         {
           homeTeam: false,
           playerId: this.state.awayPlayerTwo
         }
-      ]
+      )
     }
 
     axios.post('/matches', payload).then((response) => {

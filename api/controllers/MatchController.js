@@ -26,6 +26,17 @@ MatchController.prototype.getMatches = async (ctx, next) => {
 }
 
 MatchController.prototype.createMatch = async (ctx, next) => {
+  // Check if match players present
+  if (ctx.request.body.match_players.length === 0) {
+    ctx.throw(422, 'MISSING_PLAYERS')
+  }
+
+  for (var matchPlayer of ctx.request.body.match_players) {
+    if (!matchPlayer) {
+      ctx.throw(422, 'PLAYER_UNDEFINED_OR_NULL')   
+    }
+  }
+
   // Validate home and away
   var homePlayers = ctx.request.body.match_players.filter((matchPlayer) => {
     return matchPlayer.homeTeam
@@ -41,6 +52,7 @@ MatchController.prototype.createMatch = async (ctx, next) => {
   var matchPlayerPlayerIds = ctx.request.body.match_players.map((match_player) => {
     return match_player.playerId
   })
+
   if (matchPlayerPlayerIds.length !== new Set(matchPlayerPlayerIds).size) {
     ctx.throw(422, 'PLAYER_ID_DUPLICATE')
   }
@@ -52,7 +64,7 @@ MatchController.prototype.createMatch = async (ctx, next) => {
   })
 
   for (var matchPlayerPlayerId of matchPlayerPlayerIds) {
-    if (playerIds.indexOf(matchPlayerPlayerId) === -1) {
+    if (playerIds.indexOf(parseInt(matchPlayerPlayerId)) === -1) {
       ctx.throw(422, 'PLAYER_ID_NOT_FOUND')
     }
   }
