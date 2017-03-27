@@ -9,6 +9,10 @@ const app     = module.exports = new koa();
 const koaBody = require('koa-bodyparser');
 const cors    = require('kcors');
 
+// Sentry error catching
+var Raven     = require('raven');
+Raven.config('https://bf1a6f52d1964a61887ea9a8fa251ffd:254c3bf7ff1142429cb97446a221369d@sentry.io/152215').install();
+
 const StatusRouter          = require('routes').StatusRouter;
 const AuthenticationRouter  = require('routes').AuthenticationRouter;
 const PlayerRouter          = require('routes').PlayerRouter;
@@ -19,6 +23,9 @@ app.use(async (ctx, next) => {
     await next();
     if (ctx.status === 404) ctx.throw(404)
   } catch (err) {
+    Raven.captureException(err, (err, eventId) => {
+      console.log('Reported error ' + eventId);
+    });
     ctx.body = { message: err.message };
     ctx.status = err.status || 500;
   }
