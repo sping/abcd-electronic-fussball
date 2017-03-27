@@ -24,8 +24,6 @@ if (isProduction) {
   environment = require('./prod.env.js');
 }
 
-console.log(environment)
-
 // Common plugins
 const plugins = [
   new webpack.DefinePlugin({

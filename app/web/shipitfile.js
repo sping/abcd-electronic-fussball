@@ -4,9 +4,9 @@ module.exports = function (shipit) {
   shipit.initConfig({
     default: {
       workspace: 'tmp',
-      dirToCopy: 'webapp/build',
-      deployTo: '/var/www/widm',
-      repositoryUrl: 'https://bingneef@bitbucket.org/snowflakeapps/widm.git',
+      dirToCopy: 'app/web/build',
+      deployTo: '/var/www/fussball-react',
+      repositoryUrl: 'git@github.com:sping/abcd-electronic-fussball.git',
       keepReleases: 10,
       deleteOnRollback: false,
       shallowClone: false
@@ -22,7 +22,7 @@ module.exports = function (shipit) {
   });
 
   shipit.blTask('build', function() {
-    return shipit.local('cd tmp/webapp && npm install && npm run build');
+    return shipit.local('cd tmp/app/web && npm install && npm run build');
   });
 
   shipit.on('fetched', function () {
