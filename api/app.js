@@ -23,10 +23,12 @@ app.use(async (ctx, next) => {
     await next();
     if (ctx.status === 404) ctx.throw(404)
   } catch (err) {
-    if ((err > 499 && err < 600) || (err.status > 499 && err.status < 600)) {
-      Raven.captureException(err, (err, eventId) => {
-        console.log('Reported error ' + eventId);
-      });
+    if (process.env.NODE_ENV === 'production') {
+      if ((err > 499 && err < 600) || (err.status > 499 && err.status < 600)) {
+        Raven.captureException(err, (err, eventId) => {
+          console.log('Reported error ' + eventId);
+        });
+      }
     }
     ctx.body = { message: err.message };
     ctx.status = err.status || 500;
@@ -50,4 +52,5 @@ if (!module.parent) {
   app.listen(port);
   console.log("Server running. Listening on port " + port + ".");
   console.log("Version: " + constants.version);
+  console.log("Environment: " + (process.env.NODE_ENV || 'dev'));
 }
