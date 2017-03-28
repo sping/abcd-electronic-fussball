@@ -23,7 +23,7 @@ class Routes extends React.Component {
   render() {
     if (!this.props.rehydrated) {
       return (
-        <div>Loading..</div>
+        <div></div>
       )
     }
 

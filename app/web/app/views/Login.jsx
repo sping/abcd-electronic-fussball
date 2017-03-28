@@ -13,6 +13,9 @@ class Login extends Component {
       isLoggingIn: false
     }
 
+    if (localStorage.getItem('apiToken')) {
+      browserHistory.push('/')
+    }
     this.login = this.login.bind(this)
     this.handleInputChange = this.handleInputChange.bind(this)
   }
