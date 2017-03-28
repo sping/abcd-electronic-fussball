@@ -39,7 +39,7 @@ class Leaderboard extends Component {
       );
     }
     return (
-      <div id="leaderboard" onClick={this.test}>
+      <div id="leaderboard" className="main-container" onClick={this.test}>
         {
           this.props.playerStats.map((stat, index) => {
             return <LeaderboardItem stat={stat} key={index} onClick={() => {this.openDetailStats(stat)}} />    

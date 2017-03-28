@@ -24,7 +24,7 @@ class Timeline extends Component {
 
   render() {
     return (
-      <div className="app-timeline">
+      <div className="app-timeline main-container">
         {
           this.props.matches.map((match) => {
             return <TimelineCard match={match} key={match.id} />

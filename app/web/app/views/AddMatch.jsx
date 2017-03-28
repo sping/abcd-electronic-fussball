@@ -102,7 +102,7 @@ class AddMatch extends Component {
     }
 
     return (
-      <div id="account" className="app-account">
+      <div id="account" className="app-account main-container">
         <form ref="form" onSubmit={this.submit} className="app-account-form">
           <input className="app-add-match-date-picker" name="playedAt" type="datetime-local" defaultValue={new Date().toISOString().substring(0, 16)} onChange={this.handleInputChange} />
 

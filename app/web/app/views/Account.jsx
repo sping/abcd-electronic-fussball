@@ -82,7 +82,7 @@ class Account extends Component {
     }
 
     return (
-      <div id="account" className="app-account">
+      <div id="account" className="app-account main-container">
         <div className="app-account-user-details">
           <div className="app-account-avatar">
             <img src={this.state.user.avatarUrl || constants.defaultAvatarUrl} />

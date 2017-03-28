@@ -42,7 +42,7 @@ class MyStats extends Component {
     }
 
     return (
-      <div className="app-my-stats">
+      <div className="app-my-stats main-container">
         <div className="app-my-stats-place-row">
           <h1>You are {this.textualNumber(this.props.stats.stat.ranking)}!</h1>
         </div>
