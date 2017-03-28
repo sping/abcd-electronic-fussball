@@ -36,11 +36,10 @@ class AddMatch extends Component {
     }
 
     this.setState({isSaving: true})
-
     var payload = {
       homeScore: this.refs.homeScore.value,
       awayScore: this.refs.awayScore.value,
-      playedAt: this.state.playedAt,
+      playedAt: this.refs.playedAt.value,
       kind: 'SINGLE',
       match_players: [
         {
@@ -104,22 +103,22 @@ class AddMatch extends Component {
     return (
       <div id="account" className="app-account main-container">
         <form ref="form" onSubmit={this.submit} className="app-account-form">
-          <input className="app-add-match-date-picker" name="playedAt" type="datetime-local" defaultValue={new Date().toISOString().substring(0, 16)} onChange={this.handleInputChange} />
+          <input className="app-add-match-date-picker" ref="playedAt" type="datetime-local" defaultValue={new Date().toISOString().substring(0, 16)} />
 
           <div className="app-add-match-select-players">
             <div className="app-add-match-select-players-col">
               <h6>Home</h6>
-              <input ref="homeScore" name="homeScore" type="number" min="0" min="10" defaultValue="0" onChange={this.handleInputChange} />
+              <input ref="homeScore" name="homeScore" type="number" min="0" min="10" defaultValue="0" />
               
-              <PlayerSelect name="homePlayerOne" handleInputChange={this.handleInputChange} players={this.state.availablePlayers} onChange={this.handleInputChange} />
+              <PlayerSelect name="homePlayerOne" handleInputChange={this.handleInputChange} players={this.state.availablePlayers} />
 
-              <PlayerSelect name="homePlayerTwo" handleInputChange={this.handleInputChange} players={this.state.availablePlayers} onChange={this.handleInputChange} />
+              <PlayerSelect name="homePlayerTwo" handleInputChange={this.handleInputChange} players={this.state.availablePlayers} />
 
             </div>
 
             <div className="app-add-match-select-players-col">
               <h6>Away</h6>
-              <input ref="awayScore" name="awayScore" type="number" min="0" min="10" defaultValue="0" onChange={this.handleInputChange} />
+              <input ref="awayScore" name="awayScore" type="number" min="0" min="10" defaultValue="0" />
               
               <PlayerSelect name="awayPlayerOne" handleInputChange={this.handleInputChange} players={this.state.availablePlayers} onChange={this.handleInputChange} />
 
