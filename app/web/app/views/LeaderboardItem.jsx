@@ -27,7 +27,7 @@ class LeaderboardItem extends Component {
           </span>
           <span>
             <strong>R: </strong>
-            { Math.ceil(this.props.stat.stat.gameRatio * 100) }%
+            { Math.round(this.props.stat.stat.gameRatio * 100) }%
           </span>
         </div>
       </div>
