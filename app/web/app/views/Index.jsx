@@ -13,10 +13,10 @@ class Index extends Component {
   render() {
     return (
       <div id="app">
+        <Tabbar />
         <div id="app-content">
           { this.props.children }            
         </div>
-        <Tabbar />
       </div>
     );
   }

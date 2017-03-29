@@ -22,31 +22,31 @@ class Tabbar extends Component {
         <Link to="/timeline" activeClassName="active">
           <img src={ this.tabIcon('time', false) } />
           <img className="active-icon" src={ this.tabIcon('time', true) } />
-          <span>Timeline</span>
+          { /*<span>Timeline</span> */}
         </Link>
 
         <Link to="/leaderboard" activeClassName="active">
           <img src={ this.tabIcon('leaderboard', false) } />
           <img className="active-icon" src={ this.tabIcon('leaderboard', true) } />
-          <span>Leaderboard</span>
+          { /*<span>Leaderboard</span> */}
         </Link>
 
         <Link to="/add-match" activeClassName="active">
           <img src={ this.tabIcon('addMatch', false) } />
           <img className="active-icon" src={ this.tabIcon('addMatch', true) } />
-          <span>Add match</span>
+          { /*<span>Add match</span> */}
         </Link>
 
         <Link to="/my-stats" activeClassName="active">
           <img src={ this.tabIcon('myStats', false) } />
           <img className="active-icon" src={ this.tabIcon('myStats', true) } />
-          <span>My Stats</span>
+          { /*<span>My Stats</span> */}
         </Link>
 
         <Link to="/account" activeClassName="active">
           <img src={ this.tabIcon('user', false) } />
           <img className="active-icon" src={ this.tabIcon('user', true) } />
-          <span>Account</span>
+          { /*<span>Account</span> */}
         </Link>
       </div>
     );
