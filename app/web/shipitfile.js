@@ -4,8 +4,8 @@ module.exports = function (shipit) {
   shipit.initConfig({
     default: {
       workspace: 'tmp',
-      deployTo: '/var/api/abcdef',
-      deployTo: '/var/www/fussball-react',
+      dirToCopy: 'app/web/build',
+      deployTo: '/var/www/abcdef-frontend',
       repositoryUrl: 'git@github.com:sping/abcd-electronic-fussball.git',
       keepReleases: 10,
       deleteOnRollback: false,
