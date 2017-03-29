@@ -1,5 +1,5 @@
 const environment = {
-  SERVER_HOST: "http://adleman.servers.sping.nl:5000"
+  SERVER_HOST: "http://api.fussball.sping.nl"
 }
 
 exports = module.exports = environment;

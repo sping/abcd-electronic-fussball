@@ -7,7 +7,7 @@ module.exports = function (shipit) {
   shipit.initConfig({
     default: {
       workspace: 'tmp',
-      deployTo: '/var/www/abcdef-api',
+      deployTo: '/var/api/abcdef',
       repositoryUrl: 'git@github.com:sping/abcd-electronic-fussball.git',
       ignores: ['.git', 'node_modules'],
       keepReleases: 10,
