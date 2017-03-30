@@ -11,7 +11,7 @@ class Logout extends Component {
   componentWillMount () {
     this.props.dispatch(currentUser(null));
     localStorage.clear();
-    browserHistory.push('/login')
+    browserHistory.push('login')
   }
 
   render() {

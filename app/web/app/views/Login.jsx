@@ -14,14 +14,14 @@ class Login extends Component {
     }
 
     if (localStorage.getItem('apiToken')) {
-      browserHistory.push('/')
+      browserHistory.push('')
     }
     this.login = this.login.bind(this)
     this.handleInputChange = this.handleInputChange.bind(this)
   }
 
   signup () {
-    browserHistory.push('/signup')
+    browserHistory.push('signup')
   }
 
   login () {
@@ -39,7 +39,7 @@ class Login extends Component {
       axios.defaults.headers.common['authorization'] = 'Token token=' + localStorage.getItem('apiToken');
 
       // Navigate away
-      browserHistory.push('/')
+      browserHistory.push('')
     }).catch((error) => {
       if (error.response) {
         switch (error.response.status) {

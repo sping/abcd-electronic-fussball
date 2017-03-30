@@ -21,7 +21,7 @@ class Account extends Component {
   }
 
   logout () {
-    browserHistory.push('/logout')
+    browserHistory.push('logout')
   }
 
   getUser () {

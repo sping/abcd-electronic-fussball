@@ -20,7 +20,7 @@ class Signup extends Component {
   }
 
   login () {
-    browserHistory.push('/login')
+    browserHistory.push('login')
   }
 
   signup () {
@@ -40,7 +40,7 @@ class Signup extends Component {
       axios.defaults.headers.common['authorization'] = 'Token token=' + localStorage.getItem('apiToken');
 
       // Navigate away
-      browserHistory.push('/')
+      browserHistory.push('')
     }).catch((error) => {
       console.log(error);
       this.setState({isSigninUp: false});

@@ -29,9 +29,9 @@ class Routes extends React.Component {
 
     return (
       <Router history={browserHistory}>
-        <Route path="/login" component={Login} />
-        <Route path="/logout" component={Logout} />
-        <Route path="/signup" component={Signup} />
+        <Route path="login" component={Login} />
+        <Route path="logout" component={Logout} />
+        <Route path="signup" component={Signup} />
 
         <Route path="/" component={Index}>
           <IndexRedirect to = "timeline"/>
