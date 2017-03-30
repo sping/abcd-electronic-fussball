@@ -94,8 +94,8 @@ class Account extends Component {
           <input name="lastName" type="text" placeholder="Last name" defaultValue={this.state.user.lastName} onChange={this.handleInputChange} />
           <input name="avatarUrl" type="text" placeholder="Avatar url" defaultValue={this.state.user.avatarUrl} onChange={this.handleInputChange} />
           <div className="app-account-form-button-bar">
-            <a className="button" onClick={this.save} href="#" disabled={this.state.isSaving || this.state.hasSaved}>{this.state.hasSaved ? 'Saved!' : 'Save'}</a>
-            <a className="button button-clear" onClick={this.logout} href="#">Logout</a>
+            <a className="button" onClick={this.save} disabled={this.state.isSaving || this.state.hasSaved}>{this.state.hasSaved ? 'Saved!' : 'Save'}</a>
+            <a className="button button-clear" onClick={this.logout}>Logout</a>
           </div>
         </div>
         

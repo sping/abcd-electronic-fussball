@@ -128,7 +128,7 @@ class AddMatch extends Component {
           </div>
           
           <div className="app-account-form-button-bar">
-            <a className="button" onClick={this.save} href="#" disabled={this.state.isSaving || this.state.hasSaved}>{this.state.hasSaved ? 'Saved!' : 'Save'}</a>
+            <a className="button" onClick={this.save} disabled={this.state.isSaving || this.state.hasSaved}>{this.state.hasSaved ? 'Saved!' : 'Save'}</a>
           </div>
         </form>
       </div>

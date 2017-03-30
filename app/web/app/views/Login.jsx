@@ -72,8 +72,8 @@ class Login extends Component {
         <input name="email" type="text" placeholder="email" value={this.state.email} onChange={this.handleInputChange} />
         <input name="password" type="password" placeholder="password" value={this.state.password} onChange={this.handleInputChange} />
         <div className="button-bar">
-          <a className="button" onClick={this.login} href="#" disabled={this.state.isLoggingIn}>Login</a>
-          <a className="button button-clear" onClick={this.signup} href="#">I need an account</a>
+          <a className="button" onClick={this.login} disabled={this.state.isLoggingIn}>Login</a>
+          <a className="button button-clear" onClick={this.signup}>I need an account</a>
         </div>
       </div>
     );
