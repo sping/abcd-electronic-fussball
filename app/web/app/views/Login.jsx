@@ -41,7 +41,17 @@ class Login extends Component {
       // Navigate away
       browserHistory.push('/')
     }).catch((error) => {
-      console.log(error);
+      if (error.response) {
+        switch (error.response.status) {
+          case 404:
+            alert('Credentials not found.');
+            break;
+          default:
+            alert('Something went wrong..')
+        }
+      } else {
+        alert(error)
+      }
       this.setState({isLoggingIn: false});
     })
   }

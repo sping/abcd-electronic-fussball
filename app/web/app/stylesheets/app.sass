@@ -10,19 +10,22 @@ html, body
 @import './views/index.sass'
 
 #app
-  height: 100vh
   overflow: hidden
   display: flex
   flex-direction: column
 
   #app-content
+    padding-top: $dimension-tabbar-height
     display: flex
     flex: 1
     overflow: scroll
 
+
     .main-container
       height: 100%
 
-
+.app-ios-space
+  height: $dimension-ios-tabbar-extra
+  
 input:-webkit-autofill
     -webkit-box-shadow: 0 0 0px 1000px white inset

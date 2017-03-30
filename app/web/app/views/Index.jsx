@@ -14,6 +14,9 @@ class Index extends Component {
     return (
       <div id="app">
         <Tabbar />
+        { window.navigator.standalone &&
+            <div className="app-ios-space"></div>
+        }
         <div id="app-content">
           { this.props.children }            
         </div>
