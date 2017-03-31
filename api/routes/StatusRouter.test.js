@@ -1,4 +1,4 @@
-const statusRouter = require('./statusRouter');
+const statusRouter = require('./StatusRouter');
 
 test('StatusRouter Is Exported', () => {
   expect(statusRouter).toBeDefined();
