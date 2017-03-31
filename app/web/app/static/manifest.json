@@ -3,8 +3,8 @@
   "short_name": "Fussball",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#00AEFF",
-  "theme_color": "#00AEFF",
+  "background_color": "#27668c",
+  "theme_color": "#27668c",
   "description": "Sping Fussball App",
   "orientation": "portrait",
   "icons": [
