@@ -3,5 +3,8 @@ node_modules/
 dist/
 npm-debug.log
 tmp/
-config/*.json
+
+config/env.json
+config/config.json
+
 coverage/
