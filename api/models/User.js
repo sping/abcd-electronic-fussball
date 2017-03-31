@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
-const database = require('databaseConnection');
+const database = require('../databaseConnection');
 const SequelizeTokenify = require('sequelize-tokenify');
-const env = require('config/env');
+const env = require('../config/env');
 const crypto = require('crypto');
 
 User = database.define('users',

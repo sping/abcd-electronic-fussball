@@ -1,6 +1,5 @@
-const
-  Sequelize = require('sequelize'),
-  database = require('databaseConnection')
+const Sequelize = require('sequelize')
+const database = require('../databaseConnection')
 
 const StatHelper = require('../helpers/StatHelper')
 

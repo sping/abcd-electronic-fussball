@@ -1,11 +1,7 @@
 const Router = require('koa-router');
+const StatusController = require('../controllers/StatusController');
 var StatusRouter = new Router();
 
-StatusRouter.get('/status', async (ctx, next) => {
-  ctx.body = {
-    alive: true
-  }
-  ctx.status = 200
-});
+StatusRouter.get('/status', StatusController.getStatus);
 
 module.exports = StatusRouter

@@ -1,8 +1,8 @@
-const User = require('models/User.js');
-const Match = require('models/Match.js');
-const Player = require('models/Player.js');
-const MatchPlayer = require('models/MatchPlayer.js');
-const Stat = require('models/Stat.js');
+const User = require('./User.js');
+const Match = require('./Match.js');
+const Player = require('./Player.js');
+const MatchPlayer = require('./MatchPlayer.js');
+const Stat = require('./Stat.js');
 
 Player.belongsTo(User);
 User.hasOne(Player, {onDelete: 'cascade', hooks: true});
