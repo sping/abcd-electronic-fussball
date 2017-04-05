@@ -21,7 +21,6 @@ import {
 } from '../actions/userActions';
 
 import { connect } from 'react-redux'
-import { Actions } from 'react-native-router-flux';
 import constants from '../config/constants';
 import colors from '../config/colors';
 import PopupDialog, {
@@ -71,7 +70,7 @@ class LoginScreen extends Component {
 
           constants.API_TOKEN = responseData.apiToken;
 
-          Actions.tabbar();
+          // Navigate to next screen (StackNavigator?)
         }
       })
       .done();

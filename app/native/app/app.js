@@ -9,11 +9,9 @@ import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 
 import styles from './styles';
-import Counter from './screens/Counter';
 import configureStore from './configureStore';
 
 import LoginScreen from './screens/LoginScreen';
-import Router from './router';
 
 class CounterApp extends Component {
 
@@ -38,7 +36,7 @@ class CounterApp extends Component {
 
         return (
             <Provider store={this.state.store}>
-                <Router />
+              <LoginScreen />
             </Provider>
         );
     }
