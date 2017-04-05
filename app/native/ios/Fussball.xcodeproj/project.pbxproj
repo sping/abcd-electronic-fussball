@@ -12,7 +12,9 @@
 		00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302C01ABCB91800DB3ED1 /* libRCTImage.a */; };
 		00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */; };
 		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
-		00E356F31AD99517003FC87E /* MeetupReactNativeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* MeetupReactNativeTests.m */; };
+		00E356F31AD99517003FC87E /* FussballTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* FussballTests.m */; };
+		016A65604DCA4FFCA0727A83 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B080940845A94C28AB64DBD6 /* SimpleLineIcons.ttf */; };
+		050AA24A89F44B008479FA53 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA69120D2A4A4D368E3A9284 /* Ionicons.ttf */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
 		139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
@@ -22,7 +24,7 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
-		1D417B6FA0454969BC7A367B /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09CF92D6C27548D2BE599E2A /* Foundation.ttf */; };
+		2874B7BAEFEE47D49876EA2C /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F017761BE7144DE8C2E749D /* MaterialCommunityIcons.ttf */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -34,20 +36,19 @@
 		2D02E4C71E0B4AEC006451C7 /* libRCTText-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3E941DF850E9000B6D8A /* libRCTText-tvOS.a */; };
 		2D02E4C81E0B4AEC006451C7 /* libRCTWebSocket-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3E991DF850E9000B6D8A /* libRCTWebSocket-tvOS.a */; };
 		2D02E4C91E0B4AEC006451C7 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
-		2DCD954D1E0B4F2C00145EB5 /* MeetupReactNativeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* MeetupReactNativeTests.m */; };
-		32A061106D8D4985BE899471 /* libRNImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 44080C5AED4F47E9B95E3FE2 /* libRNImagePicker.a */; };
-		52B5A507D35D4343AB37B741 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7276B744F65D4805BE806A38 /* MaterialCommunityIcons.ttf */; };
-		52DB54058EE04166AABACB10 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 86FD3D278F444DB7A6AA2918 /* libRNVectorIcons.a */; };
-		5B9642A8A7BB4BDBAC0467D9 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6966FAB9349C4D70A0E5C34F /* Octicons.ttf */; };
+		2DCD954D1E0B4F2C00145EB5 /* FussballTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* FussballTests.m */; };
+		5503923714C5493B947C1A5E /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA79D21707694FCCA2FBBDD9 /* FontAwesome.ttf */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
+		6564CF82EF594988BD106C13 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C4F4166F2024FE4A82D9F40 /* Octicons.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
-		85002A293BE24C55A34CA156 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB691A8F74CD4E4BAF29539A /* Ionicons.ttf */; };
-		866D6AFA96B0400E8AB985B1 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EF9DF7CB4D034EB2987413A0 /* MaterialIcons.ttf */; };
-		C2E8DAD8F6FE46F2A1C8ACF9 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 176B7A32F2E14264AB991D10 /* Entypo.ttf */; };
-		CA6DE4B2A2C94EE884A0A710 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D35DF6A7BB4945358DBEF72E /* FontAwesome.ttf */; };
-		D1B0DEE133C6487899F89A62 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 70D7BA096FEC4DDA914EE794 /* SimpleLineIcons.ttf */; };
-		D4524C17AB9E40A2A86FE2F2 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F1D265DDE574CA7A26BEB38 /* Zocial.ttf */; };
-		E91C22E51FFB426AA3EB9850 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A96662B8D7BD4915806ADA43 /* EvilIcons.ttf */; };
+		95D5A1BC014247798F563251 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 552389AA39BA42818A307F1B /* Zocial.ttf */; };
+		9835E0EB10654AE9BA28526C /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DAAE4729B724B548CEEEFAB /* libRNVectorIcons.a */; };
+		A1ED5B94216D4AA387E58F38 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDA2768B2F8849A3B2D49207 /* MaterialIcons.ttf */; };
+		ACE1FE9381C5460EA96469AF /* libRNImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 25413FAB41FE4E5095911B1C /* libRNImagePicker.a */; };
+		B2EEDD767789484DA000E6E6 /* libLottieReactNative.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FC7B89A247240139FC830C6 /* libLottieReactNative.a */; };
+		BCA85E54590F4783B64DECE1 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 64AF279D63A8450A8B1DFB7A /* Entypo.ttf */; };
+		D4AAF6884CEA492E96361221 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0211D34E22F64A5CB8E9DDC0 /* Foundation.ttf */; };
+		D8504EAE3E38421BA6A237D9 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 650234B00E6B443DB763AF91 /* EvilIcons.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,21 +92,7 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = MeetupReactNative;
-		};
-		113DC98E1E8305C7005F7E34 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C11BECDD752F4DD8B2919425 /* RNVectorIcons.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 5DBEB1501B18CEA900B34395;
-			remoteInfo = RNVectorIcons;
-		};
-		11F815281E8310390019B603 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EB530FF3622349C584A38925 /* RNImagePicker.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 014A3B5C1C6CF33500B6D375;
-			remoteInfo = RNImagePicker;
+			remoteInfo = Fussball;
 		};
 		139105C01AF99BAD00B5F7CC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -133,7 +120,28 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
-			remoteInfo = "MeetupReactNative-tvOS";
+			remoteInfo = "Fussball-tvOS";
+		};
+		327247541E94E4FF000293BA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5E7B529F6A714043A714E7A4 /* LottieReactNative.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 11FA5C511C4A1296003AC2EE;
+			remoteInfo = LottieReactNative;
+		};
+		327247701E94E4FF000293BA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2430524CC6834AB8A869D360 /* RNImagePicker.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 014A3B5C1C6CF33500B6D375;
+			remoteInfo = RNImagePicker;
+		};
+		327247731E94E4FF000293BA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7D5D6B0AAD174CB9BF437EF0 /* RNVectorIcons.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5DBEB1501B18CEA900B34395;
+			remoteInfo = RNVectorIcons;
 		};
 		3DAD3E831DF850E9000B6D8A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -263,38 +271,40 @@
 		00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTImage.xcodeproj; path = "../node_modules/react-native/Libraries/Image/RCTImage.xcodeproj"; sourceTree = "<group>"; };
 		00C302D31ABCB9D200DB3ED1 /* RCTNetwork.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTNetwork.xcodeproj; path = "../node_modules/react-native/Libraries/Network/RCTNetwork.xcodeproj"; sourceTree = "<group>"; };
 		00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTVibration.xcodeproj; path = "../node_modules/react-native/Libraries/Vibration/RCTVibration.xcodeproj"; sourceTree = "<group>"; };
-		00E356EE1AD99517003FC87E /* MeetupReactNativeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeetupReactNativeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* FussballTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FussballTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* MeetupReactNativeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeetupReactNativeTests.m; sourceTree = "<group>"; };
-		09CF92D6C27548D2BE599E2A /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* FussballTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FussballTests.m; sourceTree = "<group>"; };
+		0211D34E22F64A5CB8E9DDC0 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
+		0C4F4166F2024FE4A82D9F40 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* MeetupReactNative.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetupReactNative.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = MeetupReactNative/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = MeetupReactNative/AppDelegate.m; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* Fussball.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fussball.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Fussball/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Fussball/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = MeetupReactNative/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = MeetupReactNative/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = MeetupReactNative/main.m; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Fussball/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Fussball/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Fussball/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
-		176B7A32F2E14264AB991D10 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
-		2D02E47B1E0B4A5D006451C7 /* MeetupReactNative-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MeetupReactNative-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D02E4901E0B4A5D006451C7 /* MeetupReactNative-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MeetupReactNative-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		44080C5AED4F47E9B95E3FE2 /* libRNImagePicker.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNImagePicker.a; sourceTree = "<group>"; };
-		4F1D265DDE574CA7A26BEB38 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
+		2430524CC6834AB8A869D360 /* RNImagePicker.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNImagePicker.xcodeproj; path = "../node_modules/react-native-image-picker/ios/RNImagePicker.xcodeproj"; sourceTree = "<group>"; };
+		25413FAB41FE4E5095911B1C /* libRNImagePicker.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNImagePicker.a; sourceTree = "<group>"; };
+		2D02E47B1E0B4A5D006451C7 /* Fussball-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fussball-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D02E4901E0B4A5D006451C7 /* Fussball-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Fussball-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		552389AA39BA42818A307F1B /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
+		5E7B529F6A714043A714E7A4 /* LottieReactNative.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = LottieReactNative.xcodeproj; path = "../node_modules/lottie-react-native/lib/ios/LottieReactNative.xcodeproj"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
-		6966FAB9349C4D70A0E5C34F /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
-		70D7BA096FEC4DDA914EE794 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
-		7276B744F65D4805BE806A38 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
+		64AF279D63A8450A8B1DFB7A /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
+		650234B00E6B443DB763AF91 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
+		6FC7B89A247240139FC830C6 /* libLottieReactNative.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libLottieReactNative.a; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
+		7D5D6B0AAD174CB9BF437EF0 /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
+		7DAAE4729B724B548CEEEFAB /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
-		86FD3D278F444DB7A6AA2918 /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
-		A96662B8D7BD4915806ADA43 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
-		BB691A8F74CD4E4BAF29539A /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
-		C11BECDD752F4DD8B2919425 /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
-		D35DF6A7BB4945358DBEF72E /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
-		EB530FF3622349C584A38925 /* RNImagePicker.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNImagePicker.xcodeproj; path = "../node_modules/react-native-image-picker/ios/RNImagePicker.xcodeproj"; sourceTree = "<group>"; };
-		EF9DF7CB4D034EB2987413A0 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
+		8F017761BE7144DE8C2E749D /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
+		B080940845A94C28AB64DBD6 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
+		DDA2768B2F8849A3B2D49207 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
+		FA69120D2A4A4D368E3A9284 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
+		FA79D21707694FCCA2FBBDD9 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -321,8 +331,9 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
-				52DB54058EE04166AABACB10 /* libRNVectorIcons.a in Frameworks */,
-				32A061106D8D4985BE899471 /* libRNImagePicker.a in Frameworks */,
+				B2EEDD767789484DA000E6E6 /* libLottieReactNative.a in Frameworks */,
+				ACE1FE9381C5460EA96469AF /* libRNImagePicker.a in Frameworks */,
+				9835E0EB10654AE9BA28526C /* libRNVectorIcons.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,13 +404,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		00E356EF1AD99517003FC87E /* MeetupReactNativeTests */ = {
+		00E356EF1AD99517003FC87E /* FussballTests */ = {
 			isa = PBXGroup;
 			children = (
-				00E356F21AD99517003FC87E /* MeetupReactNativeTests.m */,
+				00E356F21AD99517003FC87E /* FussballTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = MeetupReactNativeTests;
+			path = FussballTests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -408,22 +419,6 @@
 				00E356F11AD99517003FC87E /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		113DC9641E8305C7005F7E34 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				113DC98F1E8305C7005F7E34 /* libRNVectorIcons.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		11F8150C1E8310380019B603 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				11F815291E8310390019B603 /* libRNImagePicker.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		139105B71AF99BAD00B5F7CC /* Products */ = {
@@ -444,7 +439,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* MeetupReactNative */ = {
+		13B07FAE1A68108700A75B9A /* Fussball */ = {
 			isa = PBXGroup;
 			children = (
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
@@ -455,7 +450,7 @@
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
-			name = MeetupReactNative;
+			name = Fussball;
 			sourceTree = "<group>";
 		};
 		146834001AC3E56700842450 /* Products */ = {
@@ -473,19 +468,43 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2B4582665C52437FA272DA86 /* Resources */ = {
+		3272474D1E94E4FE000293BA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				176B7A32F2E14264AB991D10 /* Entypo.ttf */,
-				A96662B8D7BD4915806ADA43 /* EvilIcons.ttf */,
-				D35DF6A7BB4945358DBEF72E /* FontAwesome.ttf */,
-				09CF92D6C27548D2BE599E2A /* Foundation.ttf */,
-				BB691A8F74CD4E4BAF29539A /* Ionicons.ttf */,
-				7276B744F65D4805BE806A38 /* MaterialCommunityIcons.ttf */,
-				EF9DF7CB4D034EB2987413A0 /* MaterialIcons.ttf */,
-				6966FAB9349C4D70A0E5C34F /* Octicons.ttf */,
-				70D7BA096FEC4DDA914EE794 /* SimpleLineIcons.ttf */,
-				4F1D265DDE574CA7A26BEB38 /* Zocial.ttf */,
+				327247741E94E4FF000293BA /* libRNVectorIcons.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3272474F1E94E4FE000293BA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				327247711E94E4FF000293BA /* libRNImagePicker.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		327247511E94E4FE000293BA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				327247551E94E4FF000293BA /* libLottieReactNative.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5E53DCF04FA74C9382BD8A03 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				64AF279D63A8450A8B1DFB7A /* Entypo.ttf */,
+				650234B00E6B443DB763AF91 /* EvilIcons.ttf */,
+				FA79D21707694FCCA2FBBDD9 /* FontAwesome.ttf */,
+				0211D34E22F64A5CB8E9DDC0 /* Foundation.ttf */,
+				FA69120D2A4A4D368E3A9284 /* Ionicons.ttf */,
+				8F017761BE7144DE8C2E749D /* MaterialCommunityIcons.ttf */,
+				DDA2768B2F8849A3B2D49207 /* MaterialIcons.ttf */,
+				0C4F4166F2024FE4A82D9F40 /* Octicons.ttf */,
+				B080940845A94C28AB64DBD6 /* SimpleLineIcons.ttf */,
+				552389AA39BA42818A307F1B /* Zocial.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -522,8 +541,9 @@
 				832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */,
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
-				C11BECDD752F4DD8B2919425 /* RNVectorIcons.xcodeproj */,
-				EB530FF3622349C584A38925 /* RNImagePicker.xcodeproj */,
+				5E7B529F6A714043A714E7A4 /* LottieReactNative.xcodeproj */,
+				2430524CC6834AB8A869D360 /* RNImagePicker.xcodeproj */,
+				7D5D6B0AAD174CB9BF437EF0 /* RNVectorIcons.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -540,11 +560,11 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				13B07FAE1A68108700A75B9A /* MeetupReactNative */,
+				13B07FAE1A68108700A75B9A /* Fussball */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* MeetupReactNativeTests */,
+				00E356EF1AD99517003FC87E /* FussballTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
-				2B4582665C52437FA272DA86 /* Resources */,
+				5E53DCF04FA74C9382BD8A03 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -553,10 +573,10 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* MeetupReactNative.app */,
-				00E356EE1AD99517003FC87E /* MeetupReactNativeTests.xctest */,
-				2D02E47B1E0B4A5D006451C7 /* MeetupReactNative-tvOS.app */,
-				2D02E4901E0B4A5D006451C7 /* MeetupReactNative-tvOSTests.xctest */,
+				13B07F961A680F5B00A75B9A /* Fussball.app */,
+				00E356EE1AD99517003FC87E /* FussballTests.xctest */,
+				2D02E47B1E0B4A5D006451C7 /* Fussball-tvOS.app */,
+				2D02E4901E0B4A5D006451C7 /* Fussball-tvOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -564,9 +584,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* MeetupReactNativeTests */ = {
+		00E356ED1AD99517003FC87E /* FussballTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "MeetupReactNativeTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "FussballTests" */;
 			buildPhases = (
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
@@ -577,14 +597,14 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = MeetupReactNativeTests;
-			productName = MeetupReactNativeTests;
-			productReference = 00E356EE1AD99517003FC87E /* MeetupReactNativeTests.xctest */;
+			name = FussballTests;
+			productName = FussballTests;
+			productReference = 00E356EE1AD99517003FC87E /* FussballTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* MeetupReactNative */ = {
+		13B07F861A680F5B00A75B9A /* Fussball */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "MeetupReactNative" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Fussball" */;
 			buildPhases = (
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
@@ -595,14 +615,14 @@
 			);
 			dependencies = (
 			);
-			name = MeetupReactNative;
+			name = Fussball;
 			productName = "Hello World";
-			productReference = 13B07F961A680F5B00A75B9A /* MeetupReactNative.app */;
+			productReference = 13B07F961A680F5B00A75B9A /* Fussball.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E47A1E0B4A5D006451C7 /* MeetupReactNative-tvOS */ = {
+		2D02E47A1E0B4A5D006451C7 /* Fussball-tvOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "MeetupReactNative-tvOS" */;
+			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Fussball-tvOS" */;
 			buildPhases = (
 				2D02E4771E0B4A5D006451C7 /* Sources */,
 				2D02E4781E0B4A5D006451C7 /* Frameworks */,
@@ -613,14 +633,14 @@
 			);
 			dependencies = (
 			);
-			name = "MeetupReactNative-tvOS";
-			productName = "MeetupReactNative-tvOS";
-			productReference = 2D02E47B1E0B4A5D006451C7 /* MeetupReactNative-tvOS.app */;
+			name = "Fussball-tvOS";
+			productName = "Fussball-tvOS";
+			productReference = 2D02E47B1E0B4A5D006451C7 /* Fussball-tvOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E48F1E0B4A5D006451C7 /* MeetupReactNative-tvOSTests */ = {
+		2D02E48F1E0B4A5D006451C7 /* Fussball-tvOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "MeetupReactNative-tvOSTests" */;
+			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Fussball-tvOSTests" */;
 			buildPhases = (
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
 				2D02E48D1E0B4A5D006451C7 /* Frameworks */,
@@ -631,9 +651,9 @@
 			dependencies = (
 				2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */,
 			);
-			name = "MeetupReactNative-tvOSTests";
-			productName = "MeetupReactNative-tvOSTests";
-			productReference = 2D02E4901E0B4A5D006451C7 /* MeetupReactNative-tvOSTests.xctest */;
+			name = "Fussball-tvOSTests";
+			productName = "Fussball-tvOSTests";
+			productReference = 2D02E4901E0B4A5D006451C7 /* Fussball-tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -649,9 +669,6 @@
 						CreatedOnToolsVersion = 6.2;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
-					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = 89HWRF7Q5X;
-					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
 						ProvisioningStyle = Automatic;
@@ -663,7 +680,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "MeetupReactNative" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Fussball" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -675,6 +692,10 @@
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
+				{
+					ProductGroup = 327247511E94E4FE000293BA /* Products */;
+					ProjectRef = 5E7B529F6A714043A714E7A4 /* LottieReactNative.xcodeproj */;
+				},
 				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
 					ProjectRef = 00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */;
@@ -720,20 +741,20 @@
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
 				{
-					ProductGroup = 11F8150C1E8310380019B603 /* Products */;
-					ProjectRef = EB530FF3622349C584A38925 /* RNImagePicker.xcodeproj */;
+					ProductGroup = 3272474F1E94E4FE000293BA /* Products */;
+					ProjectRef = 2430524CC6834AB8A869D360 /* RNImagePicker.xcodeproj */;
 				},
 				{
-					ProductGroup = 113DC9641E8305C7005F7E34 /* Products */;
-					ProjectRef = C11BECDD752F4DD8B2919425 /* RNVectorIcons.xcodeproj */;
+					ProductGroup = 3272474D1E94E4FE000293BA /* Products */;
+					ProjectRef = 7D5D6B0AAD174CB9BF437EF0 /* RNVectorIcons.xcodeproj */;
 				},
 			);
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* MeetupReactNative */,
-				00E356ED1AD99517003FC87E /* MeetupReactNativeTests */,
-				2D02E47A1E0B4A5D006451C7 /* MeetupReactNative-tvOS */,
-				2D02E48F1E0B4A5D006451C7 /* MeetupReactNative-tvOSTests */,
+				13B07F861A680F5B00A75B9A /* Fussball */,
+				00E356ED1AD99517003FC87E /* FussballTests */,
+				2D02E47A1E0B4A5D006451C7 /* Fussball-tvOS */,
+				2D02E48F1E0B4A5D006451C7 /* Fussball-tvOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -774,20 +795,6 @@
 			remoteRef = 00C302E31ABCB9EE00DB3ED1 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		113DC98F1E8305C7005F7E34 /* libRNVectorIcons.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNVectorIcons.a;
-			remoteRef = 113DC98E1E8305C7005F7E34 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		11F815291E8310390019B603 /* libRNImagePicker.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNImagePicker.a;
-			remoteRef = 11F815281E8310390019B603 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		139105C11AF99BAD00B5F7CC /* libRCTSettings.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -807,6 +814,27 @@
 			fileType = archive.ar;
 			path = libReact.a;
 			remoteRef = 146834031AC3E56700842450 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		327247551E94E4FF000293BA /* libLottieReactNative.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libLottieReactNative.a;
+			remoteRef = 327247541E94E4FF000293BA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		327247711E94E4FF000293BA /* libRNImagePicker.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNImagePicker.a;
+			remoteRef = 327247701E94E4FF000293BA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		327247741E94E4FF000293BA /* libRNVectorIcons.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNVectorIcons.a;
+			remoteRef = 327247731E94E4FF000293BA /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		3DAD3E841DF850E9000B6D8A /* libRCTImage-tvOS.a */ = {
@@ -944,16 +972,16 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
-				C2E8DAD8F6FE46F2A1C8ACF9 /* Entypo.ttf in Resources */,
-				E91C22E51FFB426AA3EB9850 /* EvilIcons.ttf in Resources */,
-				CA6DE4B2A2C94EE884A0A710 /* FontAwesome.ttf in Resources */,
-				1D417B6FA0454969BC7A367B /* Foundation.ttf in Resources */,
-				85002A293BE24C55A34CA156 /* Ionicons.ttf in Resources */,
-				52B5A507D35D4343AB37B741 /* MaterialCommunityIcons.ttf in Resources */,
-				866D6AFA96B0400E8AB985B1 /* MaterialIcons.ttf in Resources */,
-				5B9642A8A7BB4BDBAC0467D9 /* Octicons.ttf in Resources */,
-				D1B0DEE133C6487899F89A62 /* SimpleLineIcons.ttf in Resources */,
-				D4524C17AB9E40A2A86FE2F2 /* Zocial.ttf in Resources */,
+				BCA85E54590F4783B64DECE1 /* Entypo.ttf in Resources */,
+				D8504EAE3E38421BA6A237D9 /* EvilIcons.ttf in Resources */,
+				5503923714C5493B947C1A5E /* FontAwesome.ttf in Resources */,
+				D4AAF6884CEA492E96361221 /* Foundation.ttf in Resources */,
+				050AA24A89F44B008479FA53 /* Ionicons.ttf in Resources */,
+				2874B7BAEFEE47D49876EA2C /* MaterialCommunityIcons.ttf in Resources */,
+				A1ED5B94216D4AA387E58F38 /* MaterialIcons.ttf in Resources */,
+				6564CF82EF594988BD106C13 /* Octicons.ttf in Resources */,
+				016A65604DCA4FFCA0727A83 /* SimpleLineIcons.ttf in Resources */,
+				95D5A1BC014247798F563251 /* Zocial.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1010,7 +1038,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E356F31AD99517003FC87E /* MeetupReactNativeTests.m in Sources */,
+				00E356F31AD99517003FC87E /* FussballTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1036,7 +1064,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DCD954D1E0B4F2C00145EB5 /* MeetupReactNativeTests.m in Sources */,
+				2DCD954D1E0B4F2C00145EB5 /* FussballTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1045,12 +1073,12 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* MeetupReactNative */;
+			target = 13B07F861A680F5B00A75B9A /* Fussball */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 		2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2D02E47A1E0B4A5D006451C7 /* MeetupReactNative-tvOS */;
+			target = 2D02E47A1E0B4A5D006451C7 /* Fussball-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1062,7 +1090,7 @@
 				13B07FB21A68108700A75B9A /* Base */,
 			);
 			name = LaunchScreen.xib;
-			path = MeetupReactNative;
+			path = Fussball;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1078,14 +1106,17 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/lottie-react-native/lib/ios/LottieReactNative",
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
+					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 				);
-				INFOPLIST_FILE = MeetupReactNativeTests/Info.plist;
+				INFOPLIST_FILE = FussballTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1093,7 +1124,7 @@
 					"-lc++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MeetupReactNative.app/MeetupReactNative";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fussball.app/Fussball";
 			};
 			name = Debug;
 		};
@@ -1104,14 +1135,17 @@
 				COPY_PHASE_STRIP = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/lottie-react-native/lib/ios/LottieReactNative",
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
+					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 				);
-				INFOPLIST_FILE = MeetupReactNativeTests/Info.plist;
+				INFOPLIST_FILE = FussballTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1119,7 +1153,7 @@
 					"-lc++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MeetupReactNative.app/MeetupReactNative";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fussball.app/Fussball";
 			};
 			name = Release;
 		};
@@ -1129,20 +1163,20 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = 89HWRF7Q5X;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/lottie-react-native/lib/ios/LottieReactNative",
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
+					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 				);
-				INFOPLIST_FILE = MeetupReactNative/Info.plist;
+				INFOPLIST_FILE = Fussball/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_NAME = MeetupReactNative;
+				PRODUCT_NAME = Fussball;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1152,20 +1186,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 89HWRF7Q5X;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/lottie-react-native/lib/ios/LottieReactNative",
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
+					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 				);
-				INFOPLIST_FILE = MeetupReactNative/Info.plist;
+				INFOPLIST_FILE = Fussball/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_NAME = MeetupReactNative;
+				PRODUCT_NAME = Fussball;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -1184,20 +1218,23 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/lottie-react-native/lib/ios/LottieReactNative",
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
+					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 				);
-				INFOPLIST_FILE = "MeetupReactNative-tvOS/Info.plist";
+				INFOPLIST_FILE = "Fussball-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.MeetupReactNative-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.Fussball-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -1219,20 +1256,23 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/lottie-react-native/lib/ios/LottieReactNative",
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
+					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 				);
-				INFOPLIST_FILE = "MeetupReactNative-tvOS/Info.plist";
+				INFOPLIST_FILE = "Fussball-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.MeetupReactNative-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.Fussball-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -1251,16 +1291,18 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "MeetupReactNative-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "Fussball-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.MeetupReactNative-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.Fussball-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MeetupReactNative-tvOS.app/MeetupReactNative-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fussball-tvOS.app/Fussball-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Debug;
@@ -1276,16 +1318,18 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "MeetupReactNative-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "Fussball-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.MeetupReactNative-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.Fussball-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MeetupReactNative-tvOS.app/MeetupReactNative-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fussball-tvOS.app/Fussball-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Release;
@@ -1369,7 +1413,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "MeetupReactNativeTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "FussballTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -1378,7 +1422,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "MeetupReactNative" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Fussball" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -1387,7 +1431,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "MeetupReactNative-tvOS" */ = {
+		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Fussball-tvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4971E0B4A5E006451C7 /* Debug */,
@@ -1396,7 +1440,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "MeetupReactNative-tvOSTests" */ = {
+		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Fussball-tvOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4991E0B4A5E006451C7 /* Debug */,
@@ -1405,7 +1449,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "MeetupReactNative" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Fussball" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,

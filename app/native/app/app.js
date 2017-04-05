@@ -1,9 +1,10 @@
 
-import React, { Component } from 'react';
+import React, { Component,
+} from 'react';
+
 import {
-  Text,
+  AppRegistry,
   View,
-  MapView,
 } from 'react-native'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
@@ -12,8 +13,9 @@ import styles from './styles';
 import configureStore from './configureStore';
 
 import LoginScreen from './screens/LoginScreen';
+import TabbarComponent from './components/TabbarComponent';
 
-class CounterApp extends Component {
+class Fussball extends Component {
 
     constructor() {
         super();
@@ -36,10 +38,10 @@ class CounterApp extends Component {
 
         return (
             <Provider store={this.state.store}>
-              <LoginScreen />
+              <TabbarComponent />
             </Provider>
         );
     }
 }
 
-export default CounterApp;
+AppRegistry.registerComponent('Fussball', () => Fussball);
