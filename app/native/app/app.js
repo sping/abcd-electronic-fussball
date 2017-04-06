@@ -38,7 +38,7 @@ class Fussball extends Component {
 
         return (
             <Provider store={this.state.store}>
-              <TabbarComponent />
+              <LoginScreen />
             </Provider>
         );
     }

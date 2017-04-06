@@ -5,7 +5,6 @@ import { tabBarReducer } from '../navigation/NavigationConfiguration';
 
 export default function createReducers(reducers) {
   return combineReducers({
-    user,
-    tabBar: tabBarReducer,
+    user,tabBarReducer,
   });
 }
