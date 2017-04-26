@@ -48,6 +48,8 @@ AuthenticationController.prototype.login = async (ctx, next) => {
 }
 
 AuthenticationController.prototype.calculateStatsForUser = async (ctx, next) => {
+  const statKind = ctx.query.period || 'overall'
+
   player = await ctx.state.currentUser.getPlayer({
     include: [{
       model: MatchPlayer,
@@ -56,43 +58,54 @@ AuthenticationController.prototype.calculateStatsForUser = async (ctx, next) => 
     {
       model: User
     },
-    Stat]
+    {
+      model: Stat,
+      where: {
+        kind: statKind
+      },
+      limit: 1
+    }]
   })
   
   var ranking = await Stat.count({
-    where: Sequelize.or(
+    where: Sequelize.and(
       {
-        gameRatio: {
-          $gt: player.stat.gameRatio 
-        }
+        kind: statKind
       },
-      Sequelize.and(
+      Sequelize.or(
         {
-          gameRatio: player.stat.gameRatio
-        }, {
-          gamesWon: {
-            $gt: player.stat.gamesWon   
+          gameRatio: {
+            $gt: player.stats[0].gameRatio 
           }
-        }
-      ),
-      Sequelize.and(
-        {
-          gameRatio: player.stat.gameRatio
-        }, 
-        {
-          gamesWon: player.stat.gamesWon
-        }, 
-        {
-          goalsDiff: {
-            $gt: player.stat.goalsDiff   
+        },
+        Sequelize.and(
+          {
+            gameRatio: player.stats[0].gameRatio
+          }, {
+            gamesWon: {
+              $gt: player.stats[0].gamesWon   
+            }
           }
-        }
+        ),
+        Sequelize.and(
+          {
+            gameRatio: player.stats[0].gameRatio
+          }, 
+          {
+            gamesWon: player.stats[0].gamesWon
+          }, 
+          {
+            goalsDiff: {
+              $gt: player.stats[0].goalsDiff   
+            }
+          }
+        )
       )
     )
   })
 
   serialisedPlayer = player.serialize(PlayerStatSerializer);
-  serialisedPlayer.stat['ranking'] = ranking + 1;
+  serialisedPlayer.stats[0]['ranking'] = ranking + 1;
   ctx.body = serialisedPlayer
 }
 

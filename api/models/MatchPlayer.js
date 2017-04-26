@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const database = require('../databaseConnection');
-
-const StatHelper = require('../helpers/StatHelper')
+const Player = require('./Player.js');
+const Match = require('./Match.js');
 
 MatchPlayer = database.define('match_players',
   {
@@ -29,19 +29,21 @@ MatchPlayer = database.define('match_players',
     }
   }
 );
-
 MatchPlayer.afterUpdate((matchPlayer, options) => {
-  StatHelper.updateStatsForMatchPlayer(matchPlayer)
+  const StatHelper = require('../helpers/StatHelper')
+  StatHelper.updateStatsForMatchPlayer(matchPlayer.id)
   return matchPlayer
 });
 
 MatchPlayer.afterCreate((matchPlayer, options) => {
-  StatHelper.updateStatsForMatchPlayer(matchPlayer)
+  const StatHelper = require('../helpers/StatHelper')
+  StatHelper.updateStatsForMatchPlayer(matchPlayer.id)
   return matchPlayer
 });
 
 MatchPlayer.afterDestroy((matchPlayer, options) => {
-  StatHelper.updateStatsForMatchPlayer(matchPlayer)
+  const StatHelper = require('../helpers/StatHelper')
+  StatHelper.updateStatsForMatchPlayer(matchPlayer.id)
   return matchPlayer
 });
 

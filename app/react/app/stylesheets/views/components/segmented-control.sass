@@ -1,0 +1,40 @@
+.segmented-control
+  display: flex
+  justify-content: center
+
+  input
+    display: none
+
+  .label
+    margin-top: 2 * $dimension-space
+    margin-bottom: $dimension-space
+    text-align: center
+    transition: all 0.2s ease-out
+    background: transparent
+    color: $color-primary
+    border: 1px solid $color-primary
+    border-left-width: 0
+
+    &:first-of-type
+      border-top-left-radius: $dimension-border-radius-segmented
+      border-bottom-left-radius: $dimension-border-radius-segmented
+      border-left-width: 1px
+
+    // Since the plugin adds an extra div
+    &:nth-last-of-type(2)
+      border-top-right-radius: $dimension-border-radius-segmented
+      border-bottom-right-radius: $dimension-border-radius-segmented
+  
+    &.selected
+      background: $color-primary
+      color: white
+
+    label
+      display: block
+      width: 100%
+      height: 100%
+      padding: 4px 16px
+      cursor: pointer
+      margin-bottom: 0
+      font-weight: 400
+

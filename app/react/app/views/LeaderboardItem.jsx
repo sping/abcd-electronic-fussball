@@ -19,15 +19,15 @@ class LeaderboardItem extends Component {
         <div className="app-leaderboard-item-content">
           <span>
             <strong>W: </strong>
-            { this.props.stat.stat.gamesWon }
+            { this.props.stat.stats[0].gamesWon }
           </span>
           <span>
             <strong>L: </strong>
-            { this.props.stat.stat.gamesLost }
+            { this.props.stat.stats[0].gamesLost }
           </span>
           <span>
             <strong>R: </strong>
-            { Math.round(this.props.stat.stat.gameRatio * 100) }%
+            { Math.round(this.props.stat.stats[0].gameRatio * 100) }%
           </span>
         </div>
       </div>

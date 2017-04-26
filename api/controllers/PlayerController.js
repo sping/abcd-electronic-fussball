@@ -1,12 +1,12 @@
 const Sequelize = require('sequelize');
-const PlayerHelper = require('helpers/PlayerHelper');
-const PlayerSerializer = require('serializers/PlayerSerializer');
-const Player = require('models').Player;
-const Stat = require('models').Stat;
+const PlayerHelper = require('../helpers/PlayerHelper');
+const PlayerSerializer = require('../serializers/PlayerSerializer');
+const Player = require('../models').Player;
+const Stat = require('../models').Stat;
 
-const MatchPlayer = require('models').MatchPlayer;
-const MatchSerializer = require('serializers/MatchSerializer');
-const PlayerStatSerializer = require('serializers/PlayerStatSerializer');
+const MatchPlayer = require('../models').MatchPlayer;
+const MatchSerializer = require('../serializers/MatchSerializer');
+const PlayerStatSerializer = require('../serializers/PlayerStatSerializer');
 
 var PlayerController = function () {};
 
@@ -28,6 +28,7 @@ PlayerController.prototype.getMatches = async (ctx, next) => {
 
 PlayerController.prototype.calculateStatsForAllPlayers = async (ctx, next) => {
   var stats = [];
+  const statKind = ctx.query.period || 'overall'
 
   var players = await Player.findAll({
     include: [
@@ -39,15 +40,18 @@ PlayerController.prototype.calculateStatsForAllPlayers = async (ctx, next) => {
         model: User
       },
       {
-        model: Stat
+        model: Stat,
+        where: {
+          kind: statKind
+        },
+        limit: 1
       }
     ]
   })
-
   serialisedPlayers = Player.serialize(players, PlayerStatSerializer);
   serialisedPlayers.sort((playerA, playerB) => {
-    var a = playerA.stat;
-    var b = playerB.stat;
+    var a = playerA.stats[0];
+    var b = playerB.stats[0];
     
     if (a.gameRatio === b.gameRatio) {
       if (a.wins === b.wins) {
@@ -60,13 +64,15 @@ PlayerController.prototype.calculateStatsForAllPlayers = async (ctx, next) => {
   });
 
   serialisedPlayers.forEach((serialisedPlayer, index) => {
-    serialisedPlayer.stat['ranking'] = index + 1;
+    serialisedPlayer.stats[0]['ranking'] = index + 1;
   });
 
   ctx.body = serialisedPlayers
 }
 
 PlayerController.prototype.getStatsForPlayer = async (ctx, next) => {
+  const statKind = ctx.query.period || 'overall'
+
   var player = await Player.findOne({
     where: {
       id: ctx.params.id
@@ -80,54 +86,55 @@ PlayerController.prototype.getStatsForPlayer = async (ctx, next) => {
         model: User
       },
       {
-        model: Stat
+        model: Stat,
+        where: {
+          kind: statKind
+        },
+        limit: 1
       }
     ]
   })
   
   var ranking = await Stat.count({
-    where: Sequelize.or(
-      {
-        gameRatio: {
-          $gt: player.stat.gameRatio 
-        }
+    where: Sequelize.and(
+       {
+        kind: statKind
       },
-      Sequelize.and(
+      Sequelize.or(
         {
-          gameRatio: player.stat.gameRatio
-        }, {
-          gamesWon: {
-            $gt: player.stat.gamesWon   
+          gameRatio: {
+            $gt: player.stats[0].gameRatio 
           }
-        }
-      ),
-      Sequelize.and(
-        {
-          gameRatio: player.stat.gameRatio
-        }, 
-        {
-          gamesWon: player.stat.gamesWon
-        }, 
-        {
-          goalsDiff: {
-            $gt: player.stat.goalsDiff   
+        },
+        Sequelize.and(
+          {
+            gameRatio: player.stats[0].gameRatio
+          }, {
+            gamesWon: {
+              $gt: player.stats[0].gamesWon   
+            }
           }
-        }
+        ),
+        Sequelize.and(
+          {
+            gameRatio: player.stats[0].gameRatio
+          }, 
+          {
+            gamesWon: player.stats[0].gamesWon
+          }, 
+          {
+            goalsDiff: {
+              $gt: player.stats[0].goalsDiff   
+            }
+          }
+        )
       )
     )
   })
 
   serialisedPlayer = player.serialize(PlayerStatSerializer);
-  serialisedPlayer.stat['ranking'] = ranking + 1;
+  serialisedPlayer.stats[0]['ranking'] = ranking + 1;
   ctx.body = serialisedPlayer
-}
-
-playerParams = (body) => {
-  payload = {
-  }
-
-  Object.keys(payload).forEach((key) => (payload[key] == null) && delete payload[key]);
-  return payload
 }
 
 module.exports = new PlayerController();

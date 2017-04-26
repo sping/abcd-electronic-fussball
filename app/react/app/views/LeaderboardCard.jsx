@@ -7,7 +7,6 @@ class LeaderboardCard extends Component {
     super(props);
   }
   
-
   render() {
     return (
       <div className="card">
@@ -19,37 +18,37 @@ class LeaderboardCard extends Component {
           <div className="content-col">
             <span>
               <strong>Wins: </strong>
-              { this.props.stat.stat.gamesWon }
+              { this.props.stat.stats[0].gamesWon }
             </span>
             <span>
               <strong>Losses: </strong>
-              { this.props.stat.stat.gamesLost }
+              { this.props.stat.stats[0].gamesLost }
             </span>
           </div>
           <div className="content-col">
             <span>
               <strong>Ratio: </strong>
-              { Math.round(this.props.stat.stat.gameRatio * 100) }%
+              { Math.round(this.props.stat.stats[0].gameRatio * 100) }%
             </span>
           </div>
           <hr />
           <div className="content-col">
             <span>
               <strong>Goals for: </strong>
-              { this.props.stat.stat.goalsFor }
+              { this.props.stat.stats[0].goalsFor }
             </span>
             <span>
               <strong>Goals against: </strong>
-              { this.props.stat.stat.goalsAgainst }
+              { this.props.stat.stats[0].goalsAgainst }
             </span>
           </div>
           <div className="content-col">
             <span>
               <strong>Difference: </strong>
-              { (this.props.stat.stat.goalsDiff > 0) ? (
-                  '+' + this.props.stat.stat.goalsDiff
+              { (this.props.stat.stats[0].goalsDiff > 0) ? (
+                  '+' + this.props.stat.stats[0].goalsDiff
                 ) : (
-                  this.props.stat.stat.goalsDiff
+                  this.props.stat.stats[0].goalsDiff
                 )
               }
             </span>

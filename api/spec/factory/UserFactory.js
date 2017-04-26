@@ -9,10 +9,7 @@ var params = () => {
     avatarUrl: faker.image.imageUrl(),
     email: faker.internet.email(),
     password: 'testtest',
-    apiToken: 'testtest',
-    active: true,
-    createdAt: new Date(),
-    updatedAt: new Date()
+    active: true
   }
 }
 

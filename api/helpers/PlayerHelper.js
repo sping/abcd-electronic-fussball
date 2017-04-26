@@ -1,7 +1,7 @@
-const Player = require('models').Player;
-const User = require('models').User;
-const MatchPlayer = require('models').MatchPlayer;
-const UserSerializer = require('serializers/UserSerializer');
+const Player = require('../models').Player;
+const User = require('../models').User;
+const MatchPlayer = require('../models').MatchPlayer;
+const UserSerializer = require('../serializers/UserSerializer');
 var PlayerHelper = function () {};
 
 PlayerHelper.prototype.loadPlayer = async (ctx, next) => {

@@ -1,8 +1,8 @@
 const UserSerializer = require('./UserSerializer');
 const UserFactory = require('../spec/factory/UserFactory')
+const sequelize = require('../databaseConnection')
 
 beforeAll(async (done) => {
-  const sequelize = require('../databaseConnection')
   await sequelize.sync({force: true})
   done()
 })

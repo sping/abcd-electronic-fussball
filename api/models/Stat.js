@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const database = require('../databaseConnection');
+const Player = require('./Player.js');
 
 Stat = database.define('stats',
   {
@@ -7,6 +8,10 @@ Stat = database.define('stats',
       type: Sequelize.INTEGER,
       primaryKey: true,
       autoIncrement: true
+    },
+    kind: {
+      type: Sequelize.ENUM,
+      values: ['overall', 'week', 'month']
     },
     gamesWon: {
       type: Sequelize.INTEGER,

@@ -4116,6 +4116,10 @@ react-router@^3.0.0:
     loose-envify "^1.2.0"
     warning "^3.0.0"
 
+react-segmented-control:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/react-segmented-control/-/react-segmented-control-0.2.2.tgz#3878cde5997f4483c1c7cad340d0bc3d1724e5b4"
+
 react-transform-catch-errors@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/react-transform-catch-errors/-/react-transform-catch-errors-1.0.2.tgz#1b4d4a76e97271896fc16fe3086c793ec88a9eeb"

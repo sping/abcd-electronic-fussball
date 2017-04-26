@@ -8,6 +8,7 @@ const koa     = require('koa');
 const app     = module.exports = new koa();
 const koaBody = require('koa-bodyparser');
 const cors    = require('kcors');
+const cronJobs    = require('./cron');
 
 // Sentry error catching
 var Raven     = require('raven');

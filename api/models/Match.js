@@ -30,12 +30,12 @@ Match = database.define('matches',
   });
 
 Match.afterUpdate((match, options) => {
-  StatHelper.updateStatsForMatch(match)
+  StatHelper.updateStatsForMatch(match.id)
   return match
 });
 
 Match.afterDestroy((match, options) => {
-  StatHelper.updateStatsForMatch(match)
+  StatHelper.updateStatsForMatch(match.id)
   return match
 });
 

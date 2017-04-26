@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import SegmentedControl from 'react-segmented-control'
 import { playerStats } from '../actions/leaderboardActions';
 import { setTitle, resetTitle } from '../actions/titlebarActions';
 import LeaderboardItem from './LeaderboardItem';
@@ -9,11 +10,14 @@ import constants from '../constants'
 class Leaderboard extends Component {
   constructor (props) {
     super(props);
+    this.state = {
+      period: 'week'
+    }
   }
   
 
-  getStats () {
-    axios.get('/players/stats')
+  getStats (period) {
+    axios.get('/players/stats?period=' + (period || 'overall'))
     .then((response) => {
       this.props.dispatch(playerStats(response.data));
     })
@@ -22,12 +26,13 @@ class Leaderboard extends Component {
     });
   }
 
-  componentWillMount () {
+  componentDidMount () {
     this.getStats()
   }
 
-  openDetailStats (stat) {
-    console.log('test', stat)
+  setPeriod (period) {
+    this.setState({period: period})
+    this.getStats(period)
   }
 
   render() {
@@ -39,7 +44,16 @@ class Leaderboard extends Component {
       );
     }
     return (
-      <div id="leaderboard" className="main-container" onClick={this.test}>
+      <div id="leaderboard" className="main-container">
+        <SegmentedControl 
+          onChange={this.setPeriod.bind(this)} 
+          value={this.state.period}
+          name="period">
+          <span value="week">Week</span>
+          <span value="month">Month</span>
+          <span value="overall">Overall</span>
+        </SegmentedControl>
+
         {
           this.props.playerStats.map((stat, index) => {
             return <LeaderboardItem stat={stat} key={index} onClick={() => {this.openDetailStats(stat)}} />    

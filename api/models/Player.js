@@ -1,5 +1,7 @@
 const Sequelize = require('sequelize');
 const database = require('../databaseConnection');
+const Stat = require('./Stat.js');
+const User = require('./User.js');
 
 Player = database.define('players',
   {
@@ -18,7 +20,11 @@ Player = database.define('players',
   });
 
 Player.hook('afterCreate', async (player, options) => {
-  await player.createStat()
+  Stat.bulkCreate([
+    { kind: 'overall', playerId: player.id },
+    { kind: 'week', playerId: player.id },
+    { kind: 'month', playerId: player.id }
+  ])
   return player
 });
 

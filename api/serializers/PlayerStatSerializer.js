@@ -1,13 +1,13 @@
-const db = require('databaseConnection');
+const db = require('../databaseConnection');
 
 const scheme = {
-  include: ['@all', 'user', 'stat'],
+  include: ['@all', 'user', 'stats'],
   exclude: ['@fk', '@auto'],
   assoc: {
     user: {
       exclude: ['password', 'apiToken', 'active', '@pk', '@fk', '@auto']
     },
-    stat: {
+    stats: {
       include: ['@all'],
       exclude: ['@pk', '@fk', '@auto']
     }

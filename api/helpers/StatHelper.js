@@ -1,79 +1,143 @@
-var StatHelper = function () {};
+const Player = require('./../models').Player
+const Match = require('./../models').Match
+const MatchPlayer = require('./../models').MatchPlayer
+const Stat = require('./../models').Stat
+const moment = require('moment')
 
-var updateStatForMatchPlayers = async (stat, matchPlayers) => {
-  var wins = 0;
-  var losses = 0;
-  var goalsFor = 0;
-  var goalsAgainst = 0;
+class StatHelper {
+  static async resetStats ( ) {
+    await Stat.destroy({
+      truncate: true
+    })
+    
+    const players = await Player.findAll()
+    const availableAttributes = Stat.rawAttributes.kind.values
 
-  for (matchPlayer of matchPlayers) {
-    if (matchPlayer.match.homeScore == 0 && matchPlayer.match.awayScore == 0) { continue }
-
-    if (matchPlayer.homeTeam == matchPlayer.match.homeScore > matchPlayer.match.awayScore) {
-      wins += 1
-    } else {
-      losses += 1
+    for (let player of players) {
+      let bulkArray = []
+      for (let availableAttribute of availableAttributes) {
+        bulkArray.push({kind: availableAttribute, playerId: player.id})
+      }
+      let stats = await Stat.bulkCreate(bulkArray)
     }
 
-    if (matchPlayer.homeTeam) {
-      goalsFor += matchPlayer.match.homeScore;
-      goalsAgainst += matchPlayer.match.awayScore;
-    } else {
-      goalsFor += matchPlayer.match.awayScore;
-      goalsAgainst += matchPlayer.match.homeScore;
-    }
+    await StatHelper.calculateAllStats()
   }
 
-  var ratio = wins / (wins + losses) || 0;
-  var goalsDiff = goalsFor - goalsAgainst;
-  var stat = await stat.update(
-    {
-      gamesWon: wins,
-      gamesLost: losses,
-      goalsFor: goalsFor,
-      goalsAgainst: goalsAgainst,
-      goalsDiff: goalsDiff,
-      gameRatio: ratio
+  static async calculateAllStats ( ) {
+    const players = await Player.findAll()
+    
+    for (let player of players) {
+      let stats = await player.getStats()
+      for (let stat of stats) {
+        let matchPlayers = await player.getMatch_players({
+          include: Match
+        })
+        await StatHelper.calculateStat(stat, matchPlayers)
+      }
     }
-  )
 
-  return stat
-}
+    return true
+  }
 
-StatHelper.prototype.updateStatsForMatch = async (match) => {
-  // FIXME: This is stupid, but it's needed?
-  const MatchPlayer = require('models').MatchPlayer
-  const Match = require('models').Match
+  static async updateStatsForMatchPlayer (matchPlayerId) {
+    const matchPlayer = await MatchPlayer.findOne({
+      where: {
+        id: matchPlayerId
+      },
+      include: [Player]
+    })
+    
+    var player = await matchPlayer.getPlayer()
 
-  for (let matchPlayer of match.match_players) {
     let playerMatchPlayers = await MatchPlayer.findAll({
       where: {
         playerId: matchPlayer.playerId
       },
       include: [Match]
     })
-    let playerStat = await matchPlayer.player.getStat()
-    var stat = await updateStatForMatchPlayers(playerStat, playerMatchPlayers)
+    
+    let stats = await player.getStats()
+    for (let stat of stats) {
+      await StatHelper.calculateStat(stat, playerMatchPlayers)
+    }
+    return true
   }
-  return stat
+
+  static async updateStatsForMatch (matchId) {
+    const match = await Match.findOne({
+      where: {
+        id: matchId
+      },
+      include: [{
+        model: MatchPlayer,
+        include: [Player]
+      }]
+    })
+
+    for (let matchPlayer of match.match_players) {
+      let playerMatchPlayers = await MatchPlayer.findAll({
+        where: {
+          playerId: matchPlayer.playerId
+        },
+        include: [Match]
+      })
+
+      let stats = await matchPlayer.player.getStats()
+      for (let stat of stats) {
+        await StatHelper.calculateStat(stat, playerMatchPlayers)
+      }
+    }
+    return true
+  }
+
+  static async calculateStat (stat, matchPlayers) {
+    var wins = 0;
+    var losses = 0;
+    var goalsFor = 0;
+    var goalsAgainst = 0;
+    let startGuard = moment.utc(new Date(0))
+
+    if (stat.kind === 'week' || stat.kind === 'month') {
+      startGuard = moment.utc().startOf(stat.kind)
+    }
+
+    for (let matchPlayer of matchPlayers) {      
+      // guard for statkind
+      if (moment.utc(matchPlayer.match.playedAt) < startGuard) {
+        continue
+      }
+
+      if (matchPlayer.match.homeScore == 0 && matchPlayer.match.awayScore == 0) { continue }
+
+      if (matchPlayer.homeTeam == matchPlayer.match.homeScore > matchPlayer.match.awayScore) {
+        wins += 1
+      } else {
+        losses += 1
+      }
+
+      if (matchPlayer.homeTeam) {
+        goalsFor += matchPlayer.match.homeScore;
+        goalsAgainst += matchPlayer.match.awayScore;
+      } else {
+        goalsFor += matchPlayer.match.awayScore;
+        goalsAgainst += matchPlayer.match.homeScore;
+      }
+    }
+
+    var ratio = wins / (wins + losses) || 0;
+    var goalsDiff = goalsFor - goalsAgainst;
+    var stat = await stat.update(
+      {
+        gamesWon: wins,
+        gamesLost: losses,
+        goalsFor: goalsFor,
+        goalsAgainst: goalsAgainst,
+        goalsDiff: goalsDiff,
+        gameRatio: ratio
+      }
+    )
+  }
 }
 
-StatHelper.prototype.updateStatsForMatchPlayer = async (matchPlayer) => {
-  // FIXME: This is stupid, but it's needed?
-  const MatchPlayer = require('models').MatchPlayer
-  const Match = require('models').Match
-  var player = await matchPlayer.getPlayer();
-
-  let playerMatchPlayers = await MatchPlayer.findAll({
-    where: {
-      playerId: matchPlayer.playerId
-    },
-    include: [Match]
-  })
-  let playerStat = await player.getStat()
-  var stat = await updateStatForMatchPlayers(playerStat, playerMatchPlayers)
-  return stat
-}
-
-
-module.exports = new StatHelper();
+module.exports = StatHelper

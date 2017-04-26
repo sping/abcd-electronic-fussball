@@ -17,7 +17,7 @@ Player.belongsToMany(Match, {through: 'match_players'});
 Match.belongsToMany(Player, {through: 'match_players'});
 
 Stat.belongsTo(Player);
-Player.hasOne(Stat, {onDelete: 'cascade'});
+Player.hasMany(Stat, {onDelete: 'cascade'});
 
 module.exports = {
   User: User,
