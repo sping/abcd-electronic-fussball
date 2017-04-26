@@ -24,7 +24,7 @@ class MyStats extends Component {
   }
 
   componentDidMount () {
-    // You would expect to get the data from here, but it actually isn't needed, since the segmentedcontrol fires a setPeriod which gets the playerStats.
+    this.getPlayerStats()
   }
 
   textualNumber (number) {
@@ -45,7 +45,7 @@ class MyStats extends Component {
   }
 
   render() {
-    if (!this.props.stats) {
+    if (!this.props.stats || !this.props.stats.stats || !this.props.stats.stats[0]) {
       return (<div>Loading..</div>)
     }
 
