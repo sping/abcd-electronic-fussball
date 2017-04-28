@@ -15,7 +15,7 @@ class LeaderboardCard extends Component {
     let goalsAgainst = null
     let goalsDiff = null
 
-    if (this.props.stat.stats && this.props.stat.stats[0]) {
+    if (this.props.stat && this.props.stat.stats && this.props.stat.stats[0]) {
       let stat = this.props.stat.stats[0]
       gamesWon = stat.gamesWon
       gamesLost = stat.gamesLost
