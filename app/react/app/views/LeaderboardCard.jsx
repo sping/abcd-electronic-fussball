@@ -8,6 +8,23 @@ class LeaderboardCard extends Component {
   }
   
   render() {
+    let gamesWon = null
+    let gamesLost = null
+    let gameRatio = null
+    let goalsFor = null
+    let goalsAgainst = null
+    let goalsDiff = null
+
+    if (this.props.stat.stats && this.props.stat.stats[0]) {
+      let stat = this.props.stat.stats[0]
+      gamesWon = stat.gamesWon
+      gamesLost = stat.gamesLost
+      gameRatio = Math.round(stat.gameRatio * 100) 
+      goalsFor = stat.goalsFor
+      goalsAgainst = stat.goalsAgainst
+      goalsDiff = stat.goalsDiff
+    }
+
     return (
       <div className="card">
         <div className="title-row">
@@ -18,37 +35,37 @@ class LeaderboardCard extends Component {
           <div className="content-col">
             <span>
               <strong>Wins: </strong>
-              { this.props.stat.stats[0].gamesWon }
+              { gamesWon }
             </span>
             <span>
               <strong>Losses: </strong>
-              { this.props.stat.stats[0].gamesLost }
+              { gamesLost }
             </span>
           </div>
           <div className="content-col">
             <span>
               <strong>Ratio: </strong>
-              { Math.round(this.props.stat.stats[0].gameRatio * 100) }%
+              { Math.round(gameRatio * 100) }%
             </span>
           </div>
           <hr />
           <div className="content-col">
             <span>
               <strong>Goals for: </strong>
-              { this.props.stat.stats[0].goalsFor }
+              { goalsFor }
             </span>
             <span>
               <strong>Goals against: </strong>
-              { this.props.stat.stats[0].goalsAgainst }
+              { goalsAgainst }
             </span>
           </div>
           <div className="content-col">
             <span>
               <strong>Difference: </strong>
-              { (this.props.stat.stats[0].goalsDiff > 0) ? (
-                  '+' + this.props.stat.stats[0].goalsDiff
+              { (goalsDiff > 0) ? (
+                  '+' + goalsDiff
                 ) : (
-                  this.props.stat.stats[0].goalsDiff
+                  goalsDiff
                 )
               }
             </span>

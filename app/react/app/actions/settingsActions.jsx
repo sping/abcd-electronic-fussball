@@ -1,12 +1,20 @@
 const SettingsActions = {
-  PERIOD: 'PERIOD'
+  LEADERBOARD_PERIOD: 'LEADERBOARD_PERIOD',
+  MYSTATS_PERIOD: 'MYSTATS_PERIOD'
 };
 
-const period = (period) => {
+const leaderboardPeriod = (leaderboardPeriod) => {
   return {
-    type: SettingsActions.PERIOD,
-    period
+    type: SettingsActions.LEADERBOARD_PERIOD,
+    leaderboardPeriod
   };
 };
 
-export { SettingsActions, period };
+const mystatsPeriod = (mystatsPeriod) => {
+  return {
+    type: SettingsActions.MYSTATS_PERIOD,
+    mystatsPeriod
+  };
+};
+
+export { SettingsActions, leaderboardPeriod, mystatsPeriod };

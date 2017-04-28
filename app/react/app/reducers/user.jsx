@@ -8,10 +8,20 @@ export default (state = initialState, action) => {
         ...state,
         currentUser: action.user
       };
-    case UserActions.STATS:
+    case UserActions.USER_STATS_WEEK:
       return {
         ...state,
-        userStats: action.stats
+        weekStats: action.stats
+      };
+    case UserActions.USER_STATS_MONTH:
+      return {
+        ...state,
+        monthStats: action.stats
+      };
+    case UserActions.USER_STATS_OVERALL  :
+      return {
+        ...state,
+        overallStats: action.stats
       };
     default:
       return state;

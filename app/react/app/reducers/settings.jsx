@@ -1,11 +1,16 @@
 import { SettingsActions } from '../actions/settingsActions';
 
-export default (state = { period: 'overall' }, action) => {
+export default (state = { leaderboardPeriod: 'overall', mystatsPeriod: 'overall' }, action) => {
   switch (action.type) {
-    case SettingsActions.PERIOD:
+    case SettingsActions.LEADERBOARD_PERIOD:
       return {
         ...state,
-        period: action.period
+        leaderboardPeriod: action.leaderboardPeriod
+      };
+    case SettingsActions.MYSTATS_PERIOD:
+      return {
+        ...state,
+        mystatsPeriod: action.mystatsPeriod
       };
     default:
       return state;

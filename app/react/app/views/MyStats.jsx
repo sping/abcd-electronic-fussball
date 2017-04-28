@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import axios from '../axios'
 import { browserHistory } from 'react-router'
 import SegmentedControl from 'react-segmented-control'
-import { userStats } from '../actions/userActions';
-import { period as periodAction } from '../actions/settingsActions';
+import { userStatsWeek, userStatsMonth, userStatsOverall } from '../actions/userActions';
+import { mystatsPeriod as periodAction } from '../actions/settingsActions';
 import constants from '../constants'
 import LeaderboardCard from './LeaderboardCard';
 import '../stylesheets/views/my-stats.sass';
@@ -17,14 +17,24 @@ class MyStats extends Component {
   getPlayerStats (period) {
     axios.get('/current_user/stats?period=' + (period || 'overall'))
     .then((response) => {
-      this.props.dispatch(userStats(response.data));
+      switch (period) {
+        case 'week':
+          this.props.dispatch(userStatsWeek(response.data));
+          break;
+        case 'month':
+          this.props.dispatch(userStatsMonth(response.data));
+          break;
+        case 'overall':
+          this.props.dispatch(userStatsOverall(response.data));
+          break;
+      }
     }).catch((error) => {
       console.log(error);
     })
   }
 
   componentDidMount () {
-    this.getPlayerStats()
+    // You would expect to see getStats() here, but since the SegmentedControl already fires it after the first render, it's ok
   }
 
   textualNumber (number) {
@@ -45,13 +55,14 @@ class MyStats extends Component {
   }
 
   render() {
-    if (!this.props.stats || !this.props.stats.stats || !this.props.stats.stats[0]) {
-      return (<div>Loading..</div>)
+    const stats = this.props[this.props.period + 'Stats']
+    let ranking;
+    if (stats && stats.stats && stats.stats[0]) {
+      ranking = stats.stats[0].ranking
     }
-
+    
     return (
       <div className="app-my-stats main-container">
-        
         <SegmentedControl 
           onChange={this.setPeriod.bind(this)} 
           value={this.props.period}
@@ -62,11 +73,14 @@ class MyStats extends Component {
         </SegmentedControl>
 
         <div className="app-my-stats-place-row">
-          <h1>You are {this.textualNumber(this.props.stats.stats[0].ranking)}!</h1>
+          { ranking &&
+            <h1>You are {this.textualNumber(ranking)}!</h1>
+          }
         </div>
         <div className="app-my-stats-card-row">
-          <LeaderboardCard stat={this.props.stats} />
+          <LeaderboardCard stat={stats} />
         </div>
+        
       </div>
     );
   }
@@ -74,8 +88,12 @@ class MyStats extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    weekStats: state.user.weekStats,
+    monthStats: state.user.monthStats,
+    overallStats: state.user.overallStats,
+
     stats: state.user.userStats,
-    period: state.settings.period
+    period: state.settings.mystatsPeriod
   }
 };
 
