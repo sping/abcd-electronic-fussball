@@ -5,9 +5,8 @@ import { persistStore, autoRehydrate } from 'redux-persist';
 
 export default function configureStore(configurationCompleted) {
 
-  const enhancer = compose(
-    autoRehydrate(),
-    composeWithDevTools()
+  const enhancer = composeWithDevTools(
+    autoRehydrate()
   );
 
   const reducers = combineReducers();

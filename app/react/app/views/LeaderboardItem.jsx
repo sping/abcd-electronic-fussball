@@ -9,25 +9,46 @@ class LeaderboardItem extends Component {
   }
 
   render() {
+    let avatarUrl = null
+    let firstName = null
+    let lastName = null
+    let gamesWon = null
+    let gamesLost = null
+    let gameRatio = null
+
+    if (this.props.stat && this.props.stat.stats) {
+      if (this.props.stat.stats[0]) {
+        gamesWon = this.props.stat.stats[0].gamesWon
+        gamesLost = this.props.stat.stats[0].gamesLost
+        gameRatio = Math.round(this.props.stat.stats[0].gameRatio * 100) 
+      }
+
+      if (this.props.stat.user) {
+        avatarUrl = this.props.stat.user.avatarUrl
+        firstName = this.props.stat.user.firstName
+        lastName = this.props.stat.user.lastName
+      }
+    }
+
     return (
       <div className="app-leaderboard-item">
         <div className="app-leaderboard-item-title">
-          <img src={this.props.stat.user.avatarUrl || constants.defaultAvatarUrl} />
-          <h3>{ this.props.stat.user.firstName } { this.props.stat.user.lastName }</h3>
+          <img src={avatarUrl || constants.defaultAvatarUrl} />
+          <h3>{ firstName } { lastName }</h3>
         </div>
         <hr />
         <div className="app-leaderboard-item-content">
           <span>
             <strong>W: </strong>
-            { this.props.stat.stats[0].gamesWon }
+            { gamesWon }
           </span>
           <span>
             <strong>L: </strong>
-            { this.props.stat.stats[0].gamesLost }
+            { gamesLost }
           </span>
           <span>
             <strong>R: </strong>
-            { Math.round(this.props.stat.stats[0].gameRatio * 100) }%
+            { gameRatio }%
           </span>
         </div>
       </div>

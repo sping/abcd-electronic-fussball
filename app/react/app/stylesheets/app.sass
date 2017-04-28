@@ -8,8 +8,16 @@ html, body
 @import './vars.sass'
 @import '~milligram/src/milligram.sass'
 @import './views/index.sass'
+@import './third-party/flatpickr.sass'
+
+#root
+  justify-content: space-around
+  display: flex
+  flex-direction: row
 
 #app
+  max-width: $dimension-max-width
+  width: 100%
   overflow: hidden
   display: flex
   flex-direction: column
@@ -19,7 +27,6 @@ html, body
     display: flex
     flex: 1
     overflow: scroll
-
 
     .main-container
       height: 100%

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import moment from 'moment';
+import groupArray from 'group-array'
 import axios from '../axios';
-import TimelineCard from './TimelineCard';
+import TimelineDateCollection from './TimelineDateCollection';
 import { matches } from '../actions/timelineActions';
 import '../stylesheets/views/timeline.sass';
 
@@ -22,12 +24,22 @@ class Timeline extends Component {
     this.getMatches();
   }
 
+  groupMatchesByDate (matches) {
+    for (let match of matches) {
+      match.playedAtDate = moment(match.playedAt).format('D/M/YYYY')
+    }
+
+    return groupArray(matches, 'playedAtDate')
+  }
+
   render() {
+    let groupedMatches = this.groupMatchesByDate(this.props.matches)
+
     return (
       <div className="app-timeline main-container">
-        {
-          this.props.matches.map((match) => {
-            return <TimelineCard match={match} key={match.id} />
+        { 
+          Object.keys(groupedMatches).map((key) => {
+            return <TimelineDateCollection key={key} date={key} matches={groupedMatches[key]} />
           })
         }
       </div>

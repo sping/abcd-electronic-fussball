@@ -8,11 +8,15 @@ const koa     = require('koa');
 const app     = module.exports = new koa();
 const koaBody = require('koa-bodyparser');
 const cors    = require('kcors');
-const cronJobs    = require('./cron');
+const cronJobs  = require('./cron');
+const Raven     = require('raven');
+
+// Track errors in production env
+if (process.env.NODE_ENV === 'production') {
+  Raven.config('https://bf1a6f52d1964a61887ea9a8fa251ffd:254c3bf7ff1142429cb97446a221369d@sentry.io/152215').install();
+}
 
 // Sentry error catching
-var Raven     = require('raven');
-Raven.config('https://bf1a6f52d1964a61887ea9a8fa251ffd:254c3bf7ff1142429cb97446a221369d@sentry.io/152215').install();
 
 const StatusRouter          = require('routes').StatusRouter;
 const AuthenticationRouter  = require('routes').AuthenticationRouter;

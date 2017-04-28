@@ -8,6 +8,9 @@ class LeaderboardCard extends Component {
   }
   
   render() {
+    let avatarUrl = null
+    let firstName = null
+    let lastName = null
     let gamesWon = null
     let gamesLost = null
     let gameRatio = null
@@ -15,21 +18,28 @@ class LeaderboardCard extends Component {
     let goalsAgainst = null
     let goalsDiff = null
 
-    if (this.props.stat && this.props.stat.stats && this.props.stat.stats[0]) {
-      let stat = this.props.stat.stats[0]
-      gamesWon = stat.gamesWon
-      gamesLost = stat.gamesLost
-      gameRatio = Math.round(stat.gameRatio * 100) 
-      goalsFor = stat.goalsFor
-      goalsAgainst = stat.goalsAgainst
-      goalsDiff = stat.goalsDiff
+    if (this.props.stat && this.props.stat.stats) {
+      if (this.props.stat.stats[0]) {
+        gamesWon = this.props.stat.stats[0].gamesWon
+        gamesLost = this.props.stat.stats[0].gamesLost
+        gameRatio = Math.round(this.props.stat.stats[0].gameRatio * 100) 
+        goalsFor = this.props.stat.stats[0].goalsFor
+        goalsAgainst = this.props.stat.stats[0].goalsAgainst
+        goalsDiff = this.props.stat.stats[0].goalsDiff
+      }
+
+      if (this.props.stat.user) {
+        avatarUrl = this.props.stat.user.avatarUrl
+        firstName = this.props.stat.user.firstName
+        lastName = this.props.stat.user.lastName
+      }
     }
 
     return (
       <div className="card">
         <div className="title-row">
-          <img src={this.props.stat.user.avatarUrl || constants.defaultAvatarUrl} />
-          <h3>{ this.props.stat.user.firstName } { this.props.stat.user.lastName }</h3>
+          <img src={avatarUrl || constants.defaultAvatarUrl} />
+          <h3>{ firstName } { lastName }</h3>
         </div>
         <div className="content-row">
           <div className="content-col">

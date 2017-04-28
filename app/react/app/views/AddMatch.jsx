@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import moment from 'moment';
 import axios from '../axios';
 import '../stylesheets/views/add-match.sass';
 import PlayerSelect from './components/playerSelect';
-
+import 'flatpickr/dist/themes/airbnb.css'
+ 
+import Flatpickr from 'react-flatpickr'
 
 class AddMatch extends Component {
   constructor (props) {
@@ -26,7 +29,9 @@ class AddMatch extends Component {
   }
 
   resetForm () {
-    this.refs.form.reset();
+    let flatPickrVal = this.refs.playedAt.flatpickr.input.value
+    this.refs.form.reset()
+    this.refs.playedAt.flatpickr.input.value = flatPickrVal
   }
 
   save () {
@@ -39,7 +44,7 @@ class AddMatch extends Component {
     var payload = {
       homeScore: this.refs.homeScore.value,
       awayScore: this.refs.awayScore.value,
-      playedAt: this.refs.playedAt.value,
+      playedAt: this.refs.playedAt.flatpickr.input.value,
       kind: 'SINGLE',
       match_players: [
         {
@@ -93,17 +98,29 @@ class AddMatch extends Component {
     });
   }
 
+  setDateFromDatePicker (date) {
+    this.setState({playedAt: date})
+  }
+
   render() {
     if (!this.state.availablePlayers) {
       return (
-        <div></div>
+        <div />
       )
     }
 
     return (
       <div id="account" className="app-account main-container">
         <form ref="form" onSubmit={this.submit} className="app-account-form">
-          <input className="app-add-match-date-picker" ref="playedAt" type="datetime-local" defaultValue={new Date().toISOString().substring(0, 16)} />
+          <Flatpickr 
+            className="app-add-match-date-picker" 
+            data-enable-time 
+            ref="playedAt"
+            options={{
+              defaultDate: moment().format('YYYY-MM-DD HH:mm Z'),
+              minuteIncrement: 1,
+              time_24hr: true
+            }} />
 
           <div className="app-add-match-select-players">
             <div className="app-add-match-select-players-col">
