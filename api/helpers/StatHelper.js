@@ -6,11 +6,10 @@ const moment = require('moment')
 
 class StatHelper {
   static async resetStats ( ) {
-    await Stat.destroy({
-      truncate: true
-    })
     
-    const players = await Player.findAll()
+    const players = await Player.findAll({
+      include: [Stat]
+    })
     const availableAttributes = Stat.rawAttributes.kind.values
 
     for (let player of players) {
@@ -18,10 +17,22 @@ class StatHelper {
       for (let availableAttribute of availableAttributes) {
         bulkArray.push({kind: availableAttribute, playerId: player.id})
       }
+      
+      let playerStatIds = await player.getStats({
+        attributes: ['id']
+      })
+
       let stats = await Stat.bulkCreate(bulkArray)
+      await StatHelper.updateStatsForPlayer(player.id)
+
+      await player.removeStats(playerStatIds)
     }
 
-    await StatHelper.calculateAllStats()
+    await Stat.destroy({
+      where: {
+        playerId: null
+      }
+    })
   }
 
   static async calculateAllStats ( ) {
@@ -37,6 +48,27 @@ class StatHelper {
       }
     }
 
+    return true
+  }
+
+  static async updateStatsForPlayer (playerId) {
+    var player = await Player.findOne({
+      where: {
+        id: playerId
+      }
+    })
+
+    let playerMatchPlayers = await MatchPlayer.findAll({
+      where: {
+        playerId: playerId
+      },
+      include: [Match]
+    })
+    
+    let stats = await player.getStats()
+    for (let stat of stats) {
+      await StatHelper.calculateStat(stat, playerMatchPlayers)
+    }
     return true
   }
 
