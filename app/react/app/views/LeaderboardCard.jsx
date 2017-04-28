@@ -45,7 +45,7 @@ class LeaderboardCard extends Component {
           <div className="content-col">
             <span>
               <strong>Ratio: </strong>
-              { Math.round(gameRatio * 100) }%
+              { gameRatio }%
             </span>
           </div>
           <hr />
