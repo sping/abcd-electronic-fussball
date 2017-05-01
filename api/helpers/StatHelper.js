@@ -130,7 +130,7 @@ class StatHelper {
     let startGuard = moment.utc(new Date(0))
 
     if (stat.kind === 'week' || stat.kind === 'month') {
-      startGuard = moment.startOf(stat.kind)
+      startGuard = moment().startOf(stat.kind)
     }
 
     for (let matchPlayer of matchPlayers) {      
