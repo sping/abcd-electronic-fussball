@@ -1,10 +1,10 @@
 require('app-module-path').addPath(__dirname);
 
+const reload    = require('require-reload')(require)
 const path      = require('path');
 const models    = require('./models');
-
-const repl = require('repl');
-const babel = require('babel-core');
+const repl      = require('repl');
+const babel     = require('babel-core');
 
 function preprocess(input) {
   const awaitMatcher = /^(?:\s*(?:(?:let|var|const)\s)?\s*([^=]+)=\s*|^\s*)(await\s[\s\S]*)/;
@@ -37,6 +37,7 @@ function myEval(cmd, context, filename, callback) {
 const replInstance = repl.start({ prompt: '> ' });
 const _eval = replInstance.eval;
 replInstance.eval = myEval;
+replInstance.context.reload = reload;
 
 // Load my app
 const app = require('./app')

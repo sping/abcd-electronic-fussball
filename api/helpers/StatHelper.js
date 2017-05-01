@@ -5,8 +5,7 @@ const Stat = require('./../models').Stat
 const moment = require('moment')
 
 class StatHelper {
-  static async resetStats ( ) {
-    
+  static async resetStats ( ) {    
     const players = await Player.findAll({
       include: [Stat]
     })
@@ -131,12 +130,12 @@ class StatHelper {
     let startGuard = moment.utc(new Date(0))
 
     if (stat.kind === 'week' || stat.kind === 'month') {
-      startGuard = moment.utc().startOf(stat.kind)
+      startGuard = moment.startOf(stat.kind)
     }
 
     for (let matchPlayer of matchPlayers) {      
       // guard for statkind
-      if (moment.utc(matchPlayer.match.playedAt) < startGuard) {
+      if (moment(matchPlayer.match.playedAt) < startGuard) {
         continue
       }
 
